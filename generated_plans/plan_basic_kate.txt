@@ -1,0 +1,83 @@
+Directory: /Users/matteo/Documents/Project/basic/kate
+Domain: domain.pddl
+Problem: problem.pddl
+==================================================
+
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 67
+Aibr Preprocessing
+|F|:160
+|X|:0
+|A|:883
+|P|:0
+|E|:0
+H1 Setup Time (msec): 30
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=6.0
+ g(n)= 3.0 h(n)=5.0
+ g(n)= 5.0 h(n)=4.0
+ g(n)= 11.0 h(n)=2.0
+ g(n)= 12.0 h(n)=1.0
+ g(n)= 13.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_4_1 loc_3_1 left)
+1.0: (move_character loc_3_1 loc_2_1 left)
+2.0: (move_ball ball_0 loc_2_1 loc_2_2 loc_2_3 up)
+3.0: (move_character loc_2_2 loc_1_2 left)
+4.0: (move_character loc_1_2 loc_1_3 up)
+5.0: (move_character loc_1_3 loc_1_4 up)
+6.0: (move_character loc_1_4 loc_2_4 right)
+7.0: (move_ball ball_0 loc_2_4 loc_2_3 loc_2_2 down)
+8.0: (move_character loc_2_3 loc_3_3 right)
+9.0: (move_ball ball_1 loc_3_3 loc_4_3 loc_5_3 right)
+10.0: (move_ball ball_1 loc_4_3 loc_5_3 loc_6_3 right)
+11.0: (move_character loc_5_3 loc_5_4 up)
+12.0: (move_character loc_5_4 loc_6_4 right)
+13.0: (move_character loc_6_4 loc_7_4 right)
+14.0: (move_character loc_7_4 loc_7_3 down)
+15.0: (move_ball ball_1 loc_7_3 loc_6_3 loc_5_3 left)
+16.0: (move_ball ball_1 loc_6_3 loc_5_3 loc_4_3 left)
+17.0: (move_ball ball_1 loc_5_3 loc_4_3 loc_3_3 left)
+18.0: (move_character loc_4_3 loc_5_3 right)
+19.0: (move_character loc_5_3 loc_6_3 right)
+20.0: (move_character loc_6_3 loc_7_3 right)
+21.0: (move_character loc_7_3 loc_7_2 down)
+22.0: (move_character loc_7_2 loc_7_1 down)
+23.0: (move_character loc_7_1 loc_6_1 left)
+24.0: (move_ball ball_2 loc_6_1 loc_6_2 loc_6_3 up)
+25.0: (move_character loc_6_2 loc_6_1 down)
+26.0: (move_character loc_6_1 loc_5_1 left)
+27.0: (move_character loc_5_1 loc_4_1 left)
+28.0: (move_character loc_4_1 loc_3_1 left)
+29.0: (move_character loc_3_1 loc_2_1 left)
+30.0: (move_ball ball_0 loc_2_1 loc_2_2 loc_2_3 up)
+31.0: (move_character loc_2_2 loc_1_2 left)
+32.0: (move_character loc_1_2 loc_1_3 up)
+33.0: (move_ball ball_0 loc_1_3 loc_2_3 loc_3_3 right)
+34.0: (move_character loc_2_3 loc_2_4 up)
+35.0: (move_character loc_2_4 loc_3_4 right)
+36.0: (move_character loc_3_4 loc_4_4 right)
+37.0: (move_character loc_4_4 loc_5_4 right)
+38.0: (move_character loc_5_4 loc_6_4 right)
+39.0: (move_character loc_6_4 loc_7_4 right)
+40.0: (move_character loc_7_4 loc_7_3 down)
+41.0: (move_ball ball_2 loc_7_3 loc_6_3 loc_5_3 left)
+42.0: (move_ball ball_2 loc_6_3 loc_5_3 loc_4_3 left)
+43.0: (move_ball ball_2 loc_5_3 loc_4_3 loc_3_3 left)
+44.0: (goal ball_2 ball_0 ball_1 loc_3_3)
+
+Plan-Length:45
+Metric (Search):13.0
+Planning Time (msec): 4638
+Heuristic Time (msec): 4264
+Search Time (msec): 4406
+Expanded Nodes:7560
+States Evaluated:8651
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:191
+Number of Duplicates detected:11362

@@ -1,0 +1,131 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 162
+Aibr Preprocessing
+|F|:210
+|X|:4
+|A|:502
+|P|:0
+|E|:0
+H1 Setup Time (msec): 22
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=14.0
+ g(n)= 1.0 h(n)=13.0
+ g(n)= 3.0 h(n)=12.0
+ g(n)= 3.0 h(n)=11.0
+ g(n)= 6.0 h(n)=6.0
+ g(n)= 7.0 h(n)=5.0
+-------------Time: 10s ; Expanded Nodes: 18835 (Avg-Speed 1883.0 n/s); Evaluated States: 22928
+-------------Time: 20s ; Expanded Nodes: 39572 (Avg-Speed 1978.0 n/s); Evaluated States: 47368
+-------------Time: 30s ; Expanded Nodes: 60242 (Avg-Speed 2008.0 n/s); Evaluated States: 71299
+-------------Time: 40s ; Expanded Nodes: 82580 (Avg-Speed 2064.0 n/s); Evaluated States: 96563
+-------------Time: 50s ; Expanded Nodes: 103938 (Avg-Speed 2078.0 n/s); Evaluated States: 121203
+-------------Time: 60s ; Expanded Nodes: 126202 (Avg-Speed 2103.0 n/s); Evaluated States: 146355
+-------------Time: 70s ; Expanded Nodes: 147337 (Avg-Speed 2104.0 n/s); Evaluated States: 170625
+-------------Time: 80s ; Expanded Nodes: 168334 (Avg-Speed 2104.0 n/s); Evaluated States: 194981
+-------------Time: 90s ; Expanded Nodes: 190067 (Avg-Speed 2111.0 n/s); Evaluated States: 219703
+-------------Time: 100s ; Expanded Nodes: 210922 (Avg-Speed 2109.0 n/s); Evaluated States: 243980
+-------------Time: 110s ; Expanded Nodes: 232650 (Avg-Speed 2115.0 n/s); Evaluated States: 268924
+-------------Time: 120s ; Expanded Nodes: 254714 (Avg-Speed 2122.0 n/s); Evaluated States: 294065
+-------------Time: 130s ; Expanded Nodes: 276174 (Avg-Speed 2124.0 n/s); Evaluated States: 318748
+-------------Time: 140s ; Expanded Nodes: 296727 (Avg-Speed 2119.0 n/s); Evaluated States: 342723
+-------------Time: 150s ; Expanded Nodes: 318345 (Avg-Speed 2122.0 n/s); Evaluated States: 367622
+-------------Time: 160s ; Expanded Nodes: 340529 (Avg-Speed 2128.0 n/s); Evaluated States: 392971
+-------------Time: 170s ; Expanded Nodes: 362391 (Avg-Speed 2131.0 n/s); Evaluated States: 417913
+-------------Time: 180s ; Expanded Nodes: 385790 (Avg-Speed 2143.0 n/s); Evaluated States: 444959
+-------------Time: 190s ; Expanded Nodes: 407055 (Avg-Speed 2142.0 n/s); Evaluated States: 469896
+-------------Time: 200s ; Expanded Nodes: 426369 (Avg-Speed 2131.0 n/s); Evaluated States: 492713
+ g(n)= 21.0 h(n)=2.0
+ g(n)= 22.0 h(n)=1.0
+ g(n)= 23.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_6_2 loc_5_2 left)
+1.0: (move_character loc_5_2 loc_5_3 up)
+2.0: (move_character loc_5_3 loc_4_3 left)
+3.0: (move_character loc_4_3 loc_3_3 left)
+4.0: (move_character loc_3_3 loc_3_4 up)
+5.0: (move_character loc_3_4 loc_2_4 left)
+6.0: (move_character loc_2_4 loc_1_4 left)
+7.0: (move_character loc_1_4 loc_1_3 down)
+8.0: (move_ball ball_0 loc_1_3 loc_2_3 loc_3_3 right)
+9.0: (move_ball ball_0 loc_2_3 loc_3_3 loc_4_3 right)
+10.0: (move_ball ball_0 loc_3_3 loc_4_3 loc_5_3 right)
+11.0: (move_ball ball_0 loc_4_3 loc_5_3 loc_6_3 right)
+12.0: (move_ball ball_0 loc_5_3 loc_6_3 loc_7_3 right)
+13.0: (move_character loc_6_3 loc_6_2 down)
+14.0: (move_character loc_6_2 loc_7_2 right)
+15.0: (move_ball ball_0 loc_7_2 loc_7_3 loc_7_4 up)
+16.0: (move_character loc_7_3 loc_6_3 left)
+17.0: (move_character loc_6_3 loc_5_3 left)
+18.0: (move_character loc_5_3 loc_5_4 up)
+19.0: (move_character loc_5_4 loc_5_5 up)
+20.0: (move_character loc_5_5 loc_6_5 right)
+21.0: (move_character loc_6_5 loc_7_5 right)
+22.0: (move_ball ball_0 loc_7_5 loc_7_4 loc_7_3 down)
+23.0: (move_ball ball_0 loc_7_4 loc_7_3 loc_7_2 down)
+24.0: (move_character loc_7_3 loc_6_3 left)
+25.0: (move_character loc_6_3 loc_5_3 left)
+26.0: (move_character loc_5_3 loc_5_4 up)
+27.0: (move_ball ball_1 loc_5_4 loc_6_4 loc_7_4 right)
+28.0: (move_character loc_6_4 loc_6_3 down)
+29.0: (move_character loc_6_3 loc_7_3 right)
+30.0: (move_character loc_7_3 loc_8_3 right)
+31.0: (move_character loc_8_3 loc_9_3 right)
+32.0: (move_character loc_9_3 loc_9_2 down)
+33.0: (move_character loc_9_2 loc_10_2 right)
+34.0: (move_ball ball_2 loc_10_2 loc_10_3 loc_10_4 up)
+35.0: (move_character loc_10_3 loc_9_3 left)
+36.0: (move_character loc_9_3 loc_8_3 left)
+37.0: (move_character loc_8_3 loc_7_3 left)
+38.0: (move_character loc_7_3 loc_6_3 left)
+39.0: (move_character loc_6_3 loc_6_2 down)
+40.0: (move_character loc_6_2 loc_6_1 down)
+41.0: (move_character loc_6_1 loc_7_1 right)
+42.0: (move_ball ball_0 loc_7_1 loc_7_2 loc_7_3 up)
+43.0: (move_character loc_7_2 loc_6_2 left)
+44.0: (move_character loc_6_2 loc_6_3 up)
+45.0: (move_ball ball_0 loc_6_3 loc_7_3 loc_8_3 right)
+46.0: (move_ball ball_0 loc_7_3 loc_8_3 loc_9_3 right)
+47.0: (move_ball ball_0 loc_8_3 loc_9_3 loc_10_3 right)
+48.0: (move_ball ball_0 loc_9_3 loc_10_3 loc_11_3 right)
+49.0: (move_character loc_10_3 loc_10_2 down)
+50.0: (move_character loc_10_2 loc_11_2 right)
+51.0: (move_ball ball_0 loc_11_2 loc_11_3 loc_11_4 up)
+52.0: (move_character loc_11_3 loc_10_3 left)
+53.0: (move_character loc_10_3 loc_9_3 left)
+54.0: (move_character loc_9_3 loc_9_4 up)
+55.0: (move_ball ball_2 loc_9_4 loc_10_4 loc_11_4 right)
+56.0: (move_character loc_10_4 loc_9_4 left)
+57.0: (move_character loc_9_4 loc_9_3 down)
+58.0: (move_character loc_9_3 loc_8_3 left)
+59.0: (move_character loc_8_3 loc_7_3 left)
+60.0: (move_character loc_7_3 loc_6_3 left)
+61.0: (move_character loc_6_3 loc_6_4 up)
+62.0: (move_character loc_6_4 loc_6_5 up)
+63.0: (move_character loc_6_5 loc_7_5 right)
+64.0: (move_ball ball_1 loc_7_5 loc_7_4 loc_7_3 down)
+65.0: (move_character loc_7_4 loc_6_4 left)
+66.0: (move_character loc_6_4 loc_6_3 down)
+67.0: (move_ball ball_1 loc_6_3 loc_7_3 loc_8_3 right)
+68.0: (move_ball ball_1 loc_7_3 loc_8_3 loc_9_3 right)
+69.0: (move_ball ball_1 loc_8_3 loc_9_3 loc_10_3 right)
+70.0: (move_ball ball_1 loc_9_3 loc_10_3 loc_11_3 right)
+71.0: (move_character loc_10_3 loc_10_2 down)
+72.0: (move_character loc_10_2 loc_11_2 right)
+73.0: (move_ball ball_1 loc_11_2 loc_11_3 loc_11_4 up)
+74.0: (goal ball_1 ball_2 ball_0 loc_11_4)
+
+Plan-Length:75
+Metric (Search):23.0
+Planning Time (msec): 202069
+Heuristic Time (msec): 192819
+Search Time (msec): 201732
+Expanded Nodes:430085
+States Evaluated:496912
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:61251
+Number of Duplicates detected:704133

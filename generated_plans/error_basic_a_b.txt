@@ -1,0 +1,24 @@
+ERRORE per a_b
+Directory: /Users/matteo/Documents/Project/basic/a_b
+Comando: java -jar /Users/matteo/Documents/Project/basic/adam/enhsp-20.jar -o domain.pddl -f problem.pddl
+==================================================
+STDERR:
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at com.hstairs.ppmajal.conditions.BoolPredicate.getPredicate(BoolPredicate.java:60)
+	at com.hstairs.ppmajal.conditions.BoolPredicate.ground(BoolPredicate.java:237)
+	at com.hstairs.ppmajal.conditions.ComplexCondition.ground(ComplexCondition.java:192)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.ground(Grounder.java:647)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.Propositionalize(Grounder.java:532)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.Propositionalize(Grounder.java:520)
+	at com.hstairs.ppmajal.problem.PDDLProblem.generateTransitions(PDDLProblem.java:284)
+	at com.hstairs.ppmajal.problem.PDDLProblem.groundingActionProcessesConstraints(PDDLProblem.java:366)
+	at com.hstairs.ppmajal.problem.PDDLProblem.prepareForSearch(PDDLProblem.java:315)
+	at planners.ENHSP.parseDomainProblem(ENHSP.java:132)
+	at planners.ENHSP.parsingDomainAndProblem(ENHSP.java:150)
+	at main.main(main.java:30)
+
+STDOUT:
+Domain parsed
+Problem parsed
+Grounding..
+

@@ -1,0 +1,9 @@
+ERRORE per jack_jill
+Directory: /Users/matteo/Documents/Project/basic/temp/jack_jill
+Comando: java -Xmx16g -jar /Users/matteo/Documents/Project/basic/adam/enhsp-20.jar -o domain.pddl -f problem.pddl
+==================================================
+STDERR:
+Error: Unable to access jarfile /Users/matteo/Documents/Project/basic/adam/enhsp-20.jar
+
+STDOUT:
+

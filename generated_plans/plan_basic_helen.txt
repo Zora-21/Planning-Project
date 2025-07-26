@@ -1,0 +1,119 @@
+Directory: /Users/matteo/Documents/Project/basic/helen
+Domain: domain.pddl
+Problem: problem.pddl
+==================================================
+
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 90
+Aibr Preprocessing
+|F|:126
+|X|:0
+|A|:558
+|P|:0
+|E|:0
+H1 Setup Time (msec): 21
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=5.0
+ g(n)= 1.0 h(n)=4.0
+ g(n)= 2.0 h(n)=3.0
+ g(n)= 5.0 h(n)=2.0
+ g(n)= 11.0 h(n)=1.0
+ g(n)= 12.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_4_1 loc_5_1 right)
+1.0: (move_character loc_5_1 loc_6_1 right)
+2.0: (move_character loc_6_1 loc_7_1 right)
+3.0: (move_character loc_7_1 loc_7_2 up)
+4.0: (move_character loc_7_2 loc_7_3 up)
+5.0: (move_character loc_7_3 loc_7_4 up)
+6.0: (move_character loc_7_4 loc_6_4 left)
+7.0: (move_character loc_6_4 loc_5_4 left)
+8.0: (move_character loc_5_4 loc_5_3 down)
+9.0: (move_ball ball_2 loc_5_3 loc_5_2 loc_5_1 down)
+10.0: (move_character loc_5_2 loc_5_3 up)
+11.0: (move_character loc_5_3 loc_4_3 left)
+12.0: (move_character loc_4_3 loc_3_3 left)
+13.0: (move_character loc_3_3 loc_3_4 up)
+14.0: (move_character loc_3_4 loc_2_4 left)
+15.0: (move_character loc_2_4 loc_1_4 left)
+16.0: (move_character loc_1_4 loc_1_3 down)
+17.0: (move_character loc_1_3 loc_1_2 down)
+18.0: (move_character loc_1_2 loc_1_1 down)
+19.0: (move_character loc_1_1 loc_2_1 right)
+20.0: (move_character loc_2_1 loc_3_1 right)
+21.0: (move_ball ball_0 loc_3_1 loc_3_2 loc_3_3 up)
+22.0: (move_character loc_3_2 loc_3_1 down)
+23.0: (move_character loc_3_1 loc_2_1 left)
+24.0: (move_character loc_2_1 loc_1_1 left)
+25.0: (move_character loc_1_1 loc_1_2 up)
+26.0: (move_character loc_1_2 loc_1_3 up)
+27.0: (move_character loc_1_3 loc_1_4 up)
+28.0: (move_character loc_1_4 loc_2_4 right)
+29.0: (move_character loc_2_4 loc_3_4 right)
+30.0: (move_ball ball_0 loc_3_4 loc_3_3 loc_3_2 down)
+31.0: (move_character loc_3_3 loc_3_4 up)
+32.0: (move_character loc_3_4 loc_2_4 left)
+33.0: (move_character loc_2_4 loc_1_4 left)
+34.0: (move_character loc_1_4 loc_1_3 down)
+35.0: (move_character loc_1_3 loc_1_2 down)
+36.0: (move_character loc_1_2 loc_1_1 down)
+37.0: (move_character loc_1_1 loc_2_1 right)
+38.0: (move_character loc_2_1 loc_3_1 right)
+39.0: (move_character loc_3_1 loc_4_1 right)
+40.0: (move_ball ball_2 loc_4_1 loc_5_1 loc_6_1 right)
+41.0: (move_character loc_5_1 loc_4_1 left)
+42.0: (move_ball ball_1 loc_4_1 loc_4_2 loc_4_3 up)
+43.0: (move_character loc_4_2 loc_5_2 right)
+44.0: (move_character loc_5_2 loc_5_3 up)
+45.0: (move_character loc_5_3 loc_5_4 up)
+46.0: (move_character loc_5_4 loc_4_4 left)
+47.0: (move_character loc_4_4 loc_3_4 left)
+48.0: (move_character loc_3_4 loc_3_3 down)
+49.0: (move_ball ball_1 loc_3_3 loc_4_3 loc_5_3 right)
+50.0: (move_character loc_4_3 loc_3_3 left)
+51.0: (move_ball ball_0 loc_3_3 loc_3_2 loc_3_1 down)
+52.0: (move_character loc_3_2 loc_3_3 up)
+53.0: (move_character loc_3_3 loc_3_4 up)
+54.0: (move_character loc_3_4 loc_4_4 right)
+55.0: (move_character loc_4_4 loc_5_4 right)
+56.0: (move_ball ball_1 loc_5_4 loc_5_3 loc_5_2 down)
+57.0: (move_ball ball_1 loc_5_3 loc_5_2 loc_5_1 down)
+58.0: (move_character loc_5_2 loc_4_2 left)
+59.0: (move_character loc_4_2 loc_3_2 left)
+60.0: (move_character loc_3_2 loc_3_3 up)
+61.0: (move_character loc_3_3 loc_3_4 up)
+62.0: (move_character loc_3_4 loc_2_4 left)
+63.0: (move_character loc_2_4 loc_1_4 left)
+64.0: (move_character loc_1_4 loc_1_3 down)
+65.0: (move_character loc_1_3 loc_1_2 down)
+66.0: (move_character loc_1_2 loc_1_1 down)
+67.0: (move_character loc_1_1 loc_2_1 right)
+68.0: (move_ball ball_0 loc_2_1 loc_3_1 loc_4_1 right)
+69.0: (move_ball ball_0 loc_3_1 loc_4_1 loc_5_1 right)
+70.0: (move_character loc_4_1 loc_4_2 up)
+71.0: (move_character loc_4_2 loc_4_3 up)
+72.0: (move_character loc_4_3 loc_4_4 up)
+73.0: (move_character loc_4_4 loc_5_4 right)
+74.0: (move_character loc_5_4 loc_6_4 right)
+75.0: (move_character loc_6_4 loc_7_4 right)
+76.0: (move_character loc_7_4 loc_7_3 down)
+77.0: (move_character loc_7_3 loc_7_2 down)
+78.0: (move_character loc_7_2 loc_7_1 down)
+79.0: (move_ball ball_2 loc_7_1 loc_6_1 loc_5_1 left)
+80.0: (goal ball_2 ball_0 ball_1 loc_5_1)
+
+Plan-Length:81
+Metric (Search):12.0
+Planning Time (msec): 4777
+Heuristic Time (msec): 4311
+Search Time (msec): 4516
+Expanded Nodes:18496
+States Evaluated:19987
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:891
+Number of Duplicates detected:24954

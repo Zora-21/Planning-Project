@@ -1,0 +1,61 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 1996
+Aibr Preprocessing
+|F|:98
+|X|:4
+|A|:151
+|P|:0
+|E|:0
+H1 Setup Time (msec): 7
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=9.0
+ g(n)= 1.0 h(n)=7.0
+ g(n)= 3.0 h(n)=6.0
+ g(n)= 4.0 h(n)=5.0
+ g(n)= 5.0 h(n)=4.0
+ g(n)= 6.0 h(n)=2.0
+ g(n)= 7.0 h(n)=1.0
+ g(n)= 8.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_5_1 loc_4_1)
+1.0: (move_character loc_4_1 loc_4_2)
+2.0: (move_character loc_4_2 loc_4_3)
+3.0: (move_character loc_4_3 loc_3_3)
+4.0: (move_character loc_3_3 loc_2_3)
+5.0: (move_character loc_2_3 loc_2_2)
+6.0: (move_ball ball_1 loc_2_2 loc_3_2 loc_4_2)
+7.0: (move_character loc_2_2 loc_2_1)
+8.0: (move_character loc_2_1 loc_3_1)
+9.0: (move_ball ball_0 loc_3_1 loc_3_2 loc_3_3)
+10.0: (move_ball ball_1 loc_3_2 loc_4_2 loc_5_2)
+11.0: (move_ball ball_1 loc_4_2 loc_5_2 loc_6_2)
+12.0: (move_character loc_5_2 loc_4_2)
+13.0: (move_character loc_4_2 loc_4_1)
+14.0: (move_character loc_4_1 loc_3_1)
+15.0: (move_character loc_3_1 loc_2_1)
+16.0: (move_character loc_2_1 loc_2_2)
+17.0: (move_character loc_2_2 loc_2_3)
+18.0: (move_ball ball_0 loc_2_3 loc_3_3 loc_4_3)
+19.0: (move_ball ball_0 loc_3_3 loc_4_3 loc_5_3)
+20.0: (move_ball ball_0 loc_4_3 loc_5_3 loc_6_3)
+21.0: (move_character loc_5_3 loc_5_2)
+22.0: (move_character loc_5_2 loc_5_1)
+23.0: (move_character loc_5_1 loc_6_1)
+24.0: (move_ball ball_1 loc_6_1 loc_6_2 loc_6_3)
+25.0: (goal ball_1 ball_0 ball_2 loc_6_3)
+
+Plan-Length:26
+Metric (Search):8.0
+Planning Time (msec): 9033
+Heuristic Time (msec): 34
+Search Time (msec): 48
+Expanded Nodes:73
+States Evaluated:125
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:2
+Number of Duplicates detected:105

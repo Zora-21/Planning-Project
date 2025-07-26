@@ -1,0 +1,25 @@
+ERRORE per hard_harder_hardest
+Directory: /Users/matteo/Documents/Project/basic/hard_harder_hardest
+Comando: java -jar /Users/matteo/Documents/Project/basic/adam/enhsp-20.jar -o domain.pddl -f problem.pddl
+==================================================
+STDERR:
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.HashMap.newNode(HashMap.java:1901)
+	at java.base/java.util.HashMap.putVal(HashMap.java:640)
+	at java.base/java.util.HashMap.put(HashMap.java:610)
+	at java.base/java.util.HashSet.add(HashSet.java:221)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.sub(Grounder.java:231)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.Substitutions(Grounder.java:254)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.Propositionalize(Grounder.java:515)
+	at com.hstairs.ppmajal.problem.PDDLProblem.generateTransitions(PDDLProblem.java:284)
+	at com.hstairs.ppmajal.problem.PDDLProblem.groundingActionProcessesConstraints(PDDLProblem.java:366)
+	at com.hstairs.ppmajal.problem.PDDLProblem.prepareForSearch(PDDLProblem.java:315)
+	at planners.ENHSP.parseDomainProblem(ENHSP.java:132)
+	at planners.ENHSP.parsingDomainAndProblem(ENHSP.java:150)
+	at main.main(main.java:30)
+
+STDOUT:
+Domain parsed
+Problem parsed
+Grounding..
+

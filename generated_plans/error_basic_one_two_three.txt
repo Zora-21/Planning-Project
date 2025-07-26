@@ -1,0 +1,25 @@
+ERRORE per one_two_three
+Directory: /Users/matteo/Documents/Project/basic/one_two_three
+Comando: java -jar /Users/matteo/Documents/Project/basic/adam/enhsp-20.jar -o domain.pddl -f problem.pddl
+==================================================
+STDERR:
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.ArrayList.grow(ArrayList.java:239)
+	at java.base/java.util.ArrayList.grow(ArrayList.java:244)
+	at java.base/java.util.ArrayList.add(ArrayList.java:454)
+	at java.base/java.util.ArrayList.add(ArrayList.java:467)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.sub(Grounder.java:227)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.Substitutions(Grounder.java:254)
+	at com.hstairs.ppmajal.propositionalFactory.Grounder.Propositionalize(Grounder.java:515)
+	at com.hstairs.ppmajal.problem.PDDLProblem.generateTransitions(PDDLProblem.java:284)
+	at com.hstairs.ppmajal.problem.PDDLProblem.groundingActionProcessesConstraints(PDDLProblem.java:366)
+	at com.hstairs.ppmajal.problem.PDDLProblem.prepareForSearch(PDDLProblem.java:315)
+	at planners.ENHSP.parseDomainProblem(ENHSP.java:132)
+	at planners.ENHSP.parsingDomainAndProblem(ENHSP.java:150)
+	at main.main(main.java:30)
+
+STDOUT:
+Domain parsed
+Problem parsed
+Grounding..
+

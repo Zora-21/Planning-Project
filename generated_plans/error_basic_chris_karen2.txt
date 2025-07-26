@@ -1,0 +1,12 @@
+ERRORE per chris_karen2
+Directory: /Users/matteo/Documents/Project/basic/temp/chris_karen2
+Comando: java -Xmx16g -jar /Users/matteo/Documents/Project/Project/2-snowmen/enhsp-20.jar -o domain.pddl -f problem.pddl
+==================================================
+STDERR:
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space: failed reallocation of scalar replaced objects
+
+STDOUT:
+Domain parsed
+Problem parsed
+Grounding..
+
