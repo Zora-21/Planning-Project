@@ -64,7 +64,7 @@
             (ball_at ?b ?from)
             (character_at ?ppos)
 
-;----- La palla non deve essere già usata in un pupazzo --------------------------------------------------------------------------------------
+;---------- La palla non deve essere già usata in un pupazzo --------------------------------------------------------------------------------------
             (not (ball_used_in_snowman ?b))
             
 ;---------- REGOLA DI IMPILAMENTO: Nella posizione di partenza, la palla da spostare può essere impilata solo su palle più grandi -----------------------------------
@@ -115,7 +115,6 @@
             )  
 
 ;---------- Se la palla è spostata su una cella innevata, la palla spostata aumenta di dimensione -------------------------------------------------------------------
-            (not (snow ?to))               
             (when
                 (and
                     (snow ?to)
@@ -124,6 +123,8 @@
                     (increase (ball_size ?b) 1)    
                 )
             )
+            
+            (not (snow ?to))               
             (increase (total-cost) 1)         
         )
     )

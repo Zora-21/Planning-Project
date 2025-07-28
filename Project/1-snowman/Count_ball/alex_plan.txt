@@ -1,0 +1,66 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 80
+Aibr Preprocessing
+|F|:120
+|X|:27
+|A|:185
+|P|:0
+|E|:0
+H1 Setup Time (msec): 11
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=3.0
+ g(n)= 1.0 h(n)=2.0
+ g(n)= 5.0 h(n)=1.0
+ g(n)= 6.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_ball ball_1 loc_2_5 loc_3_5 loc_4_5 right)
+1.0: (move_character loc_3_5 loc_3_4 down)
+2.0: (move_character loc_3_4 loc_3_3 down)
+3.0: (move_character loc_3_3 loc_4_3 right)
+4.0: (move_character loc_4_3 loc_5_3 right)
+5.0: (move_character loc_5_3 loc_5_4 up)
+6.0: (move_ball ball_2 loc_5_4 loc_4_4 loc_3_4 left)
+7.0: (move_character loc_4_4 loc_4_3 down)
+8.0: (move_character loc_4_3 loc_3_3 left)
+9.0: (move_ball ball_2 loc_3_3 loc_3_4 loc_3_5 up)
+10.0: (move_character loc_3_4 loc_4_4 right)
+11.0: (move_character loc_4_4 loc_5_4 right)
+12.0: (move_character loc_5_4 loc_5_3 down)
+13.0: (move_character loc_5_3 loc_5_2 down)
+14.0: (move_character loc_5_2 loc_5_1 down)
+15.0: (move_character loc_5_1 loc_4_1 left)
+16.0: (move_character loc_4_1 loc_3_1 left)
+17.0: (move_character loc_3_1 loc_2_1 left)
+18.0: (move_character loc_2_1 loc_1_1 left)
+19.0: (move_character loc_1_1 loc_1_2 up)
+20.0: (move_character loc_1_2 loc_1_3 up)
+21.0: (move_character loc_1_3 loc_1_4 up)
+22.0: (move_ball ball_0 loc_1_4 loc_2_4 loc_3_4 right)
+23.0: (move_character loc_2_4 loc_2_3 down)
+24.0: (move_character loc_2_3 loc_3_3 right)
+25.0: (move_character loc_3_3 loc_4_3 right)
+26.0: (move_character loc_4_3 loc_5_3 right)
+27.0: (move_character loc_5_3 loc_5_4 up)
+28.0: (move_character loc_5_4 loc_5_5 up)
+29.0: (move_ball ball_1 loc_5_5 loc_4_5 loc_3_5 left)
+30.0: (move_character loc_4_5 loc_4_4 down)
+31.0: (move_character loc_4_4 loc_4_3 down)
+32.0: (move_character loc_4_3 loc_3_3 left)
+33.0: (move_ball ball_0 loc_3_3 loc_3_4 loc_3_5 up)
+34.0: (build_snowman loc_3_5)
+
+Plan-Length:35
+Metric (Search):6.0
+Planning Time (msec): 470
+Heuristic Time (msec): 201
+Search Time (msec): 244
+Expanded Nodes:2043
+States Evaluated:2375
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:44
+Number of Duplicates detected:3072

@@ -63,6 +63,8 @@
             (next ?from ?to ?dir)
             (ball_at ?b ?from)
             (character_at ?ppos)
+            
+            (not(snowman_at ?to))
 
 ;---------- La palla non deve essere già usata in un pupazzo --------------------------------------------------------------------------------------
             (not (ball_used_in_snowman ?b))

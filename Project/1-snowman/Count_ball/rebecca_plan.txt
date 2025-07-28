@@ -1,0 +1,70 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 48
+Aibr Preprocessing
+|F|:89
+|X|:20
+|A|:119
+|P|:0
+|E|:0
+H1 Setup Time (msec): 8
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=2.0
+ g(n)= 10.0 h(n)=1.0
+ g(n)= 11.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_4_5 loc_4_4 down)
+1.0: (move_character loc_4_4 loc_4_3 down)
+2.0: (move_ball ball_2 loc_4_3 loc_3_3 loc_2_3 left)
+3.0: (move_character loc_3_3 loc_3_2 down)
+4.0: (move_character loc_3_2 loc_3_1 down)
+5.0: (move_character loc_3_1 loc_2_1 left)
+6.0: (move_character loc_2_1 loc_1_1 left)
+7.0: (move_character loc_1_1 loc_1_2 up)
+8.0: (move_character loc_1_2 loc_1_3 up)
+9.0: (move_ball ball_2 loc_1_3 loc_2_3 loc_3_3 right)
+10.0: (move_character loc_1_3 loc_1_2 down)
+11.0: (move_character loc_1_2 loc_1_1 down)
+12.0: (move_character loc_1_1 loc_2_1 right)
+13.0: (move_character loc_2_1 loc_3_1 right)
+14.0: (move_character loc_3_1 loc_3_2 up)
+15.0: (move_ball ball_2 loc_3_2 loc_3_3 loc_3_4 up)
+16.0: (move_ball ball_2 loc_3_3 loc_3_4 loc_3_5 up)
+17.0: (move_character loc_3_4 loc_3_3 down)
+18.0: (move_ball ball_1 loc_3_3 loc_2_3 loc_1_3 left)
+19.0: (move_character loc_2_3 loc_3_3 right)
+20.0: (move_character loc_3_3 loc_3_4 up)
+21.0: (move_character loc_3_4 loc_4_4 right)
+22.0: (move_character loc_4_4 loc_4_5 up)
+23.0: (move_character loc_4_5 loc_4_6 up)
+24.0: (move_character loc_4_6 loc_3_6 left)
+25.0: (move_ball ball_2 loc_3_6 loc_3_5 loc_3_4 down)
+26.0: (move_ball ball_2 loc_3_5 loc_3_4 loc_3_3 down)
+27.0: (move_character loc_3_4 loc_4_4 right)
+28.0: (move_character loc_4_4 loc_4_3 down)
+29.0: (move_ball ball_2 loc_4_3 loc_3_3 loc_2_3 left)
+30.0: (move_character loc_3_3 loc_3_2 down)
+31.0: (move_ball ball_0 loc_3_2 loc_2_2 loc_1_2 left)
+32.0: (move_character loc_2_2 loc_2_1 down)
+33.0: (move_character loc_2_1 loc_1_1 left)
+34.0: (move_ball ball_0 loc_1_1 loc_1_2 loc_1_3 up)
+35.0: (move_character loc_1_2 loc_2_2 right)
+36.0: (move_character loc_2_2 loc_3_2 right)
+37.0: (move_character loc_3_2 loc_3_3 up)
+38.0: (move_ball ball_2 loc_3_3 loc_2_3 loc_1_3 left)
+39.0: (build_snowman loc_1_3)
+
+Plan-Length:40
+Metric (Search):11.0
+Planning Time (msec): 324
+Heuristic Time (msec): 110
+Search Time (msec): 147
+Expanded Nodes:1902
+States Evaluated:2149
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:77
+Number of Duplicates detected:2767

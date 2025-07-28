@@ -1,5 +1,5 @@
 (define (problem snowman_problem_for_final_domain)
-    (:domain snowman_numeric_final) ; MODIFICA: Collegato al dominio finale corretto
+    (:domain snowman_numeric_final) 
 
     (:objects
         right - direction
@@ -20,7 +20,6 @@
         (= (total-cost) 0)
         (= (snowman_built) 0)
 
-        ;; Definizione della griglia 5x5
         (next loc_1_1 loc_2_1 down) (next loc_2_1 loc_1_1 up)
         (next loc_1_1 loc_1_2 right)(next loc_1_2 loc_1_1 left)
         (next loc_1_2 loc_2_2 down) (next loc_2_2 loc_1_2 up)
@@ -62,10 +61,8 @@
         (next loc_5_3 loc_5_4 right) (next loc_5_4 loc_5_3 left)
         (next loc_5_4 loc_5_5 right) (next loc_5_5 loc_5_4 left)
 
-        ;; Posizione iniziale del personaggio
         (character_at loc_3_3)
 
-        
         (ball_at ball_0 loc_2_1) (= (ball_size ball_0) 1) (occupancy loc_2_1)
         (ball_at ball_1 loc_2_2) (= (ball_size ball_1) 1) (occupancy loc_2_2)
         (ball_at ball_2 loc_2_4) (= (ball_size ball_2) 1) (occupancy loc_2_4)
@@ -73,7 +70,6 @@
         (ball_at ball_4 loc_4_2) (= (ball_size ball_4) 1) (occupancy loc_4_2)
         (ball_at ball_5 loc_4_4) (= (ball_size ball_5) 1) (occupancy loc_4_4)
 
-        ;; Posizioni con la neve (necessaria per far crescere le palle)
         (snow loc_1_3)
         (snow loc_1_4)
         (snow loc_1_5)

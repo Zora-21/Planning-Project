@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Good Snowman is Hard to Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 2200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        h1 {
+            text-align: center;
+            background: linear-gradient(135deg, #1A2980, #26D0CE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            font-size: 3.5em;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .error-message {
+            background-color: #ffe0b2;
+            color: #e65100;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            display: none; /* Hidden by default */
+            border: 1px solid #e65100;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .left-panel {
+            flex: 0 0 400px;
+            min-width: 350px;
+        }
+
+        .right-panel {
+            flex: 1;
+            min-width: 600px;
+        }
+        
+        .upload-section {
+            margin-bottom: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+            border: 2px dashed #b0bec5;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            border-color: #2193b0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(33, 147, 176, 0.2);
+        }
+        
+        .upload-section h3 {
+            font-weight: 700;
+            color: #1A2980;
+            margin-bottom: 20px;
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .file-input-group label {
+            font-weight: 700;
+            color: #37474f;
+            font-size: 16px;
+        }
+
+        .file-input {
+            padding: 12px;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .file-input:hover {
+            border-color: #26D0CE;
+            box-shadow: 0 0 0 3px rgba(38, 208, 206, 0.2);
+        }
+        
+        .load-btn {
+            background: linear-gradient(135deg, #1A2980 0%, #26D0CE 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(26, 41, 128, 0.3);
+        }
+
+        .load-btn:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(26, 41, 128, 0.4);
+        }
+
+        .load-btn:disabled {
+            background: #b0bec5;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .saved-problems h3 {
+            color: #1A2980;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        .problem-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .problem-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .problem-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #26D0CE;
+            transform: scale(1.02);
+        }
+        
+        .problem-item.active {
+            border-color: #1A2980;
+            box-shadow: 0 8px 25px rgba(26, 41, 128, 0.2);
+        }
+
+        .problem-preview {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            display: grid;
+            gap: 1px;
+            padding: 5px;
+            background: #455a64;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .problem-preview .mini-cell { border-radius: 2px; }
+        .problem-preview .mini-cell.snow { background: #e0f7fa; }
+        .problem-preview .mini-cell.grass { background: #a5d6a7; }
+
+        .problem-name {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .problem-details { font-size: 13px; color: #555; }
+        
+        .action-btn {
+            background: #eceff1;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn:hover { transform: scale(1.1); }
+        .delete-btn:hover { background: #ffcdd2; color: #c62828; }
+        .export-btn:hover { background: #bbdefb; color: #0d47a1; }
+
+        .visualization { display: none; }
+        .visualization.active { display: block; }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .control-btn {
+            background: white;
+            color: #1A2980;
+            border: 2px solid #1A2980;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover:not(:disabled) {
+            background: #1A2980;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 41, 128, 0.3);
+        }
+        
+        .control-btn:disabled {
+            background: #eceff1;
+            color: #90a4ae;
+            border-color: #cfd8dc;
+            cursor: not-allowed;
+            box-shadow: none; transform: none;
+        }
+
+        .control-btn.play-btn {
+            background: #1A2980;
+            color: white;
+        }
+        .control-btn.play-btn:hover:not(:disabled) { background: #26D0CE; border-color: #26D0CE; }
+
+        .step-info {
+            font-weight: 700;
+            color: #333;
+            font-size: 18px;
+            padding: 10px 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .grid-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            perspective: 1200px;
+        }
+        
+        .grid {
+            display: inline-grid;
+            gap: 5px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .cell {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .cell.snow { background: linear-gradient(135deg, #ffffff, #e0f7fa); }
+        .cell.grass { background: linear-gradient(135deg, #c8e6c9, #a5d6a7); }
+        
+        .player {
+            background: linear-gradient(135deg, #ffc107, #ffa000);
+            color: white;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 6px 15px rgba(255,160,0,0.4);
+            z-index: 20;
+            position: relative;
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .ball {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #1A2980;
+            font-weight: 800;
+            box-shadow: inset 0 -4px 10px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 15;
+            position: relative;
+            border: 2px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .size-indicator {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(26, 41, 128, 0.8);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            z-index: 30;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .action-info {
+            text-align: center;
+            margin: 30px auto;
+            padding: 15px 25px;
+            background: white;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            max-width: 80%;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .legend-symbol {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 1200px) {
+            .main-content { flex-direction: column; }
+            .left-panel, .right-panel { min-width: auto; }
+            .cell { width: 60px; height: 60px; }
+            .player { width: 40px; height: 40px; font-size: 24px; }
+            .ball { width: 35px; height: 35px; font-size: 20px; }
+            .size-indicator { width: 20px; height: 20px; font-size: 12px; bottom: 3px; right: 3px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .container { padding: 20px; }
+            .controls { flex-wrap: wrap; gap: 15px; }
+            .cell { width: 45px; height: 45px; }
+            .player { width: 30px; height: 30px; font-size: 18px; }
+            .ball { width: 25px; height: 25px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⛄️ A Good Snowman is Hard to Plan</h1>
+        <div id="errorMessage" class="error-message"></div>
+        
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="upload-section">
+                    <div class="file-upload">
+                        <div class="file-input-group">
+                            <label for="problemFile"> Problem </label>
+                            <input type="file" id="problemFile" class="file-input" accept=".pddl,.txt" />
+                        </div>
+                        <div class="file-input-group">
+                            <label for="planFile"> Plan </label>
+                            <input type="file" id="planFile" class="file-input" accept=".txt,.plan,.pddl" />
+                        </div>
+                        <button class="load-btn" id="loadBtn" onclick="loadFromFiles()" disabled> Start </button>
+                    </div>
+                </div>
+
+                <div class="saved-problems">
+                    <h3>💾 Saved problems</h3>
+                    <div class="problem-list" id="problemList">
+                        <div style="text-align: center; color: #666; padding: 30px; font-style: italic;">Nessun problema caricato...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div id="visualization" class="visualization">
+                    <div class="controls">
+                        <button class="control-btn" id="prevBtn" onclick="previousStep()">⏮️ Prec</button>
+                        <button class="control-btn play-btn" id="playBtn" onclick="togglePlayPause()">▶️ Play</button>
+                        <button class="control-btn" id="nextBtn" onclick="nextStep()">Succ ⏭️</button>
+                        <div class="step-info" id="stepInfo">Step 0 / 0</div>
+                    </div>
+                    <div class="plan-selector-container" id="planSelectorContainer" style="display: none; margin-top: 20px; text-align: center;">
+                        <label for="planSelector" style="font-weight: 700; color: #1A2980; margin-right: 10px;">Seleziona un Piano:</label>
+                        <select id="planSelector" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #cfd8dc; min-width: 250px;"></select>
+                        
+                        <input type="file" id="newPlanForProblem" accept=".txt,.plan,.pddl" style="display: none;">
+                        <button onclick="document.getElementById('newPlanForProblem').click()" class="control-btn" style="margin-left: 10px;">+ Aggiungi Piano</button>
+                    </div>
+                    <div class="action-info" id="actionInfo">Stato iniziale</div>
+                    
+                    <div class="grid-container">
+                        <div id="grid" class="grid"></div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+const DATA_DIR = 'data/'; // Cartella da cui caricare i problemi automaticamente
+
+let problemData = null;
+let planData = null;
+let currentStep = 0;
+let gameStates = [];
+let savedProblems = [];
+let currentProblemId = null;
+let playInterval = null;
+    
+// Inizializzazione al caricamento della pagina
+window.onload = function() {
+    loadSavedProblems();
+    setupEventListeners();
+    loadProblemsFromDataFolder(); // Carica problemi dalla cartella 'data' all'avvio
+};
+
+function setupEventListeners() {
+    const problemFile = document.getElementById('problemFile');
+    const planFile = document.getElementById('planFile');
+    const loadBtn = document.getElementById('loadBtn');
+    
+    if (problemFile && loadBtn) {
+        problemFile.addEventListener('change', function() {
+            loadBtn.disabled = !problemFile.files.length;
+            hideError();
+        });
+    }
+    
+    if (planFile) {
+        planFile.addEventListener('change', function() {
+            hideError();
+        });
+    }
+    
+    // Aggiungi listener per i tasti freccia e spazio
+    document.addEventListener('keydown', handleKeyPress);
+}
+
+function handleKeyPress(e) {
+    if (document.getElementById('visualization').classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            previousStep();
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextStep();
+        } else if (e.key === ' ') {
+            e.preventDefault();
+            togglePlayPause();
+        }
+    }
+}
+
+function showError(message) {
+    const errorDiv = document.getElementById('errorMessage');
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+    }
+    console.error('Error:', message);
+}
+
+function hideError() {
+    const errorDiv = document.getElementById('errorMessage');
+    if (errorDiv) {
+        errorDiv.style.display = 'none';
+    }
+}
+
+// Carica i problemi salvati (simulazione localStorage)
+function loadSavedProblems() {
+    try {
+        const saved = localStorage.getItem('savedProblems');
+        let tempSavedProblems = saved ? JSON.parse(saved) : [];
+        
+        // RICOSTRUISCI I SET PER OGNI PROBLEMA CARICATO
+        savedProblems = tempSavedProblems.map(problem => {
+            if (problem.problemData && Array.isArray(problem.problemData.snowLocations) && Array.isArray(problem.problemData.grassLocations)) {
+                problem.problemData.snowLocations = new Set(problem.problemData.snowLocations);
+                problem.problemData.grassLocations = new Set(problem.problemData.grassLocations);
+            } else {
+                console.warn(`Dati problemData corrotti o incompleti per il problema: ${problem.name}. Potrebbe non essere visualizzato correttamente.`);
+                // Se i dati sono gravemente corrotti, potresti voler filtrare questo problema:
+                // return null; 
+            }
+            return problem;
+        }).filter(p => p !== null); // Filtra eventuali problemi nulli se hai aggiunto la logica di esclusione
+        
+        updateProblemList();
+    } catch (error) {
+        console.error('Errore nel caricamento o ricostruzione dei problemi salvati da localStorage:', error);
+        savedProblems = [];
+        updateProblemList();
+        showError('Errore nel caricamento dei problemi salvati. I dati potrebbero essere corrotti.');
+    }
+}
+
+// Salva un problema (simulazione localStorage)
+function saveProblem(name, problemText, planText = '', rawProblemData) {
+    try {
+        const id = Date.now().toString();
+        // Converte i Set in Array per la serializzazione JSON
+        const serializableProblemData = {
+            ...rawProblemData,
+            snowLocations: Array.from(rawProblemData.snowLocations),
+            grassLocations: Array.from(rawProblemData.grassLocations)
+        };
+        
+        const problem = {
+            id,
+            name,
+            problemText,
+            planText,
+            problemData: serializableProblemData,
+            timestamp: new Date().toLocaleString('it-IT')
+        };
+        
+        const existingIndex = savedProblems.findIndex(p => p.name === name);
+        if (existingIndex > -1) {
+            // Se esiste già un problema con lo stesso nome, lo aggiorna
+            savedProblems[existingIndex] = problem;
+        } else {
+            // Altrimenti, lo aggiunge all'inizio della lista
+            savedProblems.unshift(problem);
+        }
+        
+        localStorage.setItem('savedProblems', JSON.stringify(savedProblems));
+        
+        updateProblemList();
+        return id;
+    } catch (error) {
+        console.error('Errore nel salvataggio del problema:', error);
+        showError('Errore nel salvataggio del problema');
+        return null;
+    }
+}
+
+function deleteProblem(id) {
+    if (!confirm('Sei sicuro di voler eliminare questo problema?')) return;
+    
+    try {
+        savedProblems = savedProblems.filter(p => p.id !== id);
+        localStorage.setItem('savedProblems', JSON.stringify(savedProblems));
+        updateProblemList();
+        
+        if (currentProblemId === id) {
+            currentProblemId = null;
+            stopPlay();
+            const vizElement = document.getElementById('visualization');
+            if (vizElement) {
+                vizElement.classList.remove('active');
+            }
+        }
+    } catch (error) {
+        console.error('Errore nell\'eliminazione del problema:', error);
+        showError('Errore nell\'eliminazione del problema');
+    }
+}
+
+// Funzione principale per caricare i file con debug esteso
+async function loadFromFiles() {
+    const problemFile = document.getElementById('problemFile');
+    const planFile = document.getElementById('planFile');
+
+    console.log('=== INIZIO CARICAMENTO FILE DA INPUT UTENTE ===');
+    if (!problemFile || !problemFile.files.length) {
+        showError('Seleziona almeno il file problema!');
+        return;
+    }
+
+    try {
+        hideError();
+        console.log('Inizio caricamento file...');
+
+        const problemText = await readFile(problemFile.files[0]);
+        console.log('File problema caricato, lunghezza:', problemText.length);
+
+        let planText = '';
+        if (planFile && planFile.files.length > 0) {
+            planText = await readFile(planFile.files[0]);
+            console.log('File piano caricato, lunghezza:', planText.length);
+        } else {
+            console.log('Nessun file piano selezionato');
+        }
+
+        problemData = parseProblem(problemText);
+        planData = parsePlan(planText);
+        gameStates = createGameStates(problemData, planData);
+
+        createGrid(problemData);
+        currentStep = 0;
+        updateVisualization();
+
+        const problemName = problemFile.files[0].name.replace(/\.[^/.]+$/, "");
+        const savedId = saveProblem(problemName, problemText, planText, problemData);
+        currentProblemId = savedId;
+        console.log('Problema salvato con ID:', savedId);
+
+        const vizElement = document.getElementById('visualization');
+        if (vizElement) {
+            vizElement.classList.add('active');
+            console.log('Visualizzazione attivata');
+        } else {
+            console.error('Elemento visualization non trovato!');
+        }
+
+        problemFile.value = '';
+        if (planFile) planFile.value = '';
+        const loadBtn = document.getElementById('loadBtn');
+        if (loadBtn) loadBtn.disabled = true;
+
+        stopPlay();
+
+        console.log('=== CARICAMENTO DA INPUT UTENTE COMPLETATO CON SUCCESSO ===');
+
+    } catch (error) {
+        console.error("=== ERRORE DURANTE IL CARICAMENTO DA INPUT UTENTE ===");
+        console.error("Errore dettagliato:", error);
+        showError(`Impossibile caricare i file: ${error.message}`);
+    }
+}
+
+// Carica un problema salvato dalla lista (anche quelli caricati automaticamente)
+function loadProblem(id) {
+    const problem = savedProblems.find(p => p.id === id);
+    if (!problem) {
+        showError('Problema non trovato');
+        return;
+    }
+
+    try {
+        hideError();
+        console.log('Caricamento problema salvato dalla lista:', problem.name);
+
+        // problem.problemData dovrebbe già avere snowLocations e grassLocations come Set
+        // grazie alla logica di ricostruzione in loadSavedProblems().
+        // Tuttavia, per sicurezza, possiamo ricontrollare o copiare profondamente.
+        problemData = {
+            ...problem.problemData,
+            snowLocations: new Set(problem.problemData.snowLocations), // Assicurati che sia un Set
+            grassLocations: new Set(problem.problemData.grassLocations) // Assicurati che sia un Set
+        };
+        planData = parsePlan(problem.planText);
+        gameStates = createGameStates(problemData, planData);
+
+        createGrid(problemData);
+        currentStep = 0;
+        updateVisualization();
+        currentProblemId = id;
+
+        const vizElement = document.getElementById('visualization');
+        if (vizElement) {
+            vizElement.classList.add('active');
+        }
+
+        updateProblemList(); // Aggiorna la lista per evidenziare il problema attivo
+        stopPlay();
+
+        console.log('Problema caricato con successo dalla lista');
+    } catch (error) {
+        console.error('Errore nel caricamento del problema salvato dalla lista:', error);
+        showError('Impossibile caricare il problema salvato. Potrebbe essere corrotto.');
+    }
+}
+
+// Funzione per caricare problemi automaticamente da una cartella predefinita
+async function loadProblemsFromDataFolder() {
+    console.log('--- INIZIO CARICAMENTO PROBLEMI DA CARTELLA "data" ---');
+    hideError();
+
+    // IMPORTANT: Devi elencare qui i nomi base dei tuoi file di problema.
+    // Ad esempio, se hai 'adam_problem.pddl' e 'adam_plan.txt', aggiungi 'adam' qui.
+    const potentialProblemNames = ['rebecca', 'unused_1', 'helen', 'david', 'kate', 'kevin', 'lydia', 'chris', 'tanya', 'paul', 'sally', 'willow', 'andy', 'alex', 'claire', 'joan', 'martingala2', 'priscilla', 'alice', 'carlasta', 'julian', 'louise', 'unused_2', 'sarah', 'lucy', 'mary', 'carlasta2', 'freya', 'adam', 'lauren', 'william'];
+
+    if (potentialProblemNames.length === 0) {
+        console.warn('`potentialProblemNames` è vuoto. Assicurati di aver aggiunto i nomi base dei tuoi problemi nel codice JavaScript per il caricamento automatico.');
+        showError('Attenzione: Nessun nome di problema specificato per il caricamento automatico. Modifica il file HTML e aggiungi i nomi base dei tuoi problemi nell\'array `potentialProblemNames`.');
+        return;
+    }
+
+    let loadedCount = 0;
+    let errorCount = 0;
+
+    for (const problemNameBase of potentialProblemNames) {
+        const problemFilePath = `${DATA_DIR}${problemNameBase}_problem.pddl`;
+        const planFilePath = `${DATA_DIR}${problemNameBase}_plan.txt`; // Assumi lo stesso nome base per il piano
+
+        console.log(`Tentativo di caricamento per: ${problemNameBase}`);
+
+        try {
+            const problemResponse = await fetch(problemFilePath);
+            if (!problemResponse.ok) {
+                console.warn(`[!] Problema non trovato o non accessibile: ${problemFilePath} (Status: ${problemResponse.status})`);
+                errorCount++;
+                continue;
+            }
+            const problemText = await problemResponse.text();
+            console.log(`[OK] Caricato problema: ${problemFilePath}`);
+
+            let planText = '';
+            try {
+                const planResponse = await fetch(planFilePath);
+                if (planResponse.ok) {
+                    planText = await planResponse.text();
+                    console.log(`[OK] Caricato piano: ${planFilePath}`);
+                } else {
+                    console.warn(`[!] Piano non trovato per ${problemNameBase}: ${planFilePath} (Status: ${planResponse.status}). Procedo senza piano.`);
+                }
+            } catch (planError) {
+                console.warn(`[!] Errore nel fetching del piano per ${problemNameBase}: ${planError.message}. Procedo senza piano.`);
+            }
+
+            const parsedProblemData = parseProblem(problemText);
+            // Salva il problema con i dati parsati, che saranno serializzati in localStorage
+            saveProblem(problemNameBase, problemText, planText, parsedProblemData);
+            loadedCount++;
+            console.log(`[SUCCESSO] Caricato e salvato problema: ${problemNameBase}`);
+
+        } catch (fileError) {
+            console.error(`[ERRORE CRITICO] durante il processo per ${problemNameBase}:`, fileError);
+            errorCount++;
+            showError(`Errore nel caricamento automatico di ${problemNameBase}: ${fileError.message}. Controlla la console del browser.`);
+        }
+    }
+
+    updateProblemList(); // Aggiorna la lista dopo tutti i caricamenti automatici
+
+    if (loadedCount > 0) {
+        console.log(`--- CARICAMENTO DA "data" COMPLETATO: ${loadedCount} problemi caricati con successo, ${errorCount} errori ---`);
+        if (errorCount > 0) {
+            showError(`Caricati ${loadedCount} problemi. Ci sono stati ${errorCount} errori nel caricamento di altri problemi dalla cartella "data". Controlla la console per i dettagli.`);
+        }
+    } else {
+        const message = `Nessun problema caricato dalla cartella "data". Assicurati che:
+        1. L'array 'potentialProblemNames' nel codice JavaScript contenga i nomi corretti dei tuoi problemi.
+        2. La cartella 'data' si trovi nella stessa directory del file HTML.
+        3. Il tuo server locale stia servendo correttamente i file dalla cartella 'data'.
+        Controlla la console del browser per messaggi di errore più specifici (ad esempio, errori 404).`;
+        console.error(`--- NESSUN PROBLEMA CARICATO DA "data" ---`);
+        showError(message);
+    }
+}
+
+
+// Lettura file con Promise
+function readFile(file) {
+    return new Promise((resolve, reject) => {
+        if (!file) {
+            reject(new Error('File non valido'));
+            return;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            resolve(e.target.result);
+        };
+        reader.onerror = function() {
+            reject(new Error('Errore durante la lettura del file: ' + file.name));
+        };
+        reader.readAsText(file);
+    });
+}
+
+// Parsing corretto del problema PDDL standard
+function parseProblem(problemText) {
+    if (!problemText || !problemText.trim()) {
+        throw new Error('File problema vuoto o non valido');
+    }
+
+    const lines = problemText.split('\n').map(line => line.trim()).filter(line => line);
+    let gridSize = { width: 0, height: 0 };
+    let initialPlayerPos = null;
+    const initialBallPositions = {};
+    const ballSizes = {};
+    const snowLocations = new Set(); // Mantenere come Set
+
+    console.log('Parsing', lines.length, 'righe del problema...');
+
+    lines.forEach((line, index) => {
+        try {
+            // Trova tutte le locazioni per determinare la dimensione della griglia
+            const locMatches = [...line.matchAll(/loc_(\d+)_(\d+)/g)];
+            locMatches.forEach(match => {
+                const x = parseInt(match[1]);
+                const y = parseInt(match[2]);
+                gridSize.width = Math.max(gridSize.width, x);
+                gridSize.height = Math.max(gridSize.height, y);
+            });
+
+            // Pattern per diversi formati di posizione del personaggio
+            let match = line.match(/\(\s*character_at\s+(loc_\d+_\d+)\s*\)/);
+            if (!match) {
+                match = line.match(/\(\s*=\s*\(character_at\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/);
+            }
+            if (match) {
+                initialPlayerPos = match[1];
+            }
+
+            // Pattern per diversi formati di posizione delle palle
+            match = line.match(/\(\s*ball_at\s+(ball_\d+)\s+(loc_\d+_\d+)\s*\)/);
+            if (!match) {
+                match = line.match(/\(\s*=\s*\(\s*ball_at\s+(ball_\d+)\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/);
+            }
+            if (match) {
+                initialBallPositions[match[1]] = match[2];
+            }
+
+            // Pattern per dimensioni delle palle
+            match = line.match(/\(\s*=\s*\(\s*ball_size\s+(ball_\d+)\s*\)\s*(\d+)\s*\)/);
+            if (match) {
+                ballSizes[match[1]] = parseInt(match[2]);
+            }
+
+            // Pattern per diversi formati di neve
+            match = line.match(/\(\s*snow\s+(loc_\d+_\d+)\s*\)/);
+            if (!match) {
+                match = line.match(/\(\s*=\s*\(\s*snow\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/);
+            }
+            if (match) {
+                snowLocations.add(match[1]);
+            }
+        } catch (e) {
+            console.warn('Errore parsing riga', index + 1, ':', line, e);
+        }
+    });
+
+    // Validazione
+    if (gridSize.width === 0 || gridSize.height === 0) {
+        throw new Error("Nessuna locazione trovata per definire la griglia. Controlla il formato del file PDDL.");
+    }
+    if (!initialPlayerPos) {
+        throw new Error("Posizione del giocatore non trovata. Cerca un predicato come '(character_at loc_x_y)' o '(= (character_at loc_x_y) 1)'.");
+    }
+
+    // Crea le locazioni d'erba (tutte quelle senza neve)
+    const grassLocations = new Set(); // Mantenere come Set
+    for (let r = 1; r <= gridSize.height; r++) {
+        for (let c = 1; c <= gridSize.width; c++) {
+            const locName = `loc_${c}_${r}`;
+            if (!snowLocations.has(locName)) {
+                grassLocations.add(locName);
+            }
+        }
+    }
+
+    console.log('Parsing completato:', {
+        gridSize,
+        initialPlayerPos,
+        ballCount: Object.keys(initialBallPositions).length,
+        snowCount: snowLocations.size,
+        grassCount: grassLocations.size
+    });
+
+    return {
+        gridSize,
+        initialPlayerPos,
+        initialBallPositions,
+        ballSizes,
+        snowLocations, // Set
+        grassLocations // Set
+    };
+}
+
+function parsePlan(planText) {
+    if (!planText || !planText.trim()) {
+        console.log('Nessun piano fornito - planText vuoto o undefined');
+        return { actions: [] };
+    }
+
+    console.log('=== INIZIO PARSING PIANO OTTIMIZZATO ===');
+    console.log('Lunghezza testo piano:', planText.length);
+
+    const actions = [];
+    const lines = planText.split('\n');
+
+    let foundPlanStart = false;
+    let planLength = -1; // Initialize planLength to -1
+
+    lines.forEach((line, index) => {
+        line = line.trim();
+
+        if (line.includes('Found Plan:') || line.includes('Plan:')) {
+            foundPlanStart = true;
+            console.log('Trovato inizio piano alla riga:', index + 1);
+            return;
+        }
+
+        // Extract Plan-Length
+        const planLengthMatch = line.match(/Plan-Length:\s*(\d+)/);
+        if (planLengthMatch) {
+            planLength = parseInt(planLengthMatch[1], 10);
+            console.log('Trovato Plan-Length:', planLength);
+            return;
+        }
+
+        if (!foundPlanStart) {
+            return;
+        }
+
+        if (line.startsWith('Metric') ||
+            line.startsWith('Planning Time') ||
+            line.includes('Problem Solved') ||
+            line === '') {
+            return;
+        }
+
+        try {
+            let actionMatch = line.match(/^\s*(\d+(?:\.\d+)?):\s*\((.+)\)\s*$/);
+
+            if (actionMatch) {
+                const action = actionMatch[2].trim();
+
+                if (action && action.length > 0) {
+                    actions.push(action);
+                }
+            } else if (line.includes('(') && line.includes(')')) {
+                const parenMatch = line.match(/\(([^)]+)\)/);
+                if (parenMatch) {
+                    const action = parenMatch[1].trim();
+                    if (action && action.length > 2) {
+                        actions.push(action);
+                    }
+                }
+            }
+
+        } catch (e) {
+            console.error(`Errore parsing riga ${index + 1}:`, line, e);
+        }
+    });
+
+    // Trim actions to match planLength if found and valid
+    if (planLength !== -1 && actions.length > planLength) {
+        console.warn(`Troncando il piano da ${actions.length} a ${planLength} passi basati su Plan-Length.`);
+        actions.splice(planLength); // Keep only the first 'planLength' actions
+    } else if (planLength !== -1 && actions.length < planLength) {
+        console.warn(`Attenzione: Il numero di azioni parsate (${actions.length}) è inferiore al Plan-Length specificato (${planLength}).`);
+    } else if (planLength === -1) {
+        console.warn('Plan-Length non trovato nel file. Il piano non verrà troncato in base ad esso.');
+    }
+
+
+    console.log('=== FINE PARSING PIANO OTTIMIZZATO ===');
+    console.log('Totale azioni trovate dopo il trimming (se Plan-Length presente):', actions.length);
+    if (actions.length > 0) {
+        console.log('Prima azione:', actions[0]);
+        console.log('Ultima azione:', actions[actions.length - 1]);
+        console.log('Azioni 1-5:', actions.slice(0, 5));
+    }
+
+    return { actions };
+}
+
+function createGameStates(problemData, planData) {
+    if (!problemData) {
+        throw new Error('Dati problema non validi');
+    }
+
+    const states = [];
+    let currentPlayerPos = problemData.initialPlayerPos;
+    let currentBallPositions = { ...problemData.initialBallPositions };
+    let currentBallSizes = { ...problemData.ballSizes };
+    let currentSnowLocations = new Set([...problemData.snowLocations]); // Copia il Set
+
+    // Stato iniziale
+    states.push({
+        playerPos: currentPlayerPos,
+        ballPositions: { ...currentBallPositions },
+        snowLocations: new Set([...currentSnowLocations]), // Copia il Set
+        ballSizes: { ...currentBallSizes },
+        action: "Stato iniziale"
+    });
+
+    if (!planData.actions || planData.actions.length === 0) {
+        return states;
+    }
+
+    planData.actions.forEach((action, index) => {
+        try {
+            let nextPlayerPos = currentPlayerPos;
+            let nextBallPositions = { ...currentBallPositions };
+            let nextSnowLocations = new Set([...currentSnowLocations]); // Copia il Set
+            let nextBallSizes = { ...currentBallSizes };
+            let actionApplied = false;
+
+            const normalizedAction = action.toLowerCase().replace(/\s+/g, ' ').trim();
+
+            const handleBallMove = (ball, fromPos, toPos) => {
+                nextBallPositions[ball] = toPos;
+
+                const otherBallsInFromPos = Object.entries(currentBallPositions).filter(
+                    ([bId, pos]) => bId !== ball && pos === fromPos
+                );
+                
+                if (otherBallsInFromPos.length > 0) {
+                    nextPlayerPos = currentPlayerPos; // Giocatore resta fermo se spinge una pila
+                } else {
+                    nextPlayerPos = fromPos; // Giocatore si sposta sulla cella "from"
+                }
+
+                if (nextSnowLocations.has(toPos)) {
+                    const currentSize = nextBallSizes[ball] || 1;
+                    if (currentSize < 3) {
+                        nextBallSizes[ball] = currentSize + 1;
+                    }
+                    nextSnowLocations.delete(toPos); // La neve viene consumata
+                }
+            };
+            
+            const actionHandlers = [
+                {
+                    pattern: /move[-_]?character\s+(?:\w+\s+)?(loc_\d+_\d+)\s+(loc_\d+_\d+)/,
+                    handler: (match) => { nextPlayerPos = match[2]; return true; }
+                },
+                {
+                    pattern: /(?:roll[-_]?ball|move[-_]?ball)\s+(ball_\d+)\s+(?:\w+\s+)?(loc_\d+_\d+)\s+(loc_\d+_\d+)/,
+                    handler: (match) => { handleBallMove(match[1], match[2], match[3]); return true; }
+                },
+                {
+                    pattern: /push\s+(ball_\d+)\s+(?:\w+\s+)?(loc_\d+_\d+)/,
+                    handler: (match) => {
+                        const fromPos = currentBallPositions[match[1]];
+                        handleBallMove(match[1], fromPos, match[2]);
+                        return true;
+                    }
+                },
+                 {
+                    pattern: /build[-_]?snowman/,
+                    handler: () => true // L'azione build_snowman non modifica posizioni, ma la visualizzazione lo farà in updateVisualization
+                }
+            ];
+
+            for (const handler of actionHandlers) {
+                const match = normalizedAction.match(handler.pattern);
+                if (match) {
+                    actionApplied = handler.handler(match);
+                    if (actionApplied) break;
+                }
+            }
+
+            const newState = {
+                playerPos: nextPlayerPos,
+                ballPositions: nextBallPositions,
+                snowLocations: nextSnowLocations, // Il Set aggiornato
+                ballSizes: nextBallSizes,
+                action: `${index + 1}: ${action}`
+            };
+            states.push(newState);
+
+            currentPlayerPos = nextPlayerPos;
+            currentBallPositions = nextBallPositions;
+            currentSnowLocations = nextSnowLocations;
+            currentBallSizes = nextBallSizes;
+
+        } catch (e) {
+            console.error(`Errore nell'applicazione dell'azione ${index + 1}:`, action, e);
+            states.push({ ...states[states.length - 1], action: `${index + 1}: ${action} [ERRORE]` });
+        }
+    });
+
+    return states;
+}
+
+// Creazione della griglia visiva (main grid)
+function createGrid(problemData) {
+    const grid = document.getElementById('grid');
+    if (!grid) {
+        console.error('Elemento grid non trovato');
+        return;
+    }
+
+    grid.innerHTML = '';
+    const { width, height } = problemData.gridSize;
+    grid.style.gridTemplateColumns = `repeat(${width}, 80px)`;
+
+    // Crea le celle dall'alto verso il basso (row height -> 1)
+    for (let row = height; row >= 1; row--) {
+        for (let col = 1; col <= width; col++) {
+            const cell = document.createElement('div');
+            const locationName = `loc_${col}_${row}`;
+            cell.className = 'cell';
+            cell.id = locationName;
+            cell.classList.add(problemData.snowLocations.has(locationName) ? 'snow' : 'grass');
+            grid.appendChild(cell);
+        }
+    }
+
+    console.log('Griglia principale creata:', width, 'x', height);
+}
+
+function updateVisualization() {
+    if (!gameStates || gameStates.length === 0) {
+        console.warn('Nessuno stato di gioco disponibile');
+        return;
+    }
+
+    document.querySelectorAll('.cell').forEach(cell => {
+        cell.innerHTML = '';
+        cell.classList.remove('snow', 'grass'); // Rimuovi per riapplicare
+    });
+
+    const state = gameStates[currentStep];
+    if (!state) {
+        console.error('Stato non valido per step:', currentStep);
+        return;
+    }
+
+    // Aggiorna celle innevate e erbose
+    document.querySelectorAll('.cell').forEach(cell => {
+        if (state.snowLocations.has(cell.id)) {
+            cell.classList.add('snow');
+        } else {
+            cell.classList.add('grass');
+        }
+    });
+
+    const ballsByCell = {};
+    for (const [ballId, loc] of Object.entries(state.ballPositions)) {
+        if (!ballsByCell[loc]) ballsByCell[loc] = [];
+        ballsByCell[loc].push({
+            id: ballId,
+            size: state.ballSizes[ballId] || 1
+        });
+    }
+
+    // Mostra palle o pupazzo
+    for (const [loc, balls] of Object.entries(ballsByCell)) {
+        const cell = document.getElementById(loc);
+        if (!cell) continue;
+
+        balls.sort((a, b) => b.size - a.size);
+
+        const isSnowman = balls.length === 3 && balls[0].size === 3 && balls[1].size === 2 && balls[2].size === 1;
+
+        if (isSnowman) {
+            const snowman = document.createElement('div');
+            snowman.textContent = '⛄';
+            snowman.style.fontSize = '48px';
+            snowman.style.position = 'absolute';
+            cell.appendChild(snowman);
+        } else {
+            const sizeMap = { 1: 45, 2: 60, 3: 75 };
+            balls.forEach(ball => {
+                const ballElement = document.createElement('div');
+                ballElement.className = 'ball';
+
+                const pixelSize = sizeMap[ball.size] || 45;
+                ballElement.style.width = `${pixelSize}px`;
+                ballElement.style.height = `${pixelSize}px`;
+
+                ballElement.style.position = 'absolute';
+                ballElement.style.zIndex = 15 - ball.size;
+
+                cell.appendChild(ballElement);
+            });
+        }
+    }
+
+    // Posiziona il giocatore
+    if (state.playerPos) {
+        const playerCell = document.getElementById(state.playerPos);
+        if (playerCell) {
+            const player = document.createElement('div');
+            player.className = 'player';
+            player.textContent = '👤';
+            player.style.zIndex = 99;
+            player.style.position = 'absolute';
+            playerCell.appendChild(player);
+        }
+    }
+
+    // Aggiorna UI
+    document.getElementById('stepInfo').textContent = `Step ${currentStep} / ${gameStates.length - 1}`;
+    document.getElementById('actionInfo').textContent = state.action;
+    document.getElementById('prevBtn').disabled = currentStep === 0;
+    document.getElementById('nextBtn').disabled = currentStep >= gameStates.length - 1;
+    document.getElementById('playBtn').disabled = gameStates.length <= 1;
+
+    if (currentStep >= gameStates.length - 1) stopPlay();
+}
+
+
+// Controlli di navigazione
+function previousStep() {
+    if (currentStep > 0) {
+        currentStep--;
+        updateVisualization();
+        stopPlay();
+    }
+}
+
+function nextStep() {
+    if (currentStep < gameStates.length - 1) {
+        currentStep++;
+        updateVisualization();
+    } else {
+        stopPlay();
+    }
+}
+
+function togglePlayPause() {
+    if (playInterval) {
+        stopPlay();
+    } else {
+        startPlay();
+    }
+}
+
+function startPlay() {
+    if (currentStep >= gameStates.length - 1 && gameStates.length > 1) {
+        currentStep = 0;
+        updateVisualization();
+    }
+
+    playInterval = setInterval(() => {
+        nextStep();
+    }, 1000);
+
+    const playBtn = document.getElementById('playBtn');
+    if (playBtn) {
+        playBtn.textContent = '⏸️ Pausa';
+    }
+}
+
+function stopPlay() {
+    if (playInterval) {
+        clearInterval(playInterval);
+        playInterval = null;
+    }
+
+    const playBtn = document.getElementById('playBtn');
+    if (playBtn) {
+        playBtn.textContent = '▶️ Play';
+    }
+}
+
+// Funzioni per la lista dei problemi
+function createProblemPreview(problemData) {
+    const preview = document.createElement('div');
+    preview.className = 'problem-preview';
+
+    // Limita la dimensione dell'anteprima per evitare anteprime troppo grandi
+    const cols = Math.min(problemData.gridSize.width, 6);
+    const rows = Math.min(problemData.gridSize.height, 6);
+    preview.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    // Calcola il padding per centrare la griglia nell'anteprima
+    // Non strettamente necessario ma utile per esteticità con griglie piccole
+
+    for (let row = rows; row >= 1; row--) { // Iterazione corretta per loc_x_y
+        for (let col = 1; col <= cols; col++) {
+            const cell = document.createElement('div');
+            cell.className = 'mini-cell';
+            const locationName = `loc_${col}_${row}`;
+            
+            // problemData.snowLocations È UN SET QUI, quindi .has() funziona
+            cell.classList.add(problemData.snowLocations.has(locationName) ? 'snow' : 'grass');
+            preview.appendChild(cell);
+        }
+    }
+
+    return preview;
+}
+
+function updateProblemList() {
+    const listElement = document.getElementById('problemList');
+    if (!listElement) {
+        console.warn('Elemento problemList non trovato');
+        return;
+    }
+
+    listElement.innerHTML = '';
+
+    if (savedProblems.length === 0) {
+        listElement.innerHTML = `
+            <div style="text-align: center; color: #666; padding: 30px; font-style: italic;">
+                Nessun problema caricato...
+            </div>
+        `;
+        return;
+    }
+
+    savedProblems.forEach(problem => {
+        try {
+            const item = document.createElement('div');
+            item.className = 'problem-item';
+
+            if (problem.id === currentProblemId) {
+                item.classList.add('active');
+            }
+
+            // --- INIZIO MODIFICA CRUCIALE ---
+            // Ricostruisci Set anche qui per assicurarti che createProblemPreview li riceva correttamente
+            const problemDetailsForPreview = {
+                ...problem.problemData,
+                snowLocations: new Set(problem.problemData.snowLocations || []), // Aggiungi fallback a array vuoto
+                grassLocations: new Set(problem.problemData.grassLocations || []) // Aggiungi fallback a array vuoto
+            };
+
+            const hasPlan = problem.planText && problem.planText.trim().length > 0;
+            const planStatus = hasPlan ? 'Con Piano' : 'Senza Piano';
+            const planClass = hasPlan ? '' : 'no-plan';
+
+            let previewHtml = '';
+            // Controlla se i dati per l'anteprima sono validi prima di chiamare createProblemPreview
+            if (problemDetailsForPreview && problemDetailsForPreview.gridSize &&
+                problemDetailsForPreview.snowLocations instanceof Set &&
+                problemDetailsForPreview.grassLocations instanceof Set) {
+                
+                const previewElement = createProblemPreview(problemDetailsForPreview);
+                previewHtml = previewElement.outerHTML;
+            } else {
+                previewHtml = `<div class="problem-preview" style="background: #ef9a9a; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff;">Errore Anteprima</div>`;
+                console.warn(`Impossibile generare anteprima per il problema "${problem.name}": dati incompleti o corrotti.`, problemDetailsForPreview);
+            }
+
+            item.innerHTML = `
+                ${previewHtml}
+                <div class="problem-info">
+                    <div class="problem-name">${problem.name}</div>
+                    <div class="problem-details ${planClass}">
+                        Grid: ${problemDetailsForPreview.gridSize ? `${problemDetailsForPreview.gridSize.width}x${problemDetailsForPreview.gridSize.height}` : 'N/A'} &bull; 
+                        ${problemDetailsForPreview.initialBallPositions ? Object.keys(problemDetailsForPreview.initialBallPositions).length : 'N/A'} palle &bull; 
+                        ${planStatus}
+                    </div>
+                </div>
+                <div class="problem-actions">
+                    <button class="action-btn delete-btn" 
+                            onclick="event.stopPropagation();deleteProblem('${problem.id}')" 
+                            title="Elimina">🗑️</button>
+                </div>
+            `;
+            // --- FINE MODIFICA CRUCIALE ---
+            
+            // item.insertBefore(preview, item.firstChild); // Questa riga non è più necessaria se previewHtml è già nel innerHTML
+            item.addEventListener('click', () => loadProblem(problem.id));
+            listElement.appendChild(item);
+            
+        } catch (e) {
+            console.error('Errore nella creazione dell\'elemento UI per il problema:', problem.name, e);
+            // Fallback per problemi che causano errori di rendering
+            const errorItem = document.createElement('div');
+            errorItem.className = 'problem-item';
+            errorItem.style.backgroundColor = '#ffebee';
+            errorItem.style.border = '2px solid #ef9a9a';
+            errorItem.innerHTML = `
+                <div class="problem-preview" style="background: #ef9a9a; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff;">!</div>
+                <div class="problem-info">
+                    <div class="problem-name" style="color: #c62828;">ERRORE: ${problem.name}</div>
+                    <div class="problem-details">Impossibile visualizzare. Consulta la console.</div>
+                </div>
+                <div class="problem-actions">
+                    <button class="action-btn delete-btn" 
+                            onclick="event.stopPropagation();deleteProblem('${problem.id}')" 
+                            title="Elimina">🗑️</button>
+                </div>
+            `;
+            listElement.appendChild(errorItem);
+        }
+    });
+}
+    </script>
+</body>
+</html>

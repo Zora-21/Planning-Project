@@ -44,7 +44,6 @@
     :precondition
     (and
         (character_at ?from)
-        ;(not (exists (?b - ball) (ball_at ?b ?to)))
         (not (occupancy ?to))
         (not (snowman_at ?to))
 
@@ -71,9 +70,10 @@
     (and
         (ball_at ?b ?from)
         (character_at ?ppos)
-
-        (not (ball_used_in_snowman ?b))
         (not (snowman_at ?to))
+
+;------ La palla non deve essere già usata in un pupazzo --------------------------------------------------------------------------------------
+        (not (ball_used_in_snowman ?b))
 
         (or
             (and (= (x-coord ?from) (+ (x-coord ?ppos) 1)) 
@@ -97,16 +97,19 @@
                  (= (x-coord ?to) (x-coord ?from)))
         )
 
+;------ REGOLA DI IMPILAMENTO: Nella posizione di partenza, la palla da spostare può essere impilata solo su palle più grandi -----------------------------------
         (forall (?o - ball)
             (or (= ?o ?b) 
                 (not (ball_at ?o ?from)) 
                 (< (ball_size ?b) (ball_size ?o))))
 
+;------ REGOLA DI MOVIMENTO: O la palla è sola nella posizione di partenza, oppure la posizione di arrivo deve essere libera -------------------------------------
         (or
             (forall (?o - ball) (or (= ?o ?b) (not (ball_at ?o ?from))))
             (forall (?o - ball) (not (ball_at ?o ?to)))
         )
 
+;------ REGOLA DI IMPILAMENTO 2: Nella posizione di arrivo, la palla può essere impilata solo su palle più grandi -----------------------------------------------
         (forall (?o - ball)
             (or (not (ball_at ?o ?to)) 
                 (< (ball_size ?b) (ball_size ?o))))
@@ -117,7 +120,7 @@
             (not (ball_at ?b ?from))
             (ball_at ?b ?to)
 
-            ;shift ball e character
+;---------- Shift ball e character ----------------------------------------------------------------------------------------------------------------------------------
             (when
                 (forall (?o - ball)
                     (or
@@ -161,6 +164,7 @@
         (= (ball_size ?b_m) 2)
         (= (ball_size ?b_g) 3)
 
+;------ Le palle non devono essere già usate -------------------------------------------------------------------------------------------------------------------------
         (not (ball_used_in_snowman ?b_p))
         (not (ball_used_in_snowman ?b_m))
         (not (ball_used_in_snowman ?b_g))
@@ -172,6 +176,7 @@
         (increase (snowman_built) 1)
         (snowman_at ?l)
 
+;------ Marca le palle come usate ------------------------------------------------------------------------------------------------------------------------------------
         (ball_used_in_snowman ?b_p)
         (ball_used_in_snowman ?b_m)
         (ball_used_in_snowman ?b_g)

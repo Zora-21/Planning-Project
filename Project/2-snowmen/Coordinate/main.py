@@ -7,7 +7,7 @@ input_names = [
     #"ben_alan",
     #"carla_jordina",
     #"carla_jordina2",
-    "chirs_karen",
+    "chris_karen",
     "chris_karen2"
 ]  # Aggiungi qui tutti i nomi che ti servono
 
@@ -44,7 +44,7 @@ for name in input_names:
             capture_output=True,
             text=True,
             check=True,  # Lancia un'eccezione se il processo restituisce un codice di errore
-            timeout=1200  # Imposta il timeout a 5 minuti
+            timeout=900  # Imposta il timeout a 5 minuti
         )
 
         # Salva l'output nel file di piano corrispondente

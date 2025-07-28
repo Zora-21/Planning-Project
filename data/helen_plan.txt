@@ -1,0 +1,115 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 97
+Aibr Preprocessing
+|F|:116
+|X|:4
+|A|:230
+|P|:0
+|E|:0
+H1 Setup Time (msec): 10
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=8.0
+ g(n)= 1.0 h(n)=7.0
+ g(n)= 3.0 h(n)=6.0
+ g(n)= 4.0 h(n)=5.0
+ g(n)= 12.0 h(n)=4.0
+ g(n)= 11.0 h(n)=3.0
+ g(n)= 12.0 h(n)=2.0
+ g(n)= 13.0 h(n)=1.0
+ g(n)= 14.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_4_1 loc_3_1 left)
+1.0: (move_character loc_3_1 loc_2_1 left)
+2.0: (move_character loc_2_1 loc_1_1 left)
+3.0: (move_character loc_1_1 loc_1_2 up)
+4.0: (move_character loc_1_2 loc_1_3 up)
+5.0: (move_character loc_1_3 loc_1_4 up)
+6.0: (move_character loc_1_4 loc_2_4 right)
+7.0: (move_character loc_2_4 loc_3_4 right)
+8.0: (move_character loc_3_4 loc_3_3 down)
+9.0: (move_ball ball_0 loc_3_3 loc_3_2 loc_3_1 down)
+10.0: (move_character loc_3_2 loc_3_3 up)
+11.0: (move_character loc_3_3 loc_3_4 up)
+12.0: (move_character loc_3_4 loc_4_4 right)
+13.0: (move_character loc_4_4 loc_5_4 right)
+14.0: (move_character loc_5_4 loc_6_4 right)
+15.0: (move_character loc_6_4 loc_7_4 right)
+16.0: (move_character loc_7_4 loc_7_3 down)
+17.0: (move_character loc_7_3 loc_7_2 down)
+18.0: (move_character loc_7_2 loc_7_1 down)
+19.0: (move_character loc_7_1 loc_6_1 left)
+20.0: (move_character loc_6_1 loc_5_1 left)
+21.0: (move_ball ball_2 loc_5_1 loc_5_2 loc_5_3 up)
+22.0: (move_character loc_5_2 loc_5_1 down)
+23.0: (move_character loc_5_1 loc_6_1 right)
+24.0: (move_character loc_6_1 loc_7_1 right)
+25.0: (move_character loc_7_1 loc_7_2 up)
+26.0: (move_character loc_7_2 loc_7_3 up)
+27.0: (move_character loc_7_3 loc_7_4 up)
+28.0: (move_character loc_7_4 loc_6_4 left)
+29.0: (move_character loc_6_4 loc_5_4 left)
+30.0: (move_ball ball_2 loc_5_4 loc_5_3 loc_5_2 down)
+31.0: (move_character loc_5_3 loc_4_3 left)
+32.0: (move_character loc_4_3 loc_3_3 left)
+33.0: (move_character loc_3_3 loc_3_4 up)
+34.0: (move_character loc_3_4 loc_2_4 left)
+35.0: (move_character loc_2_4 loc_1_4 left)
+36.0: (move_character loc_1_4 loc_1_3 down)
+37.0: (move_character loc_1_3 loc_1_2 down)
+38.0: (move_character loc_1_2 loc_1_1 down)
+39.0: (move_character loc_1_1 loc_2_1 right)
+40.0: (move_ball ball_0 loc_2_1 loc_3_1 loc_4_1 right)
+41.0: (move_ball ball_0 loc_3_1 loc_4_1 loc_5_1 right)
+42.0: (move_ball ball_0 loc_4_1 loc_5_1 loc_6_1 right)
+43.0: (move_character loc_5_1 loc_4_1 left)
+44.0: (move_ball ball_1 loc_4_1 loc_4_2 loc_4_3 up)
+45.0: (move_character loc_4_2 loc_3_2 left)
+46.0: (move_character loc_3_2 loc_3_3 up)
+47.0: (move_character loc_3_3 loc_3_4 up)
+48.0: (move_character loc_3_4 loc_4_4 right)
+49.0: (move_character loc_4_4 loc_5_4 right)
+50.0: (move_character loc_5_4 loc_5_3 down)
+51.0: (move_ball ball_1 loc_5_3 loc_4_3 loc_3_3 left)
+52.0: (move_character loc_4_3 loc_4_4 up)
+53.0: (move_character loc_4_4 loc_3_4 left)
+54.0: (move_ball ball_1 loc_3_4 loc_3_3 loc_3_2 down)
+55.0: (move_ball ball_1 loc_3_3 loc_3_2 loc_3_1 down)
+56.0: (move_character loc_3_2 loc_3_3 up)
+57.0: (move_character loc_3_3 loc_3_4 up)
+58.0: (move_character loc_3_4 loc_2_4 left)
+59.0: (move_character loc_2_4 loc_1_4 left)
+60.0: (move_character loc_1_4 loc_1_3 down)
+61.0: (move_character loc_1_3 loc_1_2 down)
+62.0: (move_character loc_1_2 loc_1_1 down)
+63.0: (move_character loc_1_1 loc_2_1 right)
+64.0: (move_ball ball_1 loc_2_1 loc_3_1 loc_4_1 right)
+65.0: (move_ball ball_1 loc_3_1 loc_4_1 loc_5_1 right)
+66.0: (move_character loc_4_1 loc_4_2 up)
+67.0: (move_character loc_4_2 loc_4_3 up)
+68.0: (move_character loc_4_3 loc_5_3 right)
+69.0: (move_ball ball_2 loc_5_3 loc_5_2 loc_5_1 down)
+70.0: (move_character loc_5_2 loc_5_3 up)
+71.0: (move_character loc_5_3 loc_5_4 up)
+72.0: (move_character loc_5_4 loc_6_4 right)
+73.0: (move_character loc_6_4 loc_7_4 right)
+74.0: (move_character loc_7_4 loc_7_3 down)
+75.0: (move_character loc_7_3 loc_7_2 down)
+76.0: (move_character loc_7_2 loc_7_1 down)
+77.0: (move_ball ball_0 loc_7_1 loc_6_1 loc_5_1 left)
+78.0: (goal ball_0 ball_2 ball_1 loc_5_1)
+
+Plan-Length:79
+Metric (Search):14.0
+Planning Time (msec): 531
+Heuristic Time (msec): 263
+Search Time (msec): 297
+Expanded Nodes:1630
+States Evaluated:1817
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:91
+Number of Duplicates detected:2118

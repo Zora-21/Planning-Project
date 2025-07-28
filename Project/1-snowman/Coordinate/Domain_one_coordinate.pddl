@@ -28,7 +28,7 @@
         (x-coord ?l - location) - number
         (y-coord ?l - location) - number
 
-        (is_goal_achieved) - number
+        (goal) - number
     )
 
 ;--------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -78,6 +78,7 @@
                      (= (y-coord ?to)   (- (y-coord ?from) 1)) (= (y-coord ?to)   (y-coord ?from)))
             )
 
+;---------- REGOLA DI IMPILAMENTO: Nella posizione di partenza, la palla da spostare può essere impilata solo su palle più grandi -----------------------------------
             (forall (?o - ball)
                 (or 
                     (= ?o ?b) 
@@ -86,6 +87,7 @@
                 )    
             )    
 
+;---------- REGOLA DI MOVIMENTO: O la palla è sola nella posizione di partenza, oppure la posizione di arrivo deve essere libera -------------------------------------
             (or
                 (forall (?o - ball) 
                 (or (= ?o ?b) (not (ball_at ?o ?from))))
@@ -95,6 +97,7 @@
                 )    
             )        
 
+;---------- REGOLA DI IMPILAMENTO 2: Nella posizione di arrivo, la palla può essere impilata solo su palle più grandi -----------------------------------------------
             (forall (?o - ball)
                     (or (not (ball_at ?o ?to)) (< (ball_size ?b) (ball_size ?o)))) 
         )
@@ -115,6 +118,7 @@
                     (not (occupancy ?from)))    
             )  
             
+;---------- Se la palla è spostata su una cella innevata, la palla spostata aumenta di dimensione -------------------------------------------------------------------
             (when 
                 (and 
                     (snow ?to) 
@@ -148,6 +152,6 @@
             (= (ball_size ?b_g) 3)
         )
     :effect
-        (assign (is_goal_achieved) 1)
+        (assign (goal) 1)
     )
 )

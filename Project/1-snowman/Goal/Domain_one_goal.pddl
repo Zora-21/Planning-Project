@@ -132,11 +132,11 @@
             (ball_at ?b_m ?l)
             (ball_at ?b_g ?l)
 
-            (= (ball_size ?b_p) 1)  ; p = piccola
-            (= (ball_size ?b_m) 2)  ; m = media
-            (= (ball_size ?b_g) 3)  ; g = grande
+            (= (ball_size ?b_p) 1)  
+            (= (ball_size ?b_m) 2)  
+            (= (ball_size ?b_g) 3) 
         )
     :effect
-        (assign(goal)1)
+        (assign(goal) 1)
     )
 )

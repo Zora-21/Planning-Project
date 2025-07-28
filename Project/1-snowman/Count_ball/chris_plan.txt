@@ -1,0 +1,64 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 50
+Aibr Preprocessing
+|F|:69
+|X|:19
+|A|:96
+|P|:0
+|E|:0
+H1 Setup Time (msec): 6
+Setting horizon to:NaN
+Running Greedy Best First Search
+h(n = s_0)=2.0
+ g(n)= 6.0 h(n)=1.0
+ g(n)= 7.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_3_1 loc_4_1 right)
+1.0: (move_character loc_4_1 loc_4_2 up)
+2.0: (move_character loc_4_2 loc_4_3 up)
+3.0: (move_ball ball_1 loc_4_3 loc_3_3 loc_2_3 left)
+4.0: (move_character loc_3_3 loc_4_3 right)
+5.0: (move_character loc_4_3 loc_4_2 down)
+6.0: (move_character loc_4_2 loc_4_1 down)
+7.0: (move_character loc_4_1 loc_3_1 left)
+8.0: (move_character loc_3_1 loc_2_1 left)
+9.0: (move_character loc_2_1 loc_2_2 up)
+10.0: (move_character loc_2_2 loc_1_2 left)
+11.0: (move_character loc_1_2 loc_1_3 up)
+12.0: (move_ball ball_1 loc_1_3 loc_2_3 loc_3_3 right)
+13.0: (move_character loc_2_3 loc_2_2 down)
+14.0: (move_character loc_2_2 loc_2_1 down)
+15.0: (move_character loc_2_1 loc_3_1 right)
+16.0: (move_ball ball_0 loc_3_1 loc_3_2 loc_3_3 up)
+17.0: (move_character loc_3_2 loc_4_2 right)
+18.0: (move_character loc_4_2 loc_4_3 up)
+19.0: (move_ball ball_0 loc_4_3 loc_3_3 loc_2_3 left)
+20.0: (move_character loc_4_3 loc_4_2 down)
+21.0: (move_character loc_4_2 loc_3_2 left)
+22.0: (move_ball ball_1 loc_3_2 loc_3_3 loc_3_4 up)
+23.0: (move_character loc_3_3 loc_3_2 down)
+24.0: (move_character loc_3_2 loc_3_1 down)
+25.0: (move_character loc_3_1 loc_2_1 left)
+26.0: (move_character loc_2_1 loc_1_1 left)
+27.0: (move_character loc_1_1 loc_1_2 up)
+28.0: (move_character loc_1_2 loc_1_3 up)
+29.0: (move_ball ball_0 loc_1_3 loc_2_3 loc_3_3 right)
+30.0: (move_character loc_2_3 loc_2_2 down)
+31.0: (move_character loc_2_2 loc_3_2 right)
+32.0: (move_ball ball_0 loc_3_2 loc_3_3 loc_3_4 up)
+33.0: (build_snowman loc_3_4)
+
+Plan-Length:34
+Metric (Search):7.0
+Planning Time (msec): 742
+Heuristic Time (msec): 457
+Search Time (msec): 551
+Expanded Nodes:22256
+States Evaluated:23281
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:739
+Number of Duplicates detected:38948
