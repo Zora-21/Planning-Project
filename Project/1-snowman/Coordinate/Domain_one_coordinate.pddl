@@ -115,7 +115,6 @@
                     (not (occupancy ?from)))    
             )  
             
-            (not (snow ?to))
             (when 
                 (and 
                     (snow ?to) 
@@ -123,6 +122,7 @@
                 (increase (ball_size ?b) 1)
             )
             
+            (not (snow ?to))
             (increase (total-cost) 1)  
         )
     )

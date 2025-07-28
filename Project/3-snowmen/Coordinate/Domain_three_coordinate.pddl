@@ -161,6 +161,7 @@
         (increase (snowman_built) 1)
         (snowman_at ?l)
 
+;------ Marca le palle come usate --------------------------------------------------------------------------------
         (ball_used_in_snowman ?b_p)
         (ball_used_in_snowman ?b_m)
         (ball_used_in_snowman ?b_g)

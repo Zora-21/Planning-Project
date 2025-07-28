@@ -104,7 +104,6 @@
                     (not (occupancy ?from)))    
             )  
             
-            (not (snow ?to))
 ;---------- Se la palla è spostata su una cella innevata, la palla spostata aumenta di dimensione -------------------------------------------------------------------
             (when
                 (and
@@ -112,6 +111,7 @@
                     (< (ball_size ?b) 3)) 
                 (increase (ball_size ?b) 1))
             
+            (not (snow ?to))
             (increase (total-cost) 1)  
         )
     )

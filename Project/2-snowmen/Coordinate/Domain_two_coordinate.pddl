@@ -130,8 +130,6 @@
             )  
 
 ;---------- Se la palla è spostata su una cella innevata, la palla spostata aumenta di dimensione -------------------------------------------------------------------
-            (not (snow ?to))               
-            
             (when
                 (and
                     (snow ?to)
@@ -141,6 +139,7 @@
                 )
             )
             
+            (not (snow ?to))               
             (increase (total-cost) 1)         
         )
  )
