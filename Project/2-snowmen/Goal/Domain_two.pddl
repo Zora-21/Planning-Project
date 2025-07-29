@@ -66,6 +66,8 @@
 
 ;---------- La palla non deve essere già usata in un pupazzo --------------------------------------------------------------------------------------
             (not (ball_used_in_snowman ?b))
+            (not (snowman_at ?to))
+            (not (snowman_at ?from))
             
 ;---------- REGOLA DI IMPILAMENTO: Nella posizione di partenza, la palla da spostare può essere impilata solo su palle più grandi -----------------------------------
             (forall (?o - ball)
