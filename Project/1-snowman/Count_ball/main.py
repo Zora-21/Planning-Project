@@ -3,30 +3,31 @@ import os
 
 # Elenco dei nomi da elaborare
 input_names = [
-#"carlasta",
-#"martingala",
+"carlasta",
+"martingala",
+"kate",
 #"priscilla",
 #"unused_1",
-#"carlasta2",
-#"alice",
-#"martingala2",
-#"julian",
+"carlasta2",
+"alice",
+"martingala2",
+"julian",
 #"david",
 #"chris",
 #"sally",
 #"louise",
 #"helen",
 #"lucy",
-#"joan",
+"joan",
 #"tanya",
-"adam"
-#"kevin",
+#"adam"
+"kevin",
 #"lydia",
 #"unused_2",
 #"sarah",
 #"lauren",
-#"chrisgur",
-#"willow"
+"chrisgur",
+"willow"
 ]  # Aggiungi qui tutti i nomi che ti servono
 
 # Il file di dominio rimane lo stesso per tutti
@@ -62,7 +63,7 @@ for name in input_names:
             capture_output=True,
             text=True,
             check=True,  # Lancia un'eccezione se il processo restituisce un codice di errore
-            timeout=900  # Imposta il timeout a 5 minuti
+            timeout=1200  # Imposta il timeout a 5 minuti
         )
 
         # Salva l'output nel file di piano corrispondente

@@ -12,24 +12,27 @@
     )
 
     (:init
-
         (= (total-cost) 0)
-        (= (is_goal_achieved) 0)
+        (= (goal) 0)
 
         (= (x-coord loc_1_1) 1) (= (y-coord loc_1_1) 1)
         (= (x-coord loc_1_2) 1) (= (y-coord loc_1_2) 2)
+
         (= (x-coord loc_2_1) 2) (= (y-coord loc_2_1) 1)
         (= (x-coord loc_2_2) 2) (= (y-coord loc_2_2) 2)
         (= (x-coord loc_2_3) 2) (= (y-coord loc_2_3) 3)
         (= (x-coord loc_2_4) 2) (= (y-coord loc_2_4) 4)
+
         (= (x-coord loc_3_1) 3) (= (y-coord loc_3_1) 1)
         (= (x-coord loc_3_2) 3) (= (y-coord loc_3_2) 2)
         (= (x-coord loc_3_3) 3) (= (y-coord loc_3_3) 3)
         (= (x-coord loc_3_4) 3) (= (y-coord loc_3_4) 4)
+
         (= (x-coord loc_4_1) 4) (= (y-coord loc_4_1) 1)
         (= (x-coord loc_4_2) 4) (= (y-coord loc_4_2) 2)
         (= (x-coord loc_4_3) 4) (= (y-coord loc_4_3) 3)
         (= (x-coord loc_4_4) 4) (= (y-coord loc_4_4) 4)
+
         (= (x-coord loc_5_1) 5) (= (y-coord loc_5_1) 1)
         (= (x-coord loc_5_2) 5) (= (y-coord loc_5_2) 2)
 
@@ -54,7 +57,7 @@
 
     (:goal
         (and
-            (= (is_goal_achieved) 1)
+            (= (goal) 1)
         )
     )
 

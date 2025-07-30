@@ -1,0 +1,15 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cSingleline}{;        (:action move\PYGZus{}character}
+\PYG{c+cSingleline}{;         :parameters}
+\PYG{c+cSingleline}{;           (?from ?to \PYGZhy{} location ?dir \PYGZhy{} direction)}
+\PYG{c+cSingleline}{;         :precondition}
+\PYG{c+cSingleline}{;            (and}
+\PYG{c+cSingleline}{;                (next ?from ?to ?dir)}
+\PYG{c+cSingleline}{;                (character\PYGZus{}at ?from)}
+\PYG{c+cSingleline}{;                (not (occupancy ?to)))}
+\PYG{c+cSingleline}{;         :effect}
+\PYG{c+cSingleline}{;            (and}
+\PYG{c+cSingleline}{;                (not (character\PYGZus{}at ?from))}
+\PYG{c+cSingleline}{;                (character\PYGZus{}at ?to))}
+\PYG{c+cSingleline}{;        )}
+\end{MintedVerbatim}

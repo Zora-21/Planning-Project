@@ -8,7 +8,7 @@ input_names = [
     #"carla_jordina",
     #"carla_jordina2",
     "chris_karen",
-    "chris_karen2"
+    "jack_jill"
 ]  # Aggiungi qui tutti i nomi che ti servono
 
 # Il file di dominio rimane lo stesso per tutti

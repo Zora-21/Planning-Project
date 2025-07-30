@@ -2,24 +2,13 @@ import subprocess
 import os
 
 # Elenco dei nomi da elaborare
-input_names = ["adam",
-                "alex",
-                "andy",
-                "chris",
-                "claire",
-                "david",
-                "freya",
-                "helen",
-                "joan",
-                "julian",
-                "kate",
-                "lucy",
-                "lydia",
-                "mary",
-                "sally",
-                "tanya",
-                "william",
-                "unused_2"  
+input_names = [
+"alex",
+'andy',
+'claire',
+'freya',
+'mary',
+'william'
             ] # Aggiungi qui tutti i nomi che ti servono
 
 # Il file di dominio rimane lo stesso per tutti
@@ -55,7 +44,7 @@ for name in input_names:
             capture_output=True,
             text=True,
             check=True,  # Lancia un'eccezione se il processo restituisce un codice di errore
-            timeout=3600  # Imposta il timeout a 5 minuti
+            timeout=300  # Imposta il timeout a 5 minuti
         )
 
         # Salva l'output nel file di piano corrispondente

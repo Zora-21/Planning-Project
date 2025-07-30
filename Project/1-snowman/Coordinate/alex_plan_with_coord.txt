@@ -1,14 +1,14 @@
 Domain parsed
 Problem parsed
 Grounding..
-Grounding Time: 1734
+Grounding Time: 1670
 Aibr Preprocessing
-|F|:68
+|F|:120
 |X|:4
-|A|:124
+|A|:182
 |P|:0
 |E|:0
-H1 Setup Time (msec): 6
+H1 Setup Time (msec): 10
 Setting horizon to:NaN
 Running Greedy Best First Search
 h(n = s_0)=7.0
@@ -50,11 +50,11 @@ Found Plan:
 
 Plan-Length:26
 Metric (Search):6.0
-Planning Time (msec): 7314
-Heuristic Time (msec): 22
-Search Time (msec): 32
-Expanded Nodes:53
+Planning Time (msec): 7380
+Heuristic Time (msec): 30
+Search Time (msec): 47
+Expanded Nodes:52
 States Evaluated:91
 Fixed constraint violations during search (zero-crossing):0
 Number of Dead-Ends detected:7
-Number of Duplicates detected:66
+Number of Duplicates detected:63

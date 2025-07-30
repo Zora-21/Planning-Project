@@ -70,12 +70,15 @@
             (or
                 (and (= (x-coord ?from) (+ (x-coord ?ppos) 1)) (= (y-coord ?from) (y-coord ?ppos))
                      (= (x-coord ?to)   (+ (x-coord ?from) 1)) (= (y-coord ?to)   (y-coord ?from)))
+                
                 (and (= (x-coord ?from) (- (x-coord ?ppos) 1)) (= (y-coord ?from) (y-coord ?ppos))
                      (= (x-coord ?to)   (- (x-coord ?from) 1)) (= (y-coord ?to)   (y-coord ?from)))
+                
                 (and (= (y-coord ?from) (+ (y-coord ?ppos) 1)) (= (x-coord ?from) (x-coord ?ppos))
                      (= (y-coord ?to)   (+ (y-coord ?from) 1)) (= (x-coord ?to)   (x-coord ?from)))
+                
                 (and (= (y-coord ?from) (- (y-coord ?ppos) 1)) (= (x-coord ?from) (x-coord ?ppos))
-                     (= (y-coord ?to)   (- (y-coord ?from) 1)) (= (y-coord ?to)   (y-coord ?from)))
+                     (= (y-coord ?to)   (- (y-coord ?from) 1)) (= (x-coord ?to)   (x-coord ?from)))
             )
 
 ;---------- REGOLA DI IMPILAMENTO: Nella posizione di partenza, la palla da spostare può essere impilata solo su palle più grandi -----------------------------------

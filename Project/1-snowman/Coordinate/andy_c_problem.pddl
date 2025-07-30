@@ -15,7 +15,7 @@
     (:init
         ;; Inizializzazione dei valori numerici
         (= (total-cost) 0)
-        (= (is_goal_achieved) 0)
+        (= (goal) 0)
 
         ;; Definizione delle coordinate per ogni locazione
         (= (x-coord loc_1_1) 1) (= (y-coord loc_1_1) 1)
@@ -75,8 +75,7 @@
 
     (:goal
         (and
-            ;; L'obiettivo è che la condizione di goal definita nell'azione apposita sia soddisfatta
-            (= (is_goal_achieved) 1)
+            (= (goal) 1)
         )
     )
 

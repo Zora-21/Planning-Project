@@ -16,7 +16,7 @@
     (:init
         ;; Funzioni numeriche iniziali
         (= (total-cost) 0)
-        (= (is_goal_achieved) 0)
+        (= (goal) 0)
 
         ;; Definizione delle coordinate per ogni location
         (= (x-coord loc_1_1) 1) (= (y-coord loc_1_1) 1)
@@ -102,7 +102,7 @@
 
     (:goal
         (and
-            (=(is_goal_achieved) 1)
+            (=(goal) 1)
         )
     )
 

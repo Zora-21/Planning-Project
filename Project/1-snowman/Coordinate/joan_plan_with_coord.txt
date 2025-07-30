@@ -1,14 +1,14 @@
 Domain parsed
 Problem parsed
 Grounding..
-Grounding Time: 7785
+Grounding Time: 7164
 Aibr Preprocessing
-|F|:156
+|F|:216
 |X|:4
-|A|:414
+|A|:582
 |P|:0
 |E|:0
-H1 Setup Time (msec): 17
+H1 Setup Time (msec): 22
 Setting horizon to:NaN
 Running Greedy Best First Search
 h(n = s_0)=14.0
@@ -18,13 +18,13 @@ h(n = s_0)=14.0
  g(n)= 4.0 h(n)=10.0
  g(n)= 5.0 h(n)=9.0
  g(n)= 10.0 h(n)=8.0
- g(n)= 12.0 h(n)=7.0
+ g(n)= 13.0 h(n)=7.0
  g(n)= 14.0 h(n)=6.0
- g(n)= 18.0 h(n)=5.0
- g(n)= 20.0 h(n)=4.0
- g(n)= 22.0 h(n)=3.0
- g(n)= 25.0 h(n)=1.0
- g(n)= 26.0 h(n)=0.0
+ g(n)= 16.0 h(n)=5.0
+ g(n)= 18.0 h(n)=4.0
+ g(n)= 22.0 h(n)=2.0
+ g(n)= 23.0 h(n)=1.0
+ g(n)= 24.0 h(n)=0.0
 Problem Solved
 
 Found Plan:
@@ -62,75 +62,65 @@ Found Plan:
 31.0: (move_ball ball_2 loc_9_2 loc_10_2 loc_11_2)
 32.0: (move_character loc_9_2 loc_9_1)
 33.0: (move_character loc_9_1 loc_10_1)
-34.0: (move_ball ball_1 loc_10_1 loc_10_2 loc_10_3)
-35.0: (move_character loc_10_2 loc_10_1)
-36.0: (move_character loc_10_1 loc_11_1)
-37.0: (move_character loc_11_1 loc_12_1)
-38.0: (move_character loc_12_1 loc_12_2)
-39.0: (move_ball ball_2 loc_12_2 loc_11_2 loc_10_2)
-40.0: (move_ball ball_2 loc_11_2 loc_10_2 loc_9_2)
-41.0: (move_character loc_10_2 loc_11_2)
-42.0: (move_character loc_11_2 loc_11_3)
-43.0: (move_ball ball_1 loc_11_3 loc_10_3 loc_9_3)
-44.0: (move_ball ball_1 loc_10_3 loc_9_3 loc_8_3)
-45.0: (move_character loc_9_3 loc_10_3)
-46.0: (move_character loc_10_3 loc_10_2)
-47.0: (move_ball ball_2 loc_10_2 loc_9_2 loc_8_2)
-48.0: (move_character loc_9_2 loc_9_3)
-49.0: (move_ball ball_1 loc_9_3 loc_8_3 loc_7_3)
-50.0: (move_character loc_8_3 loc_9_3)
-51.0: (move_character loc_9_3 loc_10_3)
-52.0: (move_character loc_10_3 loc_10_2)
-53.0: (move_character loc_10_2 loc_10_1)
-54.0: (move_character loc_10_1 loc_9_1)
-55.0: (move_character loc_9_1 loc_8_1)
-56.0: (move_character loc_8_1 loc_7_1)
-57.0: (move_character loc_7_1 loc_6_1)
-58.0: (move_character loc_6_1 loc_6_2)
-59.0: (move_character loc_6_2 loc_6_3)
-60.0: (move_ball ball_1 loc_6_3 loc_7_3 loc_8_3)
-61.0: (move_character loc_7_3 loc_7_2)
-62.0: (move_character loc_7_2 loc_7_1)
-63.0: (move_character loc_7_1 loc_8_1)
-64.0: (move_character loc_8_1 loc_9_1)
-65.0: (move_character loc_9_1 loc_9_2)
-66.0: (move_ball ball_2 loc_9_2 loc_8_2 loc_7_2)
-67.0: (move_character loc_8_2 loc_9_2)
-68.0: (move_character loc_9_2 loc_9_3)
-69.0: (move_ball ball_1 loc_9_3 loc_8_3 loc_7_3)
-70.0: (move_ball ball_1 loc_8_3 loc_7_3 loc_6_3)
-71.0: (move_character loc_7_3 loc_8_3)
-72.0: (move_character loc_8_3 loc_8_2)
-73.0: (move_ball ball_2 loc_8_2 loc_7_2 loc_6_2)
-74.0: (move_character loc_7_2 loc_7_3)
-75.0: (move_ball ball_1 loc_7_3 loc_6_3 loc_5_3)
-76.0: (move_ball ball_1 loc_6_3 loc_5_3 loc_4_3)
-77.0: (move_ball ball_1 loc_5_3 loc_4_3 loc_3_3)
-78.0: (move_character loc_4_3 loc_5_3)
-79.0: (move_character loc_5_3 loc_5_2)
-80.0: (move_character loc_5_2 loc_5_1)
-81.0: (move_character loc_5_1 loc_4_1)
-82.0: (move_character loc_4_1 loc_3_1)
-83.0: (move_ball ball_0 loc_3_1 loc_3_2 loc_3_3)
-84.0: (move_character loc_3_2 loc_3_1)
-85.0: (move_character loc_3_1 loc_4_1)
-86.0: (move_character loc_4_1 loc_5_1)
-87.0: (move_character loc_5_1 loc_6_1)
-88.0: (move_ball ball_2 loc_6_1 loc_6_2 loc_6_3)
-89.0: (move_character loc_6_2 loc_7_2)
-90.0: (move_character loc_7_2 loc_7_3)
-91.0: (move_ball ball_2 loc_7_3 loc_6_3 loc_5_3)
-92.0: (move_ball ball_2 loc_6_3 loc_5_3 loc_4_3)
-93.0: (move_ball ball_2 loc_5_3 loc_4_3 loc_3_3)
-94.0: (goal ball_2 ball_0 ball_1 loc_3_3)
+34.0: (move_character loc_10_1 loc_11_1)
+35.0: (move_character loc_11_1 loc_12_1)
+36.0: (move_character loc_12_1 loc_12_2)
+37.0: (move_character loc_12_2 loc_12_3)
+38.0: (move_character loc_12_3 loc_11_3)
+39.0: (move_character loc_11_3 loc_10_3)
+40.0: (move_ball ball_1 loc_10_3 loc_10_2 loc_10_1)
+41.0: (move_character loc_10_2 loc_10_3)
+42.0: (move_character loc_10_3 loc_11_3)
+43.0: (move_character loc_11_3 loc_12_3)
+44.0: (move_character loc_12_3 loc_12_2)
+45.0: (move_ball ball_2 loc_12_2 loc_11_2 loc_10_2)
+46.0: (move_ball ball_2 loc_11_2 loc_10_2 loc_9_2)
+47.0: (move_character loc_10_2 loc_11_2)
+48.0: (move_character loc_11_2 loc_11_1)
+49.0: (move_ball ball_1 loc_11_1 loc_10_1 loc_9_1)
+50.0: (move_ball ball_1 loc_10_1 loc_9_1 loc_8_1)
+51.0: (move_ball ball_1 loc_9_1 loc_8_1 loc_7_1)
+52.0: (move_character loc_8_1 loc_9_1)
+53.0: (move_character loc_9_1 loc_10_1)
+54.0: (move_character loc_10_1 loc_10_2)
+55.0: (move_ball ball_2 loc_10_2 loc_9_2 loc_8_2)
+56.0: (move_ball ball_2 loc_9_2 loc_8_2 loc_7_2)
+57.0: (move_ball ball_2 loc_8_2 loc_7_2 loc_6_2)
+58.0: (move_character loc_7_2 loc_8_2)
+59.0: (move_character loc_8_2 loc_8_1)
+60.0: (move_ball ball_1 loc_8_1 loc_7_1 loc_6_1)
+61.0: (move_ball ball_1 loc_7_1 loc_6_1 loc_5_1)
+62.0: (move_ball ball_1 loc_6_1 loc_5_1 loc_4_1)
+63.0: (move_ball ball_1 loc_5_1 loc_4_1 loc_3_1)
+64.0: (move_character loc_4_1 loc_5_1)
+65.0: (move_character loc_5_1 loc_6_1)
+66.0: (move_character loc_6_1 loc_7_1)
+67.0: (move_character loc_7_1 loc_7_2)
+68.0: (move_character loc_7_2 loc_7_3)
+69.0: (move_character loc_7_3 loc_6_3)
+70.0: (move_ball ball_2 loc_6_3 loc_6_2 loc_6_1)
+71.0: (move_character loc_6_2 loc_7_2)
+72.0: (move_character loc_7_2 loc_7_1)
+73.0: (move_ball ball_2 loc_7_1 loc_6_1 loc_5_1)
+74.0: (move_ball ball_2 loc_6_1 loc_5_1 loc_4_1)
+75.0: (move_character loc_5_1 loc_5_2)
+76.0: (move_character loc_5_2 loc_4_2)
+77.0: (move_character loc_4_2 loc_4_3)
+78.0: (move_character loc_4_3 loc_3_3)
+79.0: (move_ball ball_0 loc_3_3 loc_3_2 loc_3_1)
+80.0: (move_character loc_3_2 loc_4_2)
+81.0: (move_character loc_4_2 loc_5_2)
+82.0: (move_character loc_5_2 loc_5_1)
+83.0: (move_ball ball_2 loc_5_1 loc_4_1 loc_3_1)
+84.0: (goal ball_2 ball_0 ball_1 loc_3_1)
 
-Plan-Length:95
-Metric (Search):26.0
-Planning Time (msec): 76364
-Heuristic Time (msec): 473
-Search Time (msec): 520
-Expanded Nodes:1330
-States Evaluated:1595
+Plan-Length:85
+Metric (Search):24.0
+Planning Time (msec): 76114
+Heuristic Time (msec): 375
+Search Time (msec): 423
+Expanded Nodes:415
+States Evaluated:607
 Fixed constraint violations during search (zero-crossing):0
-Number of Dead-Ends detected:90
-Number of Duplicates detected:2478
+Number of Dead-Ends detected:43
+Number of Duplicates detected:685

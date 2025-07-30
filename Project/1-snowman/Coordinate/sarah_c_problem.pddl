@@ -13,7 +13,7 @@
 
     (:init
         (= (total-cost) 0)
-        (= (is_goal_achieved) 0)
+        (= (goal) 0)
 
         (= (x-coord loc_1_1) 1) (= (y-coord loc_1_1) 1)
         (= (x-coord loc_1_2) 1) (= (y-coord loc_1_2) 2)
@@ -56,7 +56,7 @@
 
     (:goal
         (and
-            (= (is_goal_achieved) 1)
+            (= (goal) 1)
         )
     )
 

@@ -567,16 +567,17 @@ function loadSavedProblems() {
         
         // RICOSTRUISCI I SET PER OGNI PROBLEMA CARICATO
         savedProblems = tempSavedProblems.map(problem => {
-            if (problem.problemData && Array.isArray(problem.problemData.snowLocations) && Array.isArray(problem.problemData.grassLocations)) {
+            // --- MODIFIED --- Aggiunto controllo e ricostruzione per allDefinedLocations
+            if (problem.problemData && Array.isArray(problem.problemData.snowLocations) && Array.isArray(problem.problemData.grassLocations) && Array.isArray(problem.problemData.allDefinedLocations)) {
                 problem.problemData.snowLocations = new Set(problem.problemData.snowLocations);
                 problem.problemData.grassLocations = new Set(problem.problemData.grassLocations);
+                problem.problemData.allDefinedLocations = new Set(problem.problemData.allDefinedLocations);
             } else {
                 console.warn(`Dati problemData corrotti o incompleti per il problema: ${problem.name}. Potrebbe non essere visualizzato correttamente.`);
-                // Se i dati sono gravemente corrotti, potresti voler filtrare questo problema:
-                // return null; 
+                return null; 
             }
             return problem;
-        }).filter(p => p !== null); // Filtra eventuali problemi nulli se hai aggiunto la logica di esclusione
+        }).filter(p => p !== null);
         
         updateProblemList();
     } catch (error) {
@@ -591,11 +592,12 @@ function loadSavedProblems() {
 function saveProblem(name, problemText, planText = '', rawProblemData) {
     try {
         const id = Date.now().toString();
-        // Converte i Set in Array per la serializzazione JSON
+        // --- MODIFIED --- Converte il nuovo Set 'allDefinedLocations' in Array per la serializzazione
         const serializableProblemData = {
             ...rawProblemData,
             snowLocations: Array.from(rawProblemData.snowLocations),
-            grassLocations: Array.from(rawProblemData.grassLocations)
+            grassLocations: Array.from(rawProblemData.grassLocations),
+            allDefinedLocations: Array.from(rawProblemData.allDefinedLocations)
         };
         
         const problem = {
@@ -609,10 +611,8 @@ function saveProblem(name, problemText, planText = '', rawProblemData) {
         
         const existingIndex = savedProblems.findIndex(p => p.name === name);
         if (existingIndex > -1) {
-            // Se esiste già un problema con lo stesso nome, lo aggiorna
             savedProblems[existingIndex] = problem;
         } else {
-            // Altrimenti, lo aggiunge all'inizio della lista
             savedProblems.unshift(problem);
         }
         
@@ -691,7 +691,7 @@ async function loadFromFiles() {
         const vizElement = document.getElementById('visualization');
         if (vizElement) {
             vizElement.classList.add('active');
-            console.log('Visualizzazione attivata');
+            console.log('Visualizzazioneattivata');
         } else {
             console.error('Elemento visualization non trovato!');
         }
@@ -724,13 +724,12 @@ function loadProblem(id) {
         hideError();
         console.log('Caricamento problema salvato dalla lista:', problem.name);
 
-        // problem.problemData dovrebbe già avere snowLocations e grassLocations come Set
-        // grazie alla logica di ricostruzione in loadSavedProblems().
-        // Tuttavia, per sicurezza, possiamo ricontrollare o copiare profondamente.
+        // --- MODIFIED --- Assicura che anche allDefinedLocations sia un Set
         problemData = {
             ...problem.problemData,
-            snowLocations: new Set(problem.problemData.snowLocations), // Assicurati che sia un Set
-            grassLocations: new Set(problem.problemData.grassLocations) // Assicurati che sia un Set
+            snowLocations: new Set(problem.problemData.snowLocations),
+            grassLocations: new Set(problem.problemData.grassLocations),
+            allDefinedLocations: new Set(problem.problemData.allDefinedLocations)
         };
         planData = parsePlan(problem.planText);
         gameStates = createGameStates(problemData, planData);
@@ -745,7 +744,7 @@ function loadProblem(id) {
             vizElement.classList.add('active');
         }
 
-        updateProblemList(); // Aggiorna la lista per evidenziare il problema attivo
+        updateProblemList(); 
         stopPlay();
 
         console.log('Problema caricato con successo dalla lista');
@@ -760,9 +759,7 @@ async function loadProblemsFromDataFolder() {
     console.log('--- INIZIO CARICAMENTO PROBLEMI DA CARTELLA "data" ---');
     hideError();
 
-    // IMPORTANT: Devi elencare qui i nomi base dei tuoi file di problema.
-    // Ad esempio, se hai 'adam_problem.pddl' e 'adam_plan.txt', aggiungi 'adam' qui.
-    const potentialProblemNames = ['rebecca', 'unused_1', 'helen', 'david', 'kate', 'kevin', 'lydia', 'chris', 'tanya', 'paul', 'sally', 'willow', 'andy', 'alex', 'claire', 'joan', 'martingala2', 'priscilla', 'alice', 'carlasta', 'julian', 'louise', 'unused_2', 'sarah', 'lucy', 'mary', 'carlasta2', 'freya', 'adam', 'lauren', 'william'];
+    const potentialProblemNames = ['rebecca', 'unused_1', 'helen', 'david', 'kate', 'kevin', 'lydia', 'chris', 'tanya', 'paul', 'sally', 'willow', 'andy', 'alex', 'claire', 'joan', 'martingala2', 'priscilla', 'alice', 'carlasta', 'julian', 'louise', 'unused_2', 'sarah', 'lucy', 'mary', 'carlasta2', 'freya', 'adam', 'lauren', 'william','chris_karen','jack_jill'];
 
     if (potentialProblemNames.length === 0) {
         console.warn('`potentialProblemNames` è vuoto. Assicurati di aver aggiunto i nomi base dei tuoi problemi nel codice JavaScript per il caricamento automatico.');
@@ -775,7 +772,7 @@ async function loadProblemsFromDataFolder() {
 
     for (const problemNameBase of potentialProblemNames) {
         const problemFilePath = `${DATA_DIR}${problemNameBase}_problem.pddl`;
-        const planFilePath = `${DATA_DIR}${problemNameBase}_plan.txt`; // Assumi lo stesso nome base per il piano
+        const planFilePath = `${DATA_DIR}${problemNameBase}_plan.txt`;
 
         console.log(`Tentativo di caricamento per: ${problemNameBase}`);
 
@@ -803,7 +800,6 @@ async function loadProblemsFromDataFolder() {
             }
 
             const parsedProblemData = parseProblem(problemText);
-            // Salva il problema con i dati parsati, che saranno serializzati in localStorage
             saveProblem(problemNameBase, problemText, planText, parsedProblemData);
             loadedCount++;
             console.log(`[SUCCESSO] Caricato e salvato problema: ${problemNameBase}`);
@@ -815,7 +811,7 @@ async function loadProblemsFromDataFolder() {
         }
     }
 
-    updateProblemList(); // Aggiorna la lista dopo tutti i caricamenti automatici
+    updateProblemList();
 
     if (loadedCount > 0) {
         console.log(`--- CARICAMENTO DA "data" COMPLETATO: ${loadedCount} problemi caricati con successo, ${errorCount} errori ---`);
@@ -833,8 +829,6 @@ async function loadProblemsFromDataFolder() {
     }
 }
 
-
-// Lettura file con Promise
 function readFile(file) {
     return new Promise((resolve, reject) => {
         if (!file) {
@@ -853,7 +847,7 @@ function readFile(file) {
     });
 }
 
-// Parsing corretto del problema PDDL standard
+// --- MODIFIED FUNCTION ---
 function parseProblem(problemText) {
     if (!problemText || !problemText.trim()) {
         throw new Error('File problema vuoto o non valido');
@@ -864,83 +858,67 @@ function parseProblem(problemText) {
     let initialPlayerPos = null;
     const initialBallPositions = {};
     const ballSizes = {};
-    const snowLocations = new Set(); // Mantenere come Set
+    const snowLocations = new Set();
+    const allDefinedLocations = new Set(); // Nuovo: memorizza tutte le celle valide
 
     console.log('Parsing', lines.length, 'righe del problema...');
 
     lines.forEach((line, index) => {
         try {
-            // Trova tutte le locazioni per determinare la dimensione della griglia
+            // Trova TUTTE le menzioni di loc_x_y per definire sia la dimensione massima
+            // della griglia sia l'elenco completo delle celle esistenti.
             const locMatches = [...line.matchAll(/loc_(\d+)_(\d+)/g)];
             locMatches.forEach(match => {
+                const locName = match[0];
+                allDefinedLocations.add(locName); // Aggiunge la cella all'elenco di quelle valide
+                
                 const x = parseInt(match[1]);
                 const y = parseInt(match[2]);
                 gridSize.width = Math.max(gridSize.width, x);
                 gridSize.height = Math.max(gridSize.height, y);
             });
 
-            // Pattern per diversi formati di posizione del personaggio
+            // Parsing di personaggio, palle e neve (logica invariata)
             let match = line.match(/\(\s*character_at\s+(loc_\d+_\d+)\s*\)/);
-            if (!match) {
-                match = line.match(/\(\s*=\s*\(character_at\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/);
-            }
-            if (match) {
-                initialPlayerPos = match[1];
-            }
+            if (!match) { match = line.match(/\(\s*=\s*\(character_at\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/); }
+            if (match) { initialPlayerPos = match[1]; }
 
-            // Pattern per diversi formati di posizione delle palle
             match = line.match(/\(\s*ball_at\s+(ball_\d+)\s+(loc_\d+_\d+)\s*\)/);
-            if (!match) {
-                match = line.match(/\(\s*=\s*\(\s*ball_at\s+(ball_\d+)\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/);
-            }
-            if (match) {
-                initialBallPositions[match[1]] = match[2];
-            }
+            if (!match) { match = line.match(/\(\s*=\s*\(\s*ball_at\s+(ball_\d+)\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/); }
+            if (match) { initialBallPositions[match[1]] = match[2]; }
 
-            // Pattern per dimensioni delle palle
             match = line.match(/\(\s*=\s*\(\s*ball_size\s+(ball_\d+)\s*\)\s*(\d+)\s*\)/);
-            if (match) {
-                ballSizes[match[1]] = parseInt(match[2]);
-            }
+            if (match) { ballSizes[match[1]] = parseInt(match[2]); }
 
-            // Pattern per diversi formati di neve
             match = line.match(/\(\s*snow\s+(loc_\d+_\d+)\s*\)/);
-            if (!match) {
-                match = line.match(/\(\s*=\s*\(\s*snow\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/);
-            }
-            if (match) {
-                snowLocations.add(match[1]);
-            }
+            if (!match) { match = line.match(/\(\s*=\s*\(\s*snow\s+(loc_\d+_\d+)\s*\)\s*1\s*\)/); }
+            if (match) { snowLocations.add(match[1]); }
+
         } catch (e) {
             console.warn('Errore parsing riga', index + 1, ':', line, e);
         }
     });
 
-    // Validazione
-    if (gridSize.width === 0 || gridSize.height === 0) {
+    if (allDefinedLocations.size === 0) {
         throw new Error("Nessuna locazione trovata per definire la griglia. Controlla il formato del file PDDL.");
     }
     if (!initialPlayerPos) {
-        throw new Error("Posizione del giocatore non trovata. Cerca un predicato come '(character_at loc_x_y)' o '(= (character_at loc_x_y) 1)'.");
+        throw new Error("Posizione del giocatore non trovata. Cerca un predicato come '(character_at loc_x_y)'.");
     }
 
-    // Crea le locazioni d'erba (tutte quelle senza neve)
-    const grassLocations = new Set(); // Mantenere come Set
-    for (let r = 1; r <= gridSize.height; r++) {
-        for (let c = 1; c <= gridSize.width; c++) {
-            const locName = `loc_${c}_${r}`;
-            if (!snowLocations.has(locName)) {
-                grassLocations.add(locName);
-            }
+    // Le locazioni d'erba sono TUTTE le locazioni definite che NON sono innevate.
+    const grassLocations = new Set();
+    allDefinedLocations.forEach(loc => {
+        if (!snowLocations.has(loc)) {
+            grassLocations.add(loc);
         }
-    }
+    });
 
     console.log('Parsing completato:', {
         gridSize,
         initialPlayerPos,
-        ballCount: Object.keys(initialBallPositions).length,
-        snowCount: snowLocations.size,
-        grassCount: grassLocations.size
+        totalDefinedLocations: allDefinedLocations.size,
+        snowCount: snowLocations.size
     });
 
     return {
@@ -948,10 +926,12 @@ function parseProblem(problemText) {
         initialPlayerPos,
         initialBallPositions,
         ballSizes,
-        snowLocations, // Set
-        grassLocations // Set
+        snowLocations,
+        grassLocations,
+        allDefinedLocations // Restituisce l'elenco delle celle valide
     };
 }
+
 
 function parsePlan(planText) {
     if (!planText || !planText.trim()) {
@@ -977,7 +957,6 @@ function parsePlan(planText) {
             return;
         }
 
-        // Extract Plan-Length
         const planLengthMatch = line.match(/Plan-Length:\s*(\d+)/);
         if (planLengthMatch) {
             planLength = parseInt(planLengthMatch[1], 10);
@@ -1020,10 +999,9 @@ function parsePlan(planText) {
         }
     });
 
-    // Trim actions to match planLength if found and valid
     if (planLength !== -1 && actions.length > planLength) {
         console.warn(`Troncando il piano da ${actions.length} a ${planLength} passi basati su Plan-Length.`);
-        actions.splice(planLength); // Keep only the first 'planLength' actions
+        actions.splice(planLength);
     } else if (planLength !== -1 && actions.length < planLength) {
         console.warn(`Attenzione: Il numero di azioni parsate (${actions.length}) è inferiore al Plan-Length specificato (${planLength}).`);
     } else if (planLength === -1) {
@@ -1033,11 +1011,6 @@ function parsePlan(planText) {
 
     console.log('=== FINE PARSING PIANO OTTIMIZZATO ===');
     console.log('Totale azioni trovate dopo il trimming (se Plan-Length presente):', actions.length);
-    if (actions.length > 0) {
-        console.log('Prima azione:', actions[0]);
-        console.log('Ultima azione:', actions[actions.length - 1]);
-        console.log('Azioni 1-5:', actions.slice(0, 5));
-    }
 
     return { actions };
 }
@@ -1051,13 +1024,12 @@ function createGameStates(problemData, planData) {
     let currentPlayerPos = problemData.initialPlayerPos;
     let currentBallPositions = { ...problemData.initialBallPositions };
     let currentBallSizes = { ...problemData.ballSizes };
-    let currentSnowLocations = new Set([...problemData.snowLocations]); // Copia il Set
+    let currentSnowLocations = new Set([...problemData.snowLocations]);
 
-    // Stato iniziale
     states.push({
         playerPos: currentPlayerPos,
         ballPositions: { ...currentBallPositions },
-        snowLocations: new Set([...currentSnowLocations]), // Copia il Set
+        snowLocations: new Set([...currentSnowLocations]),
         ballSizes: { ...currentBallSizes },
         action: "Stato iniziale"
     });
@@ -1070,7 +1042,7 @@ function createGameStates(problemData, planData) {
         try {
             let nextPlayerPos = currentPlayerPos;
             let nextBallPositions = { ...currentBallPositions };
-            let nextSnowLocations = new Set([...currentSnowLocations]); // Copia il Set
+            let nextSnowLocations = new Set([...currentSnowLocations]);
             let nextBallSizes = { ...currentBallSizes };
             let actionApplied = false;
 
@@ -1084,9 +1056,9 @@ function createGameStates(problemData, planData) {
                 );
                 
                 if (otherBallsInFromPos.length > 0) {
-                    nextPlayerPos = currentPlayerPos; // Giocatore resta fermo se spinge una pila
+                    nextPlayerPos = currentPlayerPos;
                 } else {
-                    nextPlayerPos = fromPos; // Giocatore si sposta sulla cella "from"
+                    nextPlayerPos = fromPos;
                 }
 
                 if (nextSnowLocations.has(toPos)) {
@@ -1094,7 +1066,7 @@ function createGameStates(problemData, planData) {
                     if (currentSize < 3) {
                         nextBallSizes[ball] = currentSize + 1;
                     }
-                    nextSnowLocations.delete(toPos); // La neve viene consumata
+                    nextSnowLocations.delete(toPos);
                 }
             };
             
@@ -1117,7 +1089,7 @@ function createGameStates(problemData, planData) {
                 },
                  {
                     pattern: /build[-_]?snowman/,
-                    handler: () => true // L'azione build_snowman non modifica posizioni, ma la visualizzazione lo farà in updateVisualization
+                    handler: () => true
                 }
             ];
 
@@ -1132,7 +1104,7 @@ function createGameStates(problemData, planData) {
             const newState = {
                 playerPos: nextPlayerPos,
                 ballPositions: nextBallPositions,
-                snowLocations: nextSnowLocations, // Il Set aggiornato
+                snowLocations: nextSnowLocations,
                 ballSizes: nextBallSizes,
                 action: `${index + 1}: ${action}`
             };
@@ -1152,7 +1124,7 @@ function createGameStates(problemData, planData) {
     return states;
 }
 
-// Creazione della griglia visiva (main grid)
+// --- MODIFIED FUNCTION ---
 function createGrid(problemData) {
     const grid = document.getElementById('grid');
     if (!grid) {
@@ -1164,20 +1136,25 @@ function createGrid(problemData) {
     const { width, height } = problemData.gridSize;
     grid.style.gridTemplateColumns = `repeat(${width}, 80px)`;
 
-    // Crea le celle dall'alto verso il basso (row height -> 1)
+    // Crea le celle, ma rende invisibili quelle non definite nel problema
     for (let row = height; row >= 1; row--) {
         for (let col = 1; col <= width; col++) {
             const cell = document.createElement('div');
             const locationName = `loc_${col}_${row}`;
-            cell.className = 'cell';
             cell.id = locationName;
-            cell.classList.add(problemData.snowLocations.has(locationName) ? 'snow' : 'grass');
+            cell.className = 'cell';
+
+            // Se la cella non è nell'elenco di quelle valide, la nasconde.
+            if (!problemData.allDefinedLocations.has(locationName)) {
+                cell.style.visibility = 'hidden';
+            }
             grid.appendChild(cell);
         }
     }
 
     console.log('Griglia principale creata:', width, 'x', height);
 }
+
 
 function updateVisualization() {
     if (!gameStates || gameStates.length === 0) {
@@ -1187,7 +1164,7 @@ function updateVisualization() {
 
     document.querySelectorAll('.cell').forEach(cell => {
         cell.innerHTML = '';
-        cell.classList.remove('snow', 'grass'); // Rimuovi per riapplicare
+        cell.classList.remove('snow', 'grass');
     });
 
     const state = gameStates[currentStep];
@@ -1196,12 +1173,14 @@ function updateVisualization() {
         return;
     }
 
-    // Aggiorna celle innevate e erbose
     document.querySelectorAll('.cell').forEach(cell => {
         if (state.snowLocations.has(cell.id)) {
             cell.classList.add('snow');
         } else {
-            cell.classList.add('grass');
+            // Aggiunge 'grass' solo se la cella non è nascosta
+            if (cell.style.visibility !== 'hidden') {
+                cell.classList.add('grass');
+            }
         }
     });
 
@@ -1214,7 +1193,6 @@ function updateVisualization() {
         });
     }
 
-    // Mostra palle o pupazzo
     for (const [loc, balls] of Object.entries(ballsByCell)) {
         const cell = document.getElementById(loc);
         if (!cell) continue;
@@ -1247,7 +1225,6 @@ function updateVisualization() {
         }
     }
 
-    // Posiziona il giocatore
     if (state.playerPos) {
         const playerCell = document.getElementById(state.playerPos);
         if (playerCell) {
@@ -1260,7 +1237,6 @@ function updateVisualization() {
         }
     }
 
-    // Aggiorna UI
     document.getElementById('stepInfo').textContent = `Step ${currentStep} / ${gameStates.length - 1}`;
     document.getElementById('actionInfo').textContent = state.action;
     document.getElementById('prevBtn').disabled = currentStep === 0;
@@ -1271,7 +1247,6 @@ function updateVisualization() {
 }
 
 
-// Controlli di navigazione
 function previousStep() {
     if (currentStep > 0) {
         currentStep--;
@@ -1325,26 +1300,29 @@ function stopPlay() {
     }
 }
 
-// Funzioni per la lista dei problemi
+// --- MODIFIED FUNCTION ---
 function createProblemPreview(problemData) {
     const preview = document.createElement('div');
     preview.className = 'problem-preview';
 
-    // Limita la dimensione dell'anteprima per evitare anteprime troppo grandi
     const cols = Math.min(problemData.gridSize.width, 6);
     const rows = Math.min(problemData.gridSize.height, 6);
     preview.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-    // Calcola il padding per centrare la griglia nell'anteprima
-    // Non strettamente necessario ma utile per esteticità con griglie piccole
 
-    for (let row = rows; row >= 1; row--) { // Iterazione corretta per loc_x_y
+    for (let row = rows; row >= 1; row--) {
         for (let col = 1; col <= cols; col++) {
             const cell = document.createElement('div');
-            cell.className = 'mini-cell';
             const locationName = `loc_${col}_${row}`;
             
-            // problemData.snowLocations È UN SET QUI, quindi .has() funziona
-            cell.classList.add(problemData.snowLocations.has(locationName) ? 'snow' : 'grass');
+            // Controlla se la cella dell'anteprima esiste nel problema reale
+            if (problemData.allDefinedLocations && problemData.allDefinedLocations.has(locationName)) {
+                cell.className = 'mini-cell';
+                cell.classList.add(problemData.snowLocations.has(locationName) ? 'snow' : 'grass');
+            } else {
+                // Rende lo sfondo trasparente se la cella non esiste
+                cell.className = 'mini-cell';
+                cell.style.background = 'transparent';
+            }
             preview.appendChild(cell);
         }
     }
@@ -1352,6 +1330,7 @@ function createProblemPreview(problemData) {
     return preview;
 }
 
+// --- MODIFIED FUNCTION ---
 function updateProblemList() {
     const listElement = document.getElementById('problemList');
     if (!listElement) {
@@ -1362,11 +1341,7 @@ function updateProblemList() {
     listElement.innerHTML = '';
 
     if (savedProblems.length === 0) {
-        listElement.innerHTML = `
-            <div style="text-align: center; color: #666; padding: 30px; font-style: italic;">
-                Nessun problema caricato...
-            </div>
-        `;
+        listElement.innerHTML = `<div style="text-align: center; color: #666; padding: 30px; font-style: italic;">Nessun problema caricato...</div>`;
         return;
     }
 
@@ -1379,12 +1354,12 @@ function updateProblemList() {
                 item.classList.add('active');
             }
 
-            // --- INIZIO MODIFICA CRUCIALE ---
-            // Ricostruisci Set anche qui per assicurarti che createProblemPreview li riceva correttamente
+            // Ricostruisce i Set, incluso allDefinedLocations, per l'anteprima
             const problemDetailsForPreview = {
                 ...problem.problemData,
-                snowLocations: new Set(problem.problemData.snowLocations || []), // Aggiungi fallback a array vuoto
-                grassLocations: new Set(problem.problemData.grassLocations || []) // Aggiungi fallback a array vuoto
+                snowLocations: new Set(problem.problemData.snowLocations || []),
+                grassLocations: new Set(problem.problemData.grassLocations || []),
+                allDefinedLocations: new Set(problem.problemData.allDefinedLocations || []) // Nuovo
             };
 
             const hasPlan = problem.planText && problem.planText.trim().length > 0;
@@ -1392,10 +1367,11 @@ function updateProblemList() {
             const planClass = hasPlan ? '' : 'no-plan';
 
             let previewHtml = '';
-            // Controlla se i dati per l'anteprima sono validi prima di chiamare createProblemPreview
+            // Aggiunto controllo per allDefinedLocations
             if (problemDetailsForPreview && problemDetailsForPreview.gridSize &&
                 problemDetailsForPreview.snowLocations instanceof Set &&
-                problemDetailsForPreview.grassLocations instanceof Set) {
+                problemDetailsForPreview.grassLocations instanceof Set &&
+                problemDetailsForPreview.allDefinedLocations instanceof Set) {
                 
                 const previewElement = createProblemPreview(problemDetailsForPreview);
                 previewHtml = previewElement.outerHTML;
@@ -1420,15 +1396,12 @@ function updateProblemList() {
                             title="Elimina">🗑️</button>
                 </div>
             `;
-            // --- FINE MODIFICA CRUCIALE ---
             
-            // item.insertBefore(preview, item.firstChild); // Questa riga non è più necessaria se previewHtml è già nel innerHTML
             item.addEventListener('click', () => loadProblem(problem.id));
             listElement.appendChild(item);
             
         } catch (e) {
             console.error('Errore nella creazione dell\'elemento UI per il problema:', problem.name, e);
-            // Fallback per problemi che causano errori di rendering
             const errorItem = document.createElement('div');
             errorItem.className = 'problem-item';
             errorItem.style.backgroundColor = '#ffebee';

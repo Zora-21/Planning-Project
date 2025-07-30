@@ -2,7 +2,6 @@
     (:domain one_snowman_coordinates)
 
     (:objects
-        ;; Oggetti del problema: 3 palle e 25 locazioni
         ball_0 ball_1 ball_2 - ball
         
         loc_1_1 loc_1_2 loc_1_3 loc_1_4 loc_1_5
@@ -13,11 +12,9 @@
     )
 
     (:init
-        ;; Inizializzazione dei valori numerici
         (= (total-cost) 0)
-        (= (is_goal_achieved) 0)
+        (= (goal) 0)
 
-        ;; Definizione delle coordinate per ogni locazione
         (= (x-coord loc_1_1) 1) (= (y-coord loc_1_1) 1)
         (= (x-coord loc_1_2) 1) (= (y-coord loc_1_2) 2)
         (= (x-coord loc_1_3) 1) (= (y-coord loc_1_3) 3)
@@ -40,7 +37,6 @@
         (= (x-coord loc_5_4) 5) (= (y-coord loc_5_4) 4)
         (= (x-coord loc_5_5) 5) (= (y-coord loc_5_5) 5)
 
-        ;; Stato iniziale del mondo
         (character_at loc_3_2)
         
         (ball_at ball_0 loc_2_3)
@@ -67,8 +63,7 @@
 
     (:goal
         (and 
-            ;; L'obiettivo è che la condizione di goal definita nell'azione apposita sia soddisfatta
-            (= (is_goal_achieved) 1)
+            (= (goal) 1)
         )
     )
 

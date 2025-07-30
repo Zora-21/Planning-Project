@@ -120,7 +120,7 @@ def main():
     # Esegui la funzione principale
     trova_piani_comuni(cartella_csv, nome_output)
 
-def trova_piani_comuni_diretti(file1, file2, file3, file4, file_output="piani_comuni.csv"):
+def trova_piani_comuni_diretti(file1, file2, file_output="piani_comuni.csv"):
     """
     Trova i piani comuni tra due file CSV specifici
     
@@ -133,24 +133,18 @@ def trova_piani_comuni_diretti(file1, file2, file3, file4, file_output="piani_co
         # Carica i due CSV
         df1 = pd.read_csv(file1)
         df2 = pd.read_csv(file2)
-        df3 = pd.read_csv(file3)
-        df4 = pd.read_csv(file4)
-        
         
         # Estrae i tipi dai nomi dei file
         nome1 = os.path.basename(file1)
         nome2 = os.path.basename(file2)
-        nome3 = os.path.basename(file3)
-        nome4 = os.path.basename(file4)
+
         tipo1 = nome1.replace("plan_", "").replace(".csv", "")
         tipo2 = nome2.replace("plan_", "").replace(".csv", "")
-        tipo3 = nome3.replace("plan_", "").replace(".csv", "")
-        tipo4 = nome4.replace("plan_", "").replace(".csv", "")
+
         
         print(f"File 1: {nome1} (tipo: {tipo1}) - {len(df1)} righe")
         print(f"File 2: {nome2} (tipo: {tipo2}) - {len(df2)} righe")
-        print(f"File 3: {nome3} (tipo: {tipo3}) - {len(df3)} righe")
-        print(f"File 4: {nome4} (tipo: {tipo4}) - {len(df4)} righe")
+ 
         
         # Verifica che entrambi abbiano la colonna 'filename'
         if 'filename' not in df1.columns:
@@ -159,21 +153,14 @@ def trova_piani_comuni_diretti(file1, file2, file3, file4, file_output="piani_co
         if 'filename' not in df2.columns:
             print(f"Errore: {nome2} non contiene la colonna 'filename'")
             return
-        if 'filename' not in df3.columns:
-            print(f"Errore: {nome3} non contiene la colonna 'filename'")
-            return
-        if 'filename' not in df4.columns:
-            print(f"Errore: {nome4} non contiene la colonna 'filename'")
-            return
+
         
         # Trova i piani comuni
         piani_file1 = set(df1['filename'].unique())
         piani_file2 = set(df2['filename'].unique())
-        piani_file3 = set(df3['filename'].unique())
-        piani_file4 = set(df4['filename'].unique())
+
         piani_comuni = piani_file1.intersection(piani_file2)
-        piani_comuni = piani_comuni.intersection(piani_file3)
-        piani_comuni = piani_comuni.intersection(piani_file4)
+
         
         print(f"Piani unici nel file 1: {len(piani_file1)}")
         print(f"Piani unici nel file 2: {len(piani_file2)}")
@@ -188,17 +175,15 @@ def trova_piani_comuni_diretti(file1, file2, file3, file4, file_output="piani_co
         # Filtra e modifica i dataframe
         df1_comuni = df1[df1['filename'].isin(piani_comuni)].copy()
         df2_comuni = df2[df2['filename'].isin(piani_comuni)].copy()
-        df3_comuni = df3[df3['filename'].isin(piani_comuni)].copy()
-        df4_comuni = df4[df4['filename'].isin(piani_comuni)].copy()
+
         
         # Aggiungi i suffissi ai nomi
         df1_comuni['filename'] = df1_comuni['filename'] + f"_{tipo1}"
         df2_comuni['filename'] = df2_comuni['filename'] + f"_{tipo2}"
-        df3_comuni['filename'] = df3_comuni['filename'] + f"_{tipo3}"
-        df4_comuni['filename'] = df4_comuni['filename'] + f"_{tipo4}"
+
         
         # Combina i risultati
-        df_finale = pd.concat([df1_comuni, df2_comuni, df3_comuni, df4_comuni], ignore_index=True)
+        df_finale = pd.concat([df1_comuni, df2_comuni], ignore_index=True)
         
         # Salva il risultato
         df_finale.to_csv(file_output, index=False)
@@ -221,7 +206,7 @@ def trova_piani_comuni_diretti(file1, file2, file3, file4, file_output="piani_co
 if __name__ == "__main__":
     # Per usare direttamente con i file che hai caricato
     print("=== ANALISI DEI FILE CARICATI ===")
-    trova_piani_comuni_diretti("plan_goal.csv", "plan_count.csv", "plan_basic.csv", "plan_coord.csv", "piani_comuni.csv")
+    trova_piani_comuni_diretti("plan_goal.csv", "plan_coord.csv", "piani_comuni.csv")
     
     print("\n" + "="*50)
     print("Per usare lo script con altri file, decommentare la riga seguente:")

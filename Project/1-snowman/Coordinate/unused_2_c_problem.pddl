@@ -15,7 +15,7 @@
     (:init
         ;; Initialize numeric fluents
         (= (total-cost) 0)
-        (= (is_goal_achieved) 0)
+        (= (goal) 0)
 
         ;; Define coordinates for each location
         (= (x-coord loc_1_1) 1) (= (y-coord loc_1_1) 1)
@@ -77,7 +77,7 @@
     (:goal
         (and
             ;; The goal is met when the 'goal' action's conditions are satisfied
-            (= (is_goal_achieved) 1)
+            (= (goal) 1)
         )
     )
 

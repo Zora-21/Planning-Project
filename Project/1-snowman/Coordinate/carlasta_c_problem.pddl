@@ -1,7 +1,6 @@
 (define (problem carlasta_coordinates)
     (:domain one_snowman_coordinates)
     (:objects
-        ;; NOTA: Il tipo 'direction' non è più necessario in questo dominio
         ball_0 - ball
         ball_1 - ball
         ball_2 - ball
@@ -15,12 +14,9 @@
         loc_8_1 loc_8_2 loc_8_3 loc_8_4 loc_8_5 loc_8_6 loc_8_7 loc_8_8 - location
     )
     (:init
-        ;; Funzioni numeriche iniziali
         (= (total-cost) 0)
-        (= (is_goal_achieved) 0)
+        (= (goal) 0)
 
-        ;; Definizione delle coordinate per ogni location
-        ;; Questo sostituisce tutti i predicati (next ...)
         (= (x-coord loc_1_1) 1) (= (y-coord loc_1_1) 1)
         (= (x-coord loc_1_2) 1) (= (y-coord loc_1_2) 2)
         (= (x-coord loc_1_3) 1) (= (y-coord loc_1_3) 3)
@@ -102,8 +98,7 @@
 
     (:goal
         (and
-            ;; L'obiettivo è ora controllato dalla funzione corretta
-            (=(is_goal_achieved) 1)
+            (=(goal) 1)
         )
     )
 
