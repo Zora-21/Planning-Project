@@ -1,0 +1,178 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 742
+Aibr Preprocessing
+|F|:696
+|X|:7
+|A|:9536
+|P|:0
+|E|:0
+=== Snowman Topological Preprocessing ===
+Palle trovate: 6 [ball_0, ball_1, ball_2, ball_3, ball_4, ball_5]
+Locations trovate: 69 (Graph Nodes)
+Dead-end nodes: 0/69
+Target pupazzi: 2
+=========================================
+[SnowmanHeuristic] Snow cells in PDDL: 62, tracked by grounder: 69 [FULL COVERAGE]
+SnowmanConfigurator: initialized with 20 groupings.
+SnowmanHeuristic initialized: 6 ball trackers, 69 cell trackers, 69 character trackers
+Helpful Action Pruning Activated
+Running Greedy Best First Search
+h(n = s_0)=12.003
+ g(n)= 0.0 h(n)=12.002
+ g(n)= 0.0 h(n)=12.001
+ g(n)= 0.0 h(n)=12.0
+ g(n)= 1.0 h(n)=11.0
+ g(n)= 2.0 h(n)=10.0
+ g(n)= 3.0 h(n)=9.0
+ g(n)= 4.0 h(n)=8.0
+ g(n)= 5.0 h(n)=7.0
+ g(n)= 6.0 h(n)=6.0
+ g(n)= 11.0 h(n)=5.0
+ g(n)= 13.0 h(n)=4.0
+ g(n)= 14.0 h(n)=3.014
+ g(n)= 14.0 h(n)=3.013
+ g(n)= 14.0 h(n)=3.012
+ g(n)= 14.0 h(n)=3.011
+ g(n)= 14.0 h(n)=3.01
+ g(n)= 14.0 h(n)=3.009
+ g(n)= 14.0 h(n)=3.008
+ g(n)= 14.0 h(n)=3.007
+ g(n)= 14.0 h(n)=3.006
+ g(n)= 14.0 h(n)=3.005
+ g(n)= 14.0 h(n)=3.004
+ g(n)= 14.0 h(n)=3.003
+ g(n)= 14.0 h(n)=3.002
+ g(n)= 14.0 h(n)=3.001
+ g(n)= 14.0 h(n)=3.0
+ g(n)= 19.0 h(n)=2.0
+ g(n)= 21.0 h(n)=1.0
+ g(n)= 22.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_12_2 loc_11_2 dir_left)
+1.0: (move_character loc_11_2 loc_10_2 dir_left)
+2.0: (move_character loc_10_2 loc_9_2 dir_left)
+3.0: (move_ball ball_2 loc_9_2 loc_8_2 loc_7_2 dir_left)
+4.0: (move_ball ball_2 loc_8_2 loc_7_2 loc_6_2 dir_left)
+5.0: (move_character loc_7_2 loc_7_1 dir_down)
+6.0: (move_character loc_7_1 loc_6_1 dir_left)
+7.0: (move_character loc_6_1 loc_5_1 dir_left)
+8.0: (move_character loc_5_1 loc_4_1 dir_left)
+9.0: (move_character loc_4_1 loc_3_1 dir_left)
+10.0: (move_character loc_3_1 loc_2_1 dir_left)
+11.0: (move_character loc_2_1 loc_1_1 dir_left)
+12.0: (move_character loc_1_1 loc_1_2 dir_up)
+13.0: (move_ball ball_0 loc_1_2 loc_2_2 loc_3_2 dir_right)
+14.0: (move_character loc_2_2 loc_2_1 dir_down)
+15.0: (move_character loc_2_1 loc_3_1 dir_right)
+16.0: (move_character loc_3_1 loc_4_1 dir_right)
+17.0: (move_character loc_4_1 loc_5_1 dir_right)
+18.0: (move_character loc_5_1 loc_6_1 dir_right)
+19.0: (move_character loc_6_1 loc_7_1 dir_right)
+20.0: (move_character loc_7_1 loc_7_2 dir_up)
+21.0: (move_character loc_7_2 loc_8_2 dir_right)
+22.0: (move_character loc_8_2 loc_9_2 dir_right)
+23.0: (move_character loc_9_2 loc_10_2 dir_right)
+24.0: (move_character loc_10_2 loc_11_2 dir_right)
+25.0: (move_character loc_11_2 loc_12_2 dir_right)
+26.0: (move_character loc_12_2 loc_13_2 dir_right)
+27.0: (move_character loc_13_2 loc_14_2 dir_right)
+28.0: (move_character loc_14_2 loc_15_2 dir_right)
+29.0: (move_ball ball_3 loc_15_2 loc_16_2 loc_17_2 dir_right)
+30.0: (move_ball ball_3 loc_16_2 loc_17_2 loc_18_2 dir_right)
+31.0: (move_character loc_17_2 loc_17_1 dir_down)
+32.0: (move_character loc_17_1 loc_18_1 dir_right)
+33.0: (move_character loc_18_1 loc_19_1 dir_right)
+34.0: (move_character loc_19_1 loc_20_1 dir_right)
+35.0: (move_character loc_20_1 loc_21_1 dir_right)
+36.0: (move_character loc_21_1 loc_22_1 dir_right)
+37.0: (move_character loc_22_1 loc_23_1 dir_right)
+38.0: (move_character loc_23_1 loc_23_2 dir_up)
+39.0: (move_ball ball_5 loc_23_2 loc_22_2 loc_21_2 dir_left)
+40.0: (move_character loc_22_2 loc_22_1 dir_down)
+41.0: (move_character loc_22_1 loc_21_1 dir_left)
+42.0: (move_character loc_21_1 loc_20_1 dir_left)
+43.0: (move_character loc_20_1 loc_19_1 dir_left)
+44.0: (move_character loc_19_1 loc_18_1 dir_left)
+45.0: (move_character loc_18_1 loc_17_1 dir_left)
+46.0: (move_character loc_17_1 loc_17_2 dir_up)
+47.0: (move_character loc_17_2 loc_16_2 dir_left)
+48.0: (move_character loc_16_2 loc_15_2 dir_left)
+49.0: (move_character loc_15_2 loc_14_2 dir_left)
+50.0: (move_character loc_14_2 loc_13_2 dir_left)
+51.0: (move_character loc_13_2 loc_12_2 dir_left)
+52.0: (move_character loc_12_2 loc_11_2 dir_left)
+53.0: (move_character loc_11_2 loc_10_2 dir_left)
+54.0: (move_character loc_10_2 loc_9_2 dir_left)
+55.0: (move_character loc_9_2 loc_8_2 dir_left)
+56.0: (move_character loc_8_2 loc_7_2 dir_left)
+57.0: (move_character loc_7_2 loc_7_3 dir_up)
+58.0: (move_character loc_7_3 loc_6_3 dir_left)
+59.0: (move_ball ball_2 loc_6_3 loc_6_2 loc_6_1 dir_down)
+60.0: (move_character loc_6_2 loc_7_2 dir_right)
+61.0: (move_character loc_7_2 loc_7_1 dir_down)
+62.0: (move_ball ball_2 loc_7_1 loc_6_1 loc_5_1 dir_left)
+63.0: (move_ball ball_2 loc_6_1 loc_5_1 loc_4_1 dir_left)
+64.0: (move_ball ball_2 loc_5_1 loc_4_1 loc_3_1 dir_left)
+65.0: (move_character loc_4_1 loc_4_2 dir_up)
+66.0: (move_character loc_4_2 loc_4_3 dir_up)
+67.0: (move_character loc_4_3 loc_3_3 dir_left)
+68.0: (move_ball ball_0 loc_3_3 loc_3_2 loc_3_1 dir_down)
+69.0: (move_character loc_3_2 loc_4_2 dir_right)
+70.0: (move_character loc_4_2 loc_4_3 dir_up)
+71.0: (move_character loc_4_3 loc_5_3 dir_right)
+72.0: (move_ball ball_1 loc_5_3 loc_5_2 loc_5_1 dir_down)
+73.0: (move_character loc_5_2 loc_6_2 dir_right)
+74.0: (move_character loc_6_2 loc_6_1 dir_down)
+75.0: (move_ball ball_1 loc_6_1 loc_5_1 loc_4_1 dir_left)
+76.0: (move_ball ball_1 loc_5_1 loc_4_1 loc_3_1 dir_left)
+77.0: (move_character loc_4_1 loc_4_2 dir_up)
+78.0: (move_character loc_4_2 loc_5_2 dir_right)
+79.0: (move_character loc_5_2 loc_6_2 dir_right)
+80.0: (move_character loc_6_2 loc_7_2 dir_right)
+81.0: (move_character loc_7_2 loc_8_2 dir_right)
+82.0: (move_character loc_8_2 loc_9_2 dir_right)
+83.0: (move_character loc_9_2 loc_10_2 dir_right)
+84.0: (move_character loc_10_2 loc_11_2 dir_right)
+85.0: (move_character loc_11_2 loc_12_2 dir_right)
+86.0: (move_character loc_12_2 loc_13_2 dir_right)
+87.0: (move_character loc_13_2 loc_14_2 dir_right)
+88.0: (move_character loc_14_2 loc_15_2 dir_right)
+89.0: (move_character loc_15_2 loc_16_2 dir_right)
+90.0: (move_character loc_16_2 loc_17_2 dir_right)
+91.0: (move_character loc_17_2 loc_17_1 dir_down)
+92.0: (move_character loc_17_1 loc_18_1 dir_right)
+93.0: (built_snowman ball_1 ball_0 ball_2 loc_3_1)
+94.0: (move_ball ball_3 loc_18_1 loc_18_2 loc_18_3 dir_up)
+95.0: (move_character loc_18_2 loc_17_2 dir_left)
+96.0: (move_character loc_17_2 loc_17_3 dir_up)
+97.0: (move_ball ball_3 loc_17_3 loc_18_3 loc_19_3 dir_right)
+98.0: (move_ball ball_3 loc_18_3 loc_19_3 loc_20_3 dir_right)
+99.0: (move_ball ball_3 loc_19_3 loc_20_3 loc_21_3 dir_right)
+100.0: (move_character loc_20_3 loc_20_2 dir_down)
+101.0: (move_character loc_20_2 loc_20_1 dir_down)
+102.0: (move_character loc_20_1 loc_21_1 dir_right)
+103.0: (move_ball ball_5 loc_21_1 loc_21_2 loc_21_3 dir_up)
+104.0: (move_character loc_21_2 loc_20_2 dir_left)
+105.0: (move_character loc_20_2 loc_20_1 dir_down)
+106.0: (move_character loc_20_1 loc_19_1 dir_left)
+107.0: (move_ball ball_4 loc_19_1 loc_19_2 loc_19_3 dir_up)
+108.0: (move_character loc_19_2 loc_18_2 dir_left)
+109.0: (move_character loc_18_2 loc_18_3 dir_up)
+110.0: (move_ball ball_4 loc_18_3 loc_19_3 loc_20_3 dir_right)
+111.0: (move_ball ball_4 loc_19_3 loc_20_3 loc_21_3 dir_right)
+112.0: (built_snowman ball_4 ball_5 ball_3 loc_21_3)
+
+Plan-Length:113
+Metric (Search):22.0
+Planning Time (msec): 3324
+Heuristic Time (msec): 279
+Search Time (msec): 1290
+Expanded Nodes:1148
+States Evaluated:1727
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:0
+Number of Duplicates detected:2092

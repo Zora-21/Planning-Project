@@ -1,0 +1,97 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 75
+Aibr Preprocessing
+|F|:114
+|X|:4
+|A|:278
+|P|:0
+|E|:0
+=== Snowman Topological Preprocessing ===
+Palle trovate: 3 [ball_0, ball_1, ball_2]
+Locations trovate: 19 (Graph Nodes)
+Dead-end nodes: 0/19
+Target pupazzi: 1
+=========================================
+[SnowmanHeuristic] Snow cells in PDDL: 3, tracked by grounder: 19 [FULL COVERAGE]
+SnowmanConfigurator: initialized with 1 groupings.
+SnowmanHeuristic initialized: 3 ball trackers, 19 cell trackers, 19 character trackers
+Helpful Action Pruning Activated
+Running Greedy Best First Search
+h(n = s_0)=5.0
+ g(n)= 1.0 h(n)=4.0
+ g(n)= 2.0 h(n)=3.0
+ g(n)= 6.0 h(n)=2.0
+ g(n)= 9.0 h(n)=1.0
+ g(n)= 12.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_3_1 loc_4_1 right)
+1.0: (move_character loc_4_1 loc_4_2 up)
+2.0: (move_character loc_4_2 loc_4_3 up)
+3.0: (move_character loc_4_3 loc_3_3 left)
+4.0: (move_character loc_3_3 loc_3_4 up)
+5.0: (move_character loc_3_4 loc_3_5 up)
+6.0: (move_character loc_3_5 loc_2_5 left)
+7.0: (move_ball ball_0 loc_2_5 loc_2_4 loc_2_3 down)
+8.0: (move_character loc_2_4 loc_3_4 right)
+9.0: (move_character loc_3_4 loc_3_3 down)
+10.0: (move_character loc_3_3 loc_4_3 right)
+11.0: (move_character loc_4_3 loc_4_2 down)
+12.0: (move_character loc_4_2 loc_4_1 down)
+13.0: (move_character loc_4_1 loc_3_1 left)
+14.0: (move_ball ball_1 loc_3_1 loc_3_2 loc_3_3 up)
+15.0: (move_character loc_3_2 loc_2_2 left)
+16.0: (move_ball ball_0 loc_2_2 loc_2_3 loc_2_4 up)
+17.0: (move_ball ball_1 loc_2_3 loc_3_3 loc_4_3 right)
+18.0: (move_character loc_3_3 loc_3_4 up)
+19.0: (move_character loc_3_4 loc_3_5 up)
+20.0: (move_character loc_3_5 loc_2_5 left)
+21.0: (move_ball ball_0 loc_2_5 loc_2_4 loc_2_3 down)
+22.0: (move_character loc_2_4 loc_3_4 right)
+23.0: (move_character loc_3_4 loc_3_5 up)
+24.0: (move_character loc_3_5 loc_4_5 right)
+25.0: (move_ball ball_2 loc_4_5 loc_4_4 loc_4_3 down)
+26.0: (move_character loc_4_4 loc_3_4 left)
+27.0: (move_character loc_3_4 loc_2_4 left)
+28.0: (move_ball ball_0 loc_2_4 loc_2_3 loc_2_2 down)
+29.0: (move_character loc_2_3 loc_3_3 right)
+30.0: (move_character loc_3_3 loc_3_2 down)
+31.0: (move_character loc_3_2 loc_3_1 down)
+32.0: (move_character loc_3_1 loc_2_1 left)
+33.0: (move_character loc_2_1 loc_1_1 left)
+34.0: (move_character loc_1_1 loc_1_2 up)
+35.0: (move_ball ball_0 loc_1_2 loc_2_2 loc_3_2 right)
+36.0: (move_character loc_2_2 loc_2_3 up)
+37.0: (move_character loc_2_3 loc_3_3 right)
+38.0: (move_character loc_3_3 loc_3_4 up)
+39.0: (move_character loc_3_4 loc_4_4 right)
+40.0: (move_ball ball_2 loc_4_4 loc_4_3 loc_4_2 down)
+41.0: (move_character loc_4_4 loc_3_4 left)
+42.0: (move_character loc_3_4 loc_3_3 down)
+43.0: (move_character loc_3_3 loc_2_3 left)
+44.0: (move_character loc_2_3 loc_2_2 down)
+45.0: (move_character loc_2_2 loc_2_1 down)
+46.0: (move_character loc_2_1 loc_3_1 right)
+47.0: (move_ball ball_0 loc_3_1 loc_3_2 loc_3_3 up)
+48.0: (move_character loc_3_2 loc_2_2 left)
+49.0: (move_character loc_2_2 loc_2_3 up)
+50.0: (move_ball ball_0 loc_2_3 loc_3_3 loc_4_3 right)
+51.0: (move_character loc_3_3 loc_3_2 down)
+52.0: (move_character loc_3_2 loc_3_1 down)
+53.0: (move_character loc_3_1 loc_4_1 right)
+54.0: (move_ball ball_2 loc_4_1 loc_4_2 loc_4_3 up)
+55.0: (goal ball_2 ball_0 ball_1 loc_4_3)
+
+Plan-Length:56
+Metric (Search):12.0
+Planning Time (msec): 239
+Heuristic Time (msec): 3
+Search Time (msec): 34
+Expanded Nodes:315
+States Evaluated:538
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:0
+Number of Duplicates detected:395

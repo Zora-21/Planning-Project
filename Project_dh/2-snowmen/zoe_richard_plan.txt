@@ -1,0 +1,1 @@
+TIMEOUT: Elabrazione interrotta dopo 300 secondi.

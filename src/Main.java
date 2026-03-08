@@ -21,8 +21,10 @@
  */
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import planners.ENHSP;
 
 public class Main {
@@ -46,52 +48,109 @@ public class Main {
             p.parsingDomainAndProblem(args);
             p.planning();
         } else {
-            String[] inputNames = {
-                    // "martingala",
-                    "martingala2"
-            }; // Aggiungi qui tutti i nomi che ti servono
+            String[] listFiles = {
+                    "/Users/matteo/Planning-Project/Project_dh/name/name_one.txt",
+                    "/Users/matteo/Planning-Project/Project_dh/name/name_two.txt",
+                    "/Users/matteo/Planning-Project/Project_dh/name/name_three.txt"
+            };
 
-            String basePath = "/Users/matteo/Documents/Planning-Project/Project/1-snowman/Goal/";
-            String domain = basePath + "Domain_one_goal.pddl";
+            String[] problemDirs = {
+                    "/Users/matteo/Planning-Project/Project_dh/1-snowman/",
+                    "/Users/matteo/Planning-Project/Project_dh/2-snowmen/",
+                    "/Users/matteo/Planning-Project/Project_dh/3-snowmen/"
+            };
 
-            for (String name : inputNames) {
-                System.out.println("--- Inizio elaborazione per: " + name + " ---");
+            String[] domainFiles = {
+                    "/Users/matteo/Planning-Project/Project_dh/domain/Domain_one.pddl",
+                    "/Users/matteo/Planning-Project/Project_dh/domain/Domain_two.pddl",
+                    "/Users/matteo/Planning-Project/Project_dh/domain/Domain_three.pddl"
+            };
 
-                String problem = basePath + name + "_problem.pddl";
-                String outputFile = basePath + name + "_plan.txt";
+            for (int i = 0; i < listFiles.length; i++) {
+                String listFile = listFiles[i];
+                String domain = domainFiles[i];
+                String basePath = problemDirs[i];
 
-                if (!new File(problem).exists()) {
-                    System.out.println("Errore: File del problema non trovato: " + problem + ". Salto al prossimo.");
-                    System.out.println("-----------------------------------\n");
+                File lf = new File(listFile);
+                if (!lf.exists()) {
+                    System.out.println("Lista non trovata: " + listFile);
                     continue;
                 }
 
-                PrintStream originalOut = System.out;
+                List<String> inputNames;
                 try {
-                    // Salva l'output nel file di piano corrispondente
-                    PrintStream fileOut = new PrintStream(new FileOutputStream(outputFile));
-                    System.setOut(fileOut);
-
-                    String[] a = { "-o", domain, "-f", problem, "-planner", "snowman" };
-                    ENHSP p = new ENHSP(false);
-                    p.parseInput(a);
-                    p.configurePlanner();
-                    p.parsingDomainAndProblem(a);
-                    p.planning();
-
-                    // Ripristina l'output originale
-                    System.setOut(originalOut);
-                    fileOut.close();
-
-                    System.out.println("Output salvato con successo in " + outputFile);
+                    inputNames = Files.readAllLines(Paths.get(listFile));
                 } catch (Exception e) {
-                    System.setOut(originalOut);
-                    System.out.println("Si è verificato un errore imprevisto durante l'elaborazione di " + name + ": "
-                            + e.getMessage());
-                    e.printStackTrace();
+                    System.out.println("Errore nella lettura di " + listFile);
+                    continue;
                 }
 
-                System.out.println("--- Elaborazione per " + name + " completata --- \n");
+                for (String name : inputNames) {
+                    name = name.trim();
+                    if (name.isEmpty())
+                        continue;
+
+                    System.out.println("--- Inizio elaborazione per: " + name + " (" + basePath + ") ---");
+
+                    String problem = basePath + name + "_problem.pddl";
+                    String outputFile = basePath + name + "_plan.txt";
+
+                    if (!new File(problem).exists()) {
+                        System.out
+                                .println("Errore: File del problema non trovato: " + problem + ". Salto al prossimo.");
+                        System.out.println("-----------------------------------\n");
+                        continue;
+                    }
+
+                    try {
+                        // Lanciamo un nuovo processo Java per ogni problema per garantire l'isolamento
+                        // della memoria.
+                        // Questo risolve i problemi di leak di stato statico della libreria ppmajal.
+                        ProcessBuilder pb = new ProcessBuilder(
+                                "java",
+                                "-cp", "bin:lib/enhsp-20.jar",
+                                "Main",
+                                "-o", domain,
+                                "-f", problem,
+                                "-planner", "snowman");
+
+                        // Reindirizziamo l'output direttamente nel file di piano
+                        pb.redirectOutput(new File(outputFile));
+                        pb.redirectErrorStream(true); // Cattura anche eventuali errori nel file
+
+                        Process process = pb.start();
+
+                        // Aspettiamo al massimo 300 secondi (5 minuti)
+                        boolean finished = process.waitFor(300, TimeUnit.SECONDS);
+
+                        if (finished) {
+                            int exitCode = process.exitValue();
+                            if (exitCode == 0) {
+                                System.out.println("Output salvato con successo in " + outputFile);
+                            } else {
+                                System.out.println("Il processo è terminato con un errore (exit code: " + exitCode
+                                        + ") per " + name);
+                            }
+                        } else {
+                            // Timeout raggiunto! Killiamo il processo
+                            process.destroyForcibly();
+                            System.out
+                                    .println("TIMEOUT: " + name + " ha superato i 300 secondi. Passaggio al prossimo.");
+
+                            // Scriviamo nel file che è andato in timeout
+                            Files.writeString(Paths.get(outputFile),
+                                    "TIMEOUT: Elabrazione interrotta dopo 300 secondi.");
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println(
+                                "Si è verificato un errore imprevisto durante l'avvio del processo per " + name + ": "
+                                        + e.getMessage());
+                        e.printStackTrace();
+                    }
+
+                    System.out.println("--- Elaborazione per " + name + " completata --- \n");
+                }
             }
         }
     }
