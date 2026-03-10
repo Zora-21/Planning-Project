@@ -1,0 +1,59 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 99
+Aibr Preprocessing
+|F|:120
+|X|:4
+|A|:182
+|P|:0
+|E|:0
+=== Snowman Topological Preprocessing ===
+Palle trovate: 3 [ball_0, ball_1, ball_2]
+Locations trovate: 23 (Graph Nodes)
+Dead-end nodes: 0/23
+Target pupazzi: 1
+=========================================
+[SnowmanHeuristic] Snow cells in PDDL: 20, tracked by grounder: 23 [FULL COVERAGE]
+SnowmanHeuristic initialized: 3 ball trackers, 23 cell trackers, 23 character trackers
+Helpful Action Pruning Activated
+Running Greedy Best First Search
+h(n = s_0)=3.006
+ g(n)= 1.0 h(n)=3.004
+ g(n)= 2.0 h(n)=2.004
+ g(n)= 4.0 h(n)=1.002
+ g(n)= 5.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_2_5 loc_1_5 left)
+1.0: (move_character loc_1_5 loc_1_4 down)
+2.0: (move_ball ball_0 loc_1_4 loc_2_4 loc_3_4 right)
+3.0: (move_character loc_2_4 loc_2_3 down)
+4.0: (move_character loc_2_3 loc_3_3 right)
+5.0: (move_character loc_3_3 loc_4_3 right)
+6.0: (move_ball ball_2 loc_4_3 loc_4_4 loc_4_5 up)
+7.0: (move_character loc_4_4 loc_4_3 down)
+8.0: (move_character loc_4_3 loc_3_3 left)
+9.0: (move_character loc_3_3 loc_2_3 left)
+10.0: (move_character loc_2_3 loc_2_4 up)
+11.0: (move_ball ball_0 loc_2_4 loc_3_4 loc_4_4 right)
+12.0: (move_character loc_3_4 loc_3_3 down)
+13.0: (move_character loc_3_3 loc_4_3 right)
+14.0: (move_ball ball_0 loc_4_3 loc_4_4 loc_4_5 up)
+15.0: (move_character loc_4_4 loc_3_4 left)
+16.0: (move_character loc_3_4 loc_2_4 left)
+17.0: (move_character loc_2_4 loc_2_5 up)
+18.0: (move_ball ball_1 loc_2_5 loc_3_5 loc_4_5 right)
+19.0: (goal ball_1 ball_0 ball_2 loc_4_5)
+
+Plan-Length:20
+Metric (Search):5.0
+Planning Time (msec): 247
+Heuristic Time (msec): 8
+Search Time (msec): 12
+Expanded Nodes:33
+States Evaluated:61
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:0
+Number of Duplicates detected:33

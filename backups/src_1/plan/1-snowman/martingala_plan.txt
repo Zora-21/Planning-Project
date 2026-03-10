@@ -1,0 +1,37 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 1569
+Aibr Preprocessing
+|F|:600
+|X|:4
+|A|:1920
+|P|:0
+|E|:0
+=== Snowman Topological Preprocessing ===
+Palle trovate: 3 [ball_0, ball_1, ball_2]
+Locations trovate: 100 (Graph Nodes)
+Dead-end nodes: 0/100
+Target pupazzi: 1
+=========================================
+[SnowmanHeuristic] Snow cells in PDDL: 3, tracked by grounder: 100 [FULL COVERAGE]
+SnowmanHeuristic initialized: 3 ball trackers, 100 cell trackers, 100 character trackers
+Helpful Action Pruning Activated
+Running Greedy Best First Search
+h(n = s_0)=17.21
+ g(n)= 0.0 h(n)=17.208
+ g(n)= 0.0 h(n)=17.206
+ g(n)= 0.0 h(n)=17.204
+ g(n)= 0.0 h(n)=17.202
+ g(n)= 0.0 h(n)=17.2
+ g(n)= 1.0 h(n)=16.18
+ g(n)= 2.0 h(n)=15.18
+ g(n)= 3.0 h(n)=14.18
+ g(n)= 4.0 h(n)=13.18
+ g(n)= 5.0 h(n)=12.18
+ g(n)= 6.0 h(n)=11.16
+ g(n)= 7.0 h(n)=10.18
+ g(n)= 8.0 h(n)=9.16
+ g(n)= 9.0 h(n)=8.14
+ g(n)= 10.0 h(n)=7.14
+ g(n)= 12.0 h(n)=7.12

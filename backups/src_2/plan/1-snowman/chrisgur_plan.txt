@@ -1,0 +1,307 @@
+Domain parsed
+Problem parsed
+Grounding..
+Grounding Time: 393
+Aibr Preprocessing
+|F|:279
+|X|:4
+|A|:576
+|P|:0
+|E|:0
+=== Snowman Topological Preprocessing ===
+Palle trovate: 3 [ball_0, ball_1, ball_2]
+Locations trovate: 68 (Graph Nodes)
+Dead-end nodes: 2/68
+Target pupazzi: 1
+=========================================
+[SnowmanHeuristic] Snow cells in PDDL: 64, tracked by grounder: 47 [PARTIAL - snow budget check disabled]
+SnowmanHeuristic initialized: 3 ball trackers, 47 cell trackers, 68 character trackers
+Helpful Action Pruning Activated
+Running Greedy Best First Search
+h(n = s_0)=13.0227
+ g(n)= 0.0 h(n)=13.0226
+ g(n)= 0.0 h(n)=13.0225
+ g(n)= 0.0 h(n)=13.0224
+ g(n)= 0.0 h(n)=13.0223
+ g(n)= 0.0 h(n)=13.0222
+ g(n)= 0.0 h(n)=13.0221
+ g(n)= 0.0 h(n)=13.022
+ g(n)= 1.0 h(n)=12.02
+ g(n)= 2.0 h(n)=11.02
+ g(n)= 3.0 h(n)=10.02
+ g(n)= 4.0 h(n)=9.018
+ g(n)= 9.0 h(n)=8.016
+ g(n)= 10.0 h(n)=7.014
+ g(n)= 11.0 h(n)=6.012
+ g(n)= 12.0 h(n)=5.01
+-------------Time: 10s ; Expanded Nodes: 118125 (Avg-Speed 11812.0 n/s); Evaluated States: 126116
+-------------Time: 20s ; Expanded Nodes: 230705 (Avg-Speed 11535.0 n/s); Evaluated States: 244138
+-------------Time: 30s ; Expanded Nodes: 338482 (Avg-Speed 11282.0 n/s); Evaluated States: 357910
+-------------Time: 40s ; Expanded Nodes: 454480 (Avg-Speed 11362.0 n/s); Evaluated States: 480364
+-------------Time: 50s ; Expanded Nodes: 573146 (Avg-Speed 11462.0 n/s); Evaluated States: 605302
+-------------Time: 60s ; Expanded Nodes: 687334 (Avg-Speed 11455.0 n/s); Evaluated States: 726714
+-------------Time: 70s ; Expanded Nodes: 813834 (Avg-Speed 11626.0 n/s); Evaluated States: 861355
+-------------Time: 80s ; Expanded Nodes: 911717 (Avg-Speed 11396.0 n/s); Evaluated States: 964014
+-------------Time: 90s ; Expanded Nodes: 1035274 (Avg-Speed 11503.0 n/s); Evaluated States: 1095583
+-------------Time: 100s ; Expanded Nodes: 1147295 (Avg-Speed 11472.0 n/s); Evaluated States: 1215235
+-------------Time: 110s ; Expanded Nodes: 1252875 (Avg-Speed 11389.0 n/s); Evaluated States: 1320450
+-------------Time: 120s ; Expanded Nodes: 1362488 (Avg-Speed 11354.0 n/s); Evaluated States: 1434599
+-------------Time: 130s ; Expanded Nodes: 1479246 (Avg-Speed 11378.0 n/s); Evaluated States: 1556465
+-------------Time: 140s ; Expanded Nodes: 1591543 (Avg-Speed 11368.0 n/s); Evaluated States: 1674212
+-------------Time: 150s ; Expanded Nodes: 1709337 (Avg-Speed 11395.0 n/s); Evaluated States: 1798706
+-------------Time: 160s ; Expanded Nodes: 1822059 (Avg-Speed 11387.0 n/s); Evaluated States: 1917999
+-------------Time: 170s ; Expanded Nodes: 1928940 (Avg-Speed 11346.0 n/s); Evaluated States: 2030446
+-------------Time: 180s ; Expanded Nodes: 2044872 (Avg-Speed 11360.0 n/s); Evaluated States: 2155302
+-------------Time: 190s ; Expanded Nodes: 2149252 (Avg-Speed 11311.0 n/s); Evaluated States: 2262889
+-------------Time: 200s ; Expanded Nodes: 2261220 (Avg-Speed 11306.0 n/s); Evaluated States: 2383429
+-------------Time: 210s ; Expanded Nodes: 2357325 (Avg-Speed 11225.0 n/s); Evaluated States: 2485297
+-------------Time: 220s ; Expanded Nodes: 2454677 (Avg-Speed 11157.0 n/s); Evaluated States: 2588586
+-------------Time: 230s ; Expanded Nodes: 2576768 (Avg-Speed 11203.0 n/s); Evaluated States: 2719372
+-------------Time: 240s ; Expanded Nodes: 2660039 (Avg-Speed 11083.0 n/s); Evaluated States: 2803900
+-------------Time: 250s ; Expanded Nodes: 2728992 (Avg-Speed 10915.0 n/s); Evaluated States: 2872200
+-------------Time: 260s ; Expanded Nodes: 2818898 (Avg-Speed 10841.0 n/s); Evaluated States: 2968960
+-------------Time: 270s ; Expanded Nodes: 2924139 (Avg-Speed 10830.0 n/s); Evaluated States: 3082640
+-------------Time: 280s ; Expanded Nodes: 3017546 (Avg-Speed 10776.0 n/s); Evaluated States: 3179549
+-------------Time: 290s ; Expanded Nodes: 3118848 (Avg-Speed 10754.0 n/s); Evaluated States: 3285867
+-------------Time: 300s ; Expanded Nodes: 3236912 (Avg-Speed 10789.0 n/s); Evaluated States: 3409766
+-------------Time: 310s ; Expanded Nodes: 3340974 (Avg-Speed 10777.0 n/s); Evaluated States: 3518386
+-------------Time: 320s ; Expanded Nodes: 3435796 (Avg-Speed 10736.0 n/s); Evaluated States: 3626019
+-------------Time: 330s ; Expanded Nodes: 3550904 (Avg-Speed 10760.0 n/s); Evaluated States: 3750193
+-------------Time: 340s ; Expanded Nodes: 3668728 (Avg-Speed 10790.0 n/s); Evaluated States: 3875273
+-------------Time: 350s ; Expanded Nodes: 3777670 (Avg-Speed 10793.0 n/s); Evaluated States: 3992947
+-------------Time: 360s ; Expanded Nodes: 3845787 (Avg-Speed 10682.0 n/s); Evaluated States: 4066783
+-------------Time: 370s ; Expanded Nodes: 3922029 (Avg-Speed 10600.0 n/s); Evaluated States: 4138274
+-------------Time: 380s ; Expanded Nodes: 4040730 (Avg-Speed 10633.0 n/s); Evaluated States: 4253193
+-------------Time: 390s ; Expanded Nodes: 4128332 (Avg-Speed 10585.0 n/s); Evaluated States: 4347156
+-------------Time: 400s ; Expanded Nodes: 4213810 (Avg-Speed 10534.0 n/s); Evaluated States: 4439820
+ g(n)= 14.0 h(n)=4.008
+-------------Time: 410s ; Expanded Nodes: 4346825 (Avg-Speed 10602.0 n/s); Evaluated States: 4582040
+-------------Time: 420s ; Expanded Nodes: 4460498 (Avg-Speed 10620.0 n/s); Evaluated States: 4703991
+-------------Time: 430s ; Expanded Nodes: 4568965 (Avg-Speed 10625.0 n/s); Evaluated States: 4813380
+-------------Time: 440s ; Expanded Nodes: 4662622 (Avg-Speed 10596.0 n/s); Evaluated States: 4912038
+-------------Time: 450s ; Expanded Nodes: 4780356 (Avg-Speed 10623.0 n/s); Evaluated States: 5041218
+-------------Time: 460s ; Expanded Nodes: 4886194 (Avg-Speed 10622.0 n/s); Evaluated States: 5154351
+-------------Time: 470s ; Expanded Nodes: 4995355 (Avg-Speed 10628.0 n/s); Evaluated States: 5271002
+-------------Time: 480s ; Expanded Nodes: 5104313 (Avg-Speed 10633.0 n/s); Evaluated States: 5387085
+-------------Time: 490s ; Expanded Nodes: 5209809 (Avg-Speed 10632.0 n/s); Evaluated States: 5498646
+-------------Time: 500s ; Expanded Nodes: 5304434 (Avg-Speed 10608.0 n/s); Evaluated States: 5601348
+-------------Time: 510s ; Expanded Nodes: 5413218 (Avg-Speed 10614.0 n/s); Evaluated States: 5718905
+-------------Time: 520s ; Expanded Nodes: 5500696 (Avg-Speed 10578.0 n/s); Evaluated States: 5810268
+-------------Time: 530s ; Expanded Nodes: 5561686 (Avg-Speed 10493.0 n/s); Evaluated States: 5870803
+-------------Time: 540s ; Expanded Nodes: 5640899 (Avg-Speed 10446.0 n/s); Evaluated States: 5942873
+-------------Time: 550s ; Expanded Nodes: 5712114 (Avg-Speed 10385.0 n/s); Evaluated States: 6009652
+-------------Time: 560s ; Expanded Nodes: 5820081 (Avg-Speed 10393.0 n/s); Evaluated States: 6124667
+-------------Time: 570s ; Expanded Nodes: 5934335 (Avg-Speed 10411.0 n/s); Evaluated States: 6247070
+-------------Time: 580s ; Expanded Nodes: 6031327 (Avg-Speed 10398.0 n/s); Evaluated States: 6347315
+-------------Time: 590s ; Expanded Nodes: 6107649 (Avg-Speed 10351.0 n/s); Evaluated States: 6426259
+-------------Time: 600s ; Expanded Nodes: 6221090 (Avg-Speed 10368.0 n/s); Evaluated States: 6544341
+-------------Time: 610s ; Expanded Nodes: 6299777 (Avg-Speed 10327.0 n/s); Evaluated States: 6622526
+-------------Time: 620s ; Expanded Nodes: 6344681 (Avg-Speed 10233.0 n/s); Evaluated States: 6677314
+-------------Time: 630s ; Expanded Nodes: 6438409 (Avg-Speed 10219.0 n/s); Evaluated States: 6788002
+-------------Time: 640s ; Expanded Nodes: 6535128 (Avg-Speed 10211.0 n/s); Evaluated States: 6895899
+-------------Time: 650s ; Expanded Nodes: 6634191 (Avg-Speed 10206.0 n/s); Evaluated States: 7001880
+-------------Time: 660s ; Expanded Nodes: 6745987 (Avg-Speed 10221.0 n/s); Evaluated States: 7120405
+-------------Time: 670s ; Expanded Nodes: 6828379 (Avg-Speed 10191.0 n/s); Evaluated States: 7208033
+-------------Time: 680s ; Expanded Nodes: 6904413 (Avg-Speed 10153.0 n/s); Evaluated States: 7281831
+-------------Time: 690s ; Expanded Nodes: 6988841 (Avg-Speed 10128.0 n/s); Evaluated States: 7373609
+-------------Time: 700s ; Expanded Nodes: 7088565 (Avg-Speed 10126.0 n/s); Evaluated States: 7479191
+-------------Time: 710s ; Expanded Nodes: 7186408 (Avg-Speed 10121.0 n/s); Evaluated States: 7583064
+-------------Time: 720s ; Expanded Nodes: 7294902 (Avg-Speed 10131.0 n/s); Evaluated States: 7698260
+-------------Time: 730s ; Expanded Nodes: 7407865 (Avg-Speed 10147.0 n/s); Evaluated States: 7819540
+-------------Time: 740s ; Expanded Nodes: 7512726 (Avg-Speed 10152.0 n/s); Evaluated States: 7931151
+-------------Time: 750s ; Expanded Nodes: 7589743 (Avg-Speed 10119.0 n/s); Evaluated States: 8010910
+-------------Time: 760s ; Expanded Nodes: 7666644 (Avg-Speed 10087.0 n/s); Evaluated States: 8089671
+-------------Time: 770s ; Expanded Nodes: 7717137 (Avg-Speed 10022.0 n/s); Evaluated States: 8138863
+-------------Time: 780s ; Expanded Nodes: 7774649 (Avg-Speed 9967.0 n/s); Evaluated States: 8191429
+-------------Time: 790s ; Expanded Nodes: 7855928 (Avg-Speed 9944.0 n/s); Evaluated States: 8265219
+-------------Time: 800s ; Expanded Nodes: 7946123 (Avg-Speed 9932.0 n/s); Evaluated States: 8348340
+-------------Time: 810s ; Expanded Nodes: 8028305 (Avg-Speed 9911.0 n/s); Evaluated States: 8423277
+ g(n)= 17.0 h(n)=3.006
+ g(n)= 19.0 h(n)=2.004
+ g(n)= 21.0 h(n)=1.002
+ g(n)= 22.0 h(n)=0.0
+Problem Solved
+
+Found Plan:
+0.0: (move_character loc_6_1 loc_6_2 dir_up)
+1.0: (move_character loc_6_2 loc_6_3 dir_up)
+2.0: (move_character loc_6_3 loc_7_3 dir_right)
+3.0: (move_character loc_7_3 loc_7_4 dir_up)
+4.0: (move_character loc_7_4 loc_7_5 dir_up)
+5.0: (move_character loc_7_5 loc_7_6 dir_up)
+6.0: (move_character loc_7_6 loc_7_7 dir_up)
+7.0: (move_character loc_7_7 loc_7_8 dir_up)
+8.0: (move_character loc_7_8 loc_7_9 dir_up)
+9.0: (move_character loc_7_9 loc_6_9 dir_left)
+10.0: (move_character loc_6_9 loc_5_9 dir_left)
+11.0: (move_character loc_5_9 loc_4_9 dir_left)
+12.0: (move_character loc_4_9 loc_4_8 dir_down)
+13.0: (move_character loc_4_8 loc_4_7 dir_down)
+14.0: (move_character loc_4_7 loc_4_6 dir_down)
+15.0: (move_character loc_4_6 loc_3_6 dir_left)
+16.0: (move_character loc_3_6 loc_2_6 dir_left)
+17.0: (move_character loc_2_6 loc_2_7 dir_up)
+18.0: (move_character loc_2_7 loc_1_7 dir_left)
+19.0: (move_character loc_1_7 loc_1_8 dir_up)
+20.0: (move_character loc_1_8 loc_1_9 dir_up)
+21.0: (move_character loc_1_9 loc_2_9 dir_right)
+22.0: (move_ball ball_1 loc_2_9 loc_3_9 loc_4_9 dir_right)
+23.0: (move_character loc_3_9 loc_2_9 dir_left)
+24.0: (move_character loc_2_9 loc_1_9 dir_left)
+25.0: (move_character loc_1_9 loc_1_8 dir_down)
+26.0: (move_character loc_1_8 loc_1_7 dir_down)
+27.0: (move_character loc_1_7 loc_1_6 dir_down)
+28.0: (move_character loc_1_6 loc_1_5 dir_down)
+29.0: (move_character loc_1_5 loc_1_4 dir_down)
+30.0: (move_character loc_1_4 loc_1_3 dir_down)
+31.0: (move_character loc_1_3 loc_2_3 dir_right)
+32.0: (move_character loc_2_3 loc_3_3 dir_right)
+33.0: (move_ball ball_0 loc_3_3 loc_3_4 loc_3_5 dir_up)
+34.0: (move_ball ball_0 loc_3_4 loc_3_5 loc_3_6 dir_up)
+35.0: (move_character loc_3_5 loc_3_4 dir_down)
+36.0: (move_character loc_3_4 loc_3_3 dir_down)
+37.0: (move_character loc_3_3 loc_2_3 dir_left)
+38.0: (move_character loc_2_3 loc_1_3 dir_left)
+39.0: (move_character loc_1_3 loc_1_4 dir_up)
+40.0: (move_character loc_1_4 loc_1_5 dir_up)
+41.0: (move_character loc_1_5 loc_1_6 dir_up)
+42.0: (move_character loc_1_6 loc_2_6 dir_right)
+43.0: (move_ball ball_0 loc_2_6 loc_3_6 loc_4_6 dir_right)
+44.0: (move_character loc_3_6 loc_3_5 dir_down)
+45.0: (move_character loc_3_5 loc_4_5 dir_right)
+46.0: (move_character loc_4_5 loc_5_5 dir_right)
+47.0: (move_character loc_5_5 loc_6_5 dir_right)
+48.0: (move_character loc_6_5 loc_7_5 dir_right)
+49.0: (move_character loc_7_5 loc_7_6 dir_up)
+50.0: (move_character loc_7_6 loc_7_7 dir_up)
+51.0: (move_character loc_7_7 loc_7_8 dir_up)
+52.0: (move_character loc_7_8 loc_7_9 dir_up)
+53.0: (move_character loc_7_9 loc_6_9 dir_left)
+54.0: (move_character loc_6_9 loc_5_9 dir_left)
+55.0: (move_ball ball_1 loc_5_9 loc_4_9 loc_3_9 dir_left)
+56.0: (move_character loc_4_9 loc_4_8 dir_down)
+57.0: (move_character loc_4_8 loc_4_7 dir_down)
+58.0: (move_ball ball_0 loc_4_7 loc_4_6 loc_4_5 dir_down)
+59.0: (move_character loc_4_6 loc_3_6 dir_left)
+60.0: (move_character loc_3_6 loc_3_5 dir_down)
+61.0: (move_ball ball_0 loc_3_5 loc_4_5 loc_5_5 dir_right)
+62.0: (move_ball ball_0 loc_4_5 loc_5_5 loc_6_5 dir_right)
+63.0: (move_ball ball_0 loc_5_5 loc_6_5 loc_7_5 dir_right)
+64.0: (move_character loc_6_5 loc_5_5 dir_left)
+65.0: (move_character loc_5_5 loc_4_5 dir_left)
+66.0: (move_character loc_4_5 loc_4_6 dir_up)
+67.0: (move_character loc_4_6 loc_3_6 dir_left)
+68.0: (move_character loc_3_6 loc_2_6 dir_left)
+69.0: (move_character loc_2_6 loc_1_6 dir_left)
+70.0: (move_character loc_1_6 loc_1_7 dir_up)
+71.0: (move_character loc_1_7 loc_1_8 dir_up)
+72.0: (move_character loc_1_8 loc_1_9 dir_up)
+73.0: (move_character loc_1_9 loc_2_9 dir_right)
+74.0: (move_ball ball_1 loc_2_9 loc_3_9 loc_4_9 dir_right)
+75.0: (move_character loc_3_9 loc_2_9 dir_left)
+76.0: (move_character loc_2_9 loc_1_9 dir_left)
+77.0: (move_character loc_1_9 loc_1_8 dir_down)
+78.0: (move_character loc_1_8 loc_1_7 dir_down)
+79.0: (move_character loc_1_7 loc_1_6 dir_down)
+80.0: (move_character loc_1_6 loc_2_6 dir_right)
+81.0: (move_character loc_2_6 loc_3_6 dir_right)
+82.0: (move_character loc_3_6 loc_3_5 dir_down)
+83.0: (move_character loc_3_5 loc_3_4 dir_down)
+84.0: (move_character loc_3_4 loc_3_3 dir_down)
+85.0: (move_character loc_3_3 loc_2_3 dir_left)
+86.0: (move_character loc_2_3 loc_1_3 dir_left)
+87.0: (move_character loc_1_3 loc_1_2 dir_down)
+88.0: (move_character loc_1_2 loc_1_1 dir_down)
+89.0: (move_character loc_1_1 loc_2_1 dir_right)
+90.0: (move_character loc_2_1 loc_3_1 dir_right)
+91.0: (move_character loc_3_1 loc_4_1 dir_right)
+92.0: (move_character loc_4_1 loc_5_1 dir_right)
+93.0: (move_character loc_5_1 loc_6_1 dir_right)
+94.0: (move_character loc_6_1 loc_6_2 dir_up)
+95.0: (move_character loc_6_2 loc_6_3 dir_up)
+96.0: (move_character loc_6_3 loc_7_3 dir_right)
+97.0: (move_character loc_7_3 loc_7_4 dir_up)
+98.0: (move_ball ball_0 loc_7_4 loc_7_5 loc_7_6 dir_up)
+99.0: (move_ball ball_0 loc_7_5 loc_7_6 loc_7_7 dir_up)
+100.0: (move_ball ball_0 loc_7_6 loc_7_7 loc_7_8 dir_up)
+101.0: (move_ball ball_0 loc_7_7 loc_7_8 loc_7_9 dir_up)
+102.0: (move_character loc_7_8 loc_8_8 dir_right)
+103.0: (move_character loc_8_8 loc_9_8 dir_right)
+104.0: (move_character loc_9_8 loc_9_7 dir_down)
+105.0: (move_ball ball_2 loc_9_7 loc_8_7 loc_7_7 dir_left)
+106.0: (move_character loc_8_7 loc_9_7 dir_right)
+107.0: (move_character loc_9_7 loc_10_7 dir_right)
+108.0: (move_character loc_10_7 loc_10_6 dir_down)
+109.0: (move_character loc_10_6 loc_10_5 dir_down)
+110.0: (move_character loc_10_5 loc_9_5 dir_left)
+111.0: (move_character loc_9_5 loc_9_4 dir_down)
+112.0: (move_character loc_9_4 loc_9_3 dir_down)
+113.0: (move_character loc_9_3 loc_10_3 dir_right)
+114.0: (move_character loc_10_3 loc_10_2 dir_down)
+115.0: (move_character loc_10_2 loc_10_1 dir_down)
+116.0: (move_character loc_10_1 loc_9_1 dir_left)
+117.0: (move_character loc_9_1 loc_8_1 dir_left)
+118.0: (move_character loc_8_1 loc_7_1 dir_left)
+119.0: (move_character loc_7_1 loc_6_1 dir_left)
+120.0: (move_character loc_6_1 loc_6_2 dir_up)
+121.0: (move_character loc_6_2 loc_6_3 dir_up)
+122.0: (move_character loc_6_3 loc_7_3 dir_right)
+123.0: (move_character loc_7_3 loc_7_4 dir_up)
+124.0: (move_character loc_7_4 loc_7_5 dir_up)
+125.0: (move_character loc_7_5 loc_7_6 dir_up)
+126.0: (move_ball ball_2 loc_7_6 loc_7_7 loc_7_8 dir_up)
+127.0: (move_character loc_7_7 loc_8_7 dir_right)
+128.0: (move_character loc_8_7 loc_8_8 dir_up)
+129.0: (move_character loc_8_8 loc_8_9 dir_up)
+130.0: (move_ball ball_0 loc_8_9 loc_7_9 loc_6_9 dir_left)
+131.0: (move_ball ball_0 loc_7_9 loc_6_9 loc_5_9 dir_left)
+132.0: (move_character loc_6_9 loc_7_9 dir_right)
+133.0: (move_character loc_7_9 loc_8_9 dir_right)
+134.0: (move_character loc_8_9 loc_8_8 dir_down)
+135.0: (move_character loc_8_8 loc_8_7 dir_down)
+136.0: (move_character loc_8_7 loc_7_7 dir_left)
+137.0: (move_ball ball_2 loc_7_7 loc_7_8 loc_7_9 dir_up)
+138.0: (move_character loc_7_8 loc_8_8 dir_right)
+139.0: (move_character loc_8_8 loc_8_9 dir_up)
+140.0: (move_ball ball_2 loc_8_9 loc_7_9 loc_6_9 dir_left)
+141.0: (move_character loc_7_9 loc_7_8 dir_down)
+142.0: (move_character loc_7_8 loc_7_7 dir_down)
+143.0: (move_character loc_7_7 loc_7_6 dir_down)
+144.0: (move_character loc_7_6 loc_7_5 dir_down)
+145.0: (move_character loc_7_5 loc_6_5 dir_left)
+146.0: (move_character loc_6_5 loc_5_5 dir_left)
+147.0: (move_character loc_5_5 loc_4_5 dir_left)
+148.0: (move_character loc_4_5 loc_4_6 dir_up)
+149.0: (move_character loc_4_6 loc_3_6 dir_left)
+150.0: (move_character loc_3_6 loc_2_6 dir_left)
+151.0: (move_character loc_2_6 loc_1_6 dir_left)
+152.0: (move_character loc_1_6 loc_1_7 dir_up)
+153.0: (move_character loc_1_7 loc_1_8 dir_up)
+154.0: (move_character loc_1_8 loc_1_9 dir_up)
+155.0: (move_character loc_1_9 loc_2_9 dir_right)
+156.0: (move_character loc_2_9 loc_3_9 dir_right)
+157.0: (move_ball ball_1 loc_3_9 loc_4_9 loc_5_9 dir_right)
+158.0: (move_character loc_4_9 loc_4_8 dir_down)
+159.0: (move_character loc_4_8 loc_4_7 dir_down)
+160.0: (move_character loc_4_7 loc_4_6 dir_down)
+161.0: (move_character loc_4_6 loc_5_6 dir_right)
+162.0: (move_character loc_5_6 loc_5_5 dir_down)
+163.0: (move_character loc_5_5 loc_6_5 dir_right)
+164.0: (move_character loc_6_5 loc_7_5 dir_right)
+165.0: (move_character loc_7_5 loc_7_6 dir_up)
+166.0: (move_character loc_7_6 loc_7_7 dir_up)
+167.0: (move_character loc_7_7 loc_7_8 dir_up)
+168.0: (move_character loc_7_8 loc_7_9 dir_up)
+169.0: (move_ball ball_2 loc_7_9 loc_6_9 loc_5_9 dir_left)
+170.0: (goal ball_2 ball_1 ball_0 loc_5_9)
+
+Plan-Length:171
+Metric (Search):22.0
+Planning Time (msec): 818808
+Heuristic Time (msec): 461416
+Search Time (msec): 818142
+Expanded Nodes:8096088
+States Evaluated:8495282
+Fixed constraint violations during search (zero-crossing):0
+Number of Dead-Ends detected:0
+Number of Duplicates detected:10888584

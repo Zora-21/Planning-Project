@@ -1,0 +1,149 @@
+// --- 5. Epsilon Tie-Breaking: SATISFIABILITY OVERDRIVE ---
+                double tie_breaker = 0.0;
+                
+                // Se abbiamo 2 o 3 pupazzi, abbandoniamo l'ammissibilità per la pura velocità.
+                // Le penalità decimali diventano ostacoli colossali (es. +8.0 mosse virtuali)
+                double amplifier = (targetSnowmen >= 2) ? 20.0 : 1.0;
+
+                int unfinishedSize2 = 0;
+                for (int c : size2Count) unfinishedSize2 += c;
+                tie_breaker += (unfinishedSize2 * 0.05 * amplifier);
+
+                int charLocId = this.fixedCharLoc;
+                for (CharacterTracker qt : characterTrackers) {
+                    if (qt.predicate.isSatisfied(state)) { charLocId = qt.locId; break; }
+                }
+
+                if (charLocId >= 0 && !remainingBallsList.isEmpty()) {
+                    models.Grouping[] optimals = configurator.getOptimalGroupings();
+                    models.Grouping focusGroup = null;
+                    
+                    int maxGroupSize = -1;
+                    double minGroupDistance = Double.POSITIVE_INFINITY;
+                    long minGroupHash = Long.MAX_VALUE; // Stabilità del Focus
+
+                    // b. STABLE FOCUS GROUP SELECTION
+                    for (int i = 0; i < remainingTargets; i++) {
+                        models.Grouping g = optimals[i];
+                        if (g == null) continue;
+
+                        int gSizeSum = 0;
+                        int loc0 = -1, loc1 = -1, loc2 = -1;
+                        for (Ball gb : g.getBalls()) {
+                            for (Ball rb : remainingBallsList) {
+                                if (rb.getIntId() == gb.getIntId()) {
+                                    gSizeSum += rb.getSize();
+                                    if (loc0 == -1) loc0 = rb.getLocId();
+                                    else if (loc1 == -1) loc1 = rb.getLocId();
+                                    else loc2 = rb.getLocId();
+                                    break;
+                                }
+                            }
+                        }
+
+                        double groupDist = 0;
+                        if (loc0 >= 0 && loc1 >= 0 && loc2 >= 0) {
+                            if (distanceMatrix[loc0][loc1] < models.SnowmanConfigurator.UNREACHABLE) groupDist += distanceMatrix[loc0][loc1];
+                            if (distanceMatrix[loc1][loc2] < models.SnowmanConfigurator.UNREACHABLE) groupDist += distanceMatrix[loc1][loc2];
+                            if (distanceMatrix[loc0][loc2] < models.SnowmanConfigurator.UNREACHABLE) groupDist += distanceMatrix[loc0][loc2];
+                        }
+                        
+                        long gHash = g.getBalls().get(0).getIntId() * 100L + g.getBalls().get(1).getIntId() * 10L + g.getBalls().get(2).getIntId();
+
+                        boolean isBetter = false;
+                        if (gSizeSum > maxGroupSize) isBetter = true;
+                        else if (gSizeSum == maxGroupSize) {
+                            if (groupDist < minGroupDistance - 0.0001) isBetter = true;
+                            else if (Math.abs(groupDist - minGroupDistance) <= 0.0001 && gHash < minGroupHash) isBetter = true;
+                        }
+
+                        if (isBetter) {
+                            maxGroupSize = gSizeSum;
+                            minGroupDistance = groupDist;
+                            minGroupHash = gHash;
+                            focusGroup = g;
+                        }
+                    }
+
+                    if (focusGroup != null) {
+                        // c. HARD CANTIERE CHIUSO (Moltplicato dall'Amplifier)
+                        if (maxGroupSize > 3) {
+                            for (Ball rb : remainingBallsList) {
+                                if (rb.getSize() > 1) {
+                                    boolean inFocus = false;
+                                    for (Ball fb : focusGroup.getBalls()) {
+                                        if (fb.getIntId() == rb.getIntId()) { inFocus = true; break; }
+                                    }
+                                    if (!inFocus) tie_breaker += (0.4 * amplifier); // Diventa +8.0 per multi-snowman!
+                                }
+                            }
+                        }
+
+                        tie_breaker += minGroupDistance * 0.001;
+
+                        // d. REPULSIONE E CONGESTIONE AMPLIFICATE
+                        double repulsion = 0.0;
+                        double congestion = 0.0;
+
+                        for (int i = 0; i < remainingBallsList.size(); i++) {
+                            Ball b1 = remainingBallsList.get(i);
+                            boolean b1Focus = false;
+                            for (Ball fb : focusGroup.getBalls()) {
+                                if (fb.getIntId() == b1.getIntId()) { b1Focus = true; break; }
+                            }
+
+                            if (!b1Focus && distanceMatrix[charLocId][b1.getLocId()] == 1) {
+                                repulsion += (0.05 * amplifier); 
+                            }
+
+                            for (int j = i + 1; j < remainingBallsList.size(); j++) {
+                                Ball b2 = remainingBallsList.get(j);
+                                boolean b2Focus = false;
+                                for (Ball fb : focusGroup.getBalls()) {
+                                    if (fb.getIntId() == b2.getIntId()) { b2Focus = true; break; }
+                                }
+                                if ((!b1Focus || !b2Focus) && distanceMatrix[b1.getLocId()][b2.getLocId()] == 1) {
+                                    congestion += (0.02 * amplifier); 
+                                }
+                            }
+                        }
+                        tie_breaker += repulsion;
+                        tie_breaker += congestion;
+
+                        // e. ATTRAZIONE VERSO IL FOCUS
+                        double minDistToFocus = Double.POSITIVE_INFINITY;
+                        for (Ball gb : focusGroup.getBalls()) {
+                            int bLoc = -1;
+                            for (Ball rb : remainingBallsList) {
+                                if (rb.getIntId() == gb.getIntId()) { bLoc = rb.getLocId(); break; }
+                            }
+                            if (bLoc >= 0) {
+                                for (int n = 0; n < distanceMatrix[bLoc].length; n++) {
+                                    if (distanceMatrix[bLoc][n] == 1) { 
+                                        double d = distanceMatrix[charLocId][n];
+                                        if (d < minDistToFocus) minDistToFocus = d;
+                                    }
+                                }
+                            }
+                        }
+                        if (minDistToFocus < models.SnowmanConfigurator.UNREACHABLE) {
+                            tie_breaker += minDistToFocus * 0.0001; 
+                        }
+                    } else {
+                        double minDist = Double.POSITIVE_INFINITY;
+                        for (Ball b : remainingBallsList) {
+                            int bLoc = b.getLocId();
+                            for (int n = 0; n < distanceMatrix[bLoc].length; n++) {
+                                if (distanceMatrix[bLoc][n] == 1) { 
+                                    double d = distanceMatrix[charLocId][n];
+                                    if (d < minDist) minDist = d;
+                                }
+                            }
+                        }
+                        if (minDist < models.SnowmanConfigurator.UNREACHABLE) {
+                            tie_breaker += minDist * 0.0001; 
+                        }
+                    }
+                }
+                
+                double totalH = h_balls + tie_breaker;

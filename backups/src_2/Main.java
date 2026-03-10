@@ -121,7 +121,7 @@ public class Main {
                         Process process = pb.start();
 
                         // Aspettiamo al massimo 300 secondi (5 minuti)
-                        boolean finished = process.waitFor(100, TimeUnit.SECONDS);
+                        boolean finished = process.waitFor(200, TimeUnit.SECONDS);
 
                         if (finished) {
                             int exitCode = process.exitValue();
